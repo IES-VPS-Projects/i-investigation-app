@@ -5,11 +5,11 @@ import '../platform/color_palette.dart';
 extension AppNotifications on BuildContext {
   void showCustomSnackBar(String message, {bool isError = false}) {
     ScaffoldMessenger.of(this).showSnackBar(SnackBar(
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       backgroundColor: isError ? Colors.red : ColorPalette.greenColor,
       content: Text(
         message,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
       ),
     ));
   }

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:iinvestigation/core/data/datasources/local_storage_data_source.dart';
+import 'package:iinvestigation/core/utilities/app_navigation.dart';
+import 'package:iinvestigation/features/auth/presentation/pages/sign_in.dart';
 
 import 'widgets/dashGridMenu.dart';
 import 'widgets/dashboardHeader.dart';
@@ -11,6 +14,9 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +30,10 @@ class _DashboardState extends State<Dashboard> {
                 onPressed: () {
                   Navigator.pushNamed(context, "/notifications");
                 }),
-            IconButton(icon: Icon(Icons.exit_to_app), onPressed: () {})
+            IconButton(icon: Icon(Icons.exit_to_app), onPressed: () {
+              clearAll();
+              context.appNavigatorPush(const SignIn());
+            })
           ],
         ),
         body: Column(

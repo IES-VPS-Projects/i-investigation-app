@@ -21,6 +21,7 @@ AuthResponseModel _$AuthResponseModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AuthResponseModel {
   String? get message => throw _privateConstructorUsedError;
+  String? get token => throw _privateConstructorUsedError;
   Data? get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +36,7 @@ abstract class $AuthResponseModelCopyWith<$Res> {
           AuthResponseModel value, $Res Function(AuthResponseModel) then) =
       _$AuthResponseModelCopyWithImpl<$Res, AuthResponseModel>;
   @useResult
-  $Res call({String? message, Data? data});
+  $Res call({String? message, String? token, Data? data});
 
   $DataCopyWith<$Res>? get data;
 }
@@ -54,12 +55,17 @@ class _$AuthResponseModelCopyWithImpl<$Res, $Val extends AuthResponseModel>
   @override
   $Res call({
     Object? message = freezed,
+    Object? token = freezed,
     Object? data = freezed,
   }) {
     return _then(_value.copyWith(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      token: freezed == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
               as String?,
       data: freezed == data
           ? _value.data
@@ -89,7 +95,7 @@ abstract class _$$AuthResponseModelImplCopyWith<$Res>
       __$$AuthResponseModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? message, Data? data});
+  $Res call({String? message, String? token, Data? data});
 
   @override
   $DataCopyWith<$Res>? get data;
@@ -107,12 +113,17 @@ class __$$AuthResponseModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = freezed,
+    Object? token = freezed,
     Object? data = freezed,
   }) {
     return _then(_$AuthResponseModelImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      token: freezed == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
               as String?,
       data: freezed == data
           ? _value.data
@@ -125,7 +136,7 @@ class __$$AuthResponseModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AuthResponseModelImpl implements _AuthResponseModel {
-  _$AuthResponseModelImpl({this.message, this.data});
+  _$AuthResponseModelImpl({this.message, this.token, this.data});
 
   factory _$AuthResponseModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$AuthResponseModelImplFromJson(json);
@@ -133,11 +144,13 @@ class _$AuthResponseModelImpl implements _AuthResponseModel {
   @override
   final String? message;
   @override
+  final String? token;
+  @override
   final Data? data;
 
   @override
   String toString() {
-    return 'AuthResponseModel(message: $message, data: $data)';
+    return 'AuthResponseModel(message: $message, token: $token, data: $data)';
   }
 
   @override
@@ -146,12 +159,13 @@ class _$AuthResponseModelImpl implements _AuthResponseModel {
         (other.runtimeType == runtimeType &&
             other is _$AuthResponseModelImpl &&
             (identical(other.message, message) || other.message == message) &&
+            (identical(other.token, token) || other.token == token) &&
             (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, message, data);
+  int get hashCode => Object.hash(runtimeType, message, token, data);
 
   @JsonKey(ignore: true)
   @override
@@ -169,14 +183,18 @@ class _$AuthResponseModelImpl implements _AuthResponseModel {
 }
 
 abstract class _AuthResponseModel implements AuthResponseModel {
-  factory _AuthResponseModel({final String? message, final Data? data}) =
-      _$AuthResponseModelImpl;
+  factory _AuthResponseModel(
+      {final String? message,
+      final String? token,
+      final Data? data}) = _$AuthResponseModelImpl;
 
   factory _AuthResponseModel.fromJson(Map<String, dynamic> json) =
       _$AuthResponseModelImpl.fromJson;
 
   @override
   String? get message;
+  @override
+  String? get token;
   @override
   Data? get data;
   @override

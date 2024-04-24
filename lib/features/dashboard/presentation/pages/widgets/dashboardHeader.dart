@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iinvestigation/core/data/datasources/local_storage_data_source.dart';
 import 'package:iinvestigation/features/auth/data/models/auth_response_model/auth_response_model.dart';
 import 'package:iinvestigation/features/auth/presentation/state/auth_cubit.dart';
 
@@ -9,30 +10,53 @@ class DashboardHeader extends StatefulWidget {
 }
 
 class _DashboardHeaderState extends State<DashboardHeader> {
+  String? name;
+  String? serviceNumber;
+
+  late Future<Map<String, String>> _profile;
+
   @override
   void initState() {
+    List<String> keys = [
+      'name',
+      'service_Number',
+    ];
+    _profile = getDataMap(keys);
     getUser();
   }
 
-  void getUser() async {}
+  void getUser() async {
+    name = await getData('name');
+    name = await getData('service Number');
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Padding(
-        padding: const EdgeInsets.only(left: 8.0, bottom: 4.0),
-        child:
-            //  Text("${context.read<AuthCubit>().state.payload.user!}")
-            getDashboardWIdget(
-                null, context.read<AuthCubit>().state.payload.user!));
+    return FutureBuilder<Map<String, String>>(
+        future: _profile,
+        builder: (BuildContext context,
+            AsyncSnapshot<Map<String, String>> snapshot) {
+          if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+          } else if (snapshot.hasData) {
+            return Padding(
+                padding: const EdgeInsets.only(left: 8.0, bottom: 4.0),
+                child:
+                    //  Text("${context.read<AuthCubit>().state.payload.user!}")
+                    getDashboardWIdget(null, snapshot.data!));
+          }
+          return const CircularProgressIndicator();
+        });
   }
 
-  Widget getDashboardWIdget(dynamic officerDoc, AuthResponseModel user) {
+  Widget getDashboardWIdget(dynamic officerDoc, Map<String, String> user) {
     return Column(
       children: <Widget>[
         Row(
           children: <Widget>[
-            createAvatar("${user.data?.name}"),
+            createAvatar("${user['name']}"),
             Padding(
               padding: const EdgeInsets.only(left: 20.0, top: 20.0),
               child: Column(
@@ -44,7 +68,7 @@ class _DashboardHeaderState extends State<DashboardHeader> {
                         fontWeight: FontWeight.w100, color: Colors.green),
                   ),
                   Text(
-                    "${user.data?.name}",
+                    "${user['name']}",
                     style: TextStyle(fontSize: 24.0, color: Colors.white),
                   ),
                   Container(
@@ -59,7 +83,7 @@ class _DashboardHeaderState extends State<DashboardHeader> {
                         style: TextStyle(color: Colors.white),
                       ),
                       Text(
-                        "${user.data?.serviceNumber}",
+                        "${user['service_Number']}",
                         style: TextStyle(
                             fontWeight: FontWeight.w300, color: Colors.green),
                       ),

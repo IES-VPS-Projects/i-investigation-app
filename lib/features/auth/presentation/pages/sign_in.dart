@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_progress_hud/flutter_progress_hud.dart';
+import 'package:iinvestigation/core/data/datasources/local_storage_data_source.dart';
 import 'package:iinvestigation/core/utilities/app_navigation.dart';
 import 'package:iinvestigation/features/auth/presentation/state/auth_cubit.dart';
 import 'package:iinvestigation/features/dashboard/presentation/pages/dashboard.dart';
@@ -17,7 +18,15 @@ class _SignInState extends State<SignIn> {
   String email = "";
   String password = "";
 
+
   bool _loading = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+   
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -137,6 +146,7 @@ class _SignInState extends State<SignIn> {
       var payload = {"serice_number": email, "password": password};
 
       context.read<AuthCubit>().login(payload).then((_) {
+      
         context.appNavigatorPush(const Dashboard());
       });
       // .then(;

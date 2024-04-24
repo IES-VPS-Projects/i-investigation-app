@@ -9,6 +9,7 @@ part 'auth_response_model.g.dart';
 class AuthResponseModel with _$AuthResponseModel {
   factory AuthResponseModel({
     String? message,
+    String? token,
     Data? data,
   }) = _AuthResponseModel;
 

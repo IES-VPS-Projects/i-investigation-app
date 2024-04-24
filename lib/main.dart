@@ -3,6 +3,9 @@ import 'package:iinvestigation/core/domain/di/configure_dependencies.dart';
 import 'package:iinvestigation/core/presentation/state/register_blocs.dart';
 import 'package:iinvestigation/features/auth/presentation/pages/sign_in.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iinvestigation/features/dashboard/presentation/pages/dashboard.dart';
+
+import 'core/data/datasources/local_storage_data_source.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,8 +16,23 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  late Future<String?> futureToken;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    futureToken = getData('name');
+  }
 
   // This widget is the root of your application.
   @override
@@ -27,7 +45,18 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
           useMaterial3: true,
         ),
-        home: const SignIn(),
+        home: FutureBuilder(
+            future: futureToken,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return snapshot.data!.isEmpty
+                    ? const SignIn()
+                    : const Dashboard();
+              } else if (snapshot.hasError) {
+                return Text("${snapshot.error}");
+              }
+              return const CircularProgressIndicator();
+            }),
       ),
     );
   }
