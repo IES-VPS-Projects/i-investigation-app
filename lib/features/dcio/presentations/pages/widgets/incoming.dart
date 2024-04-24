@@ -26,14 +26,35 @@ class _IncomingState extends State<Incoming> {
   @override
   Widget build(BuildContext context) {
     return context.watch<DcioCubit>().state.maybeWhen(
-        orElse: () => Center(
-            child: TextButton(
-                onPressed: () {
-                  context.read<DcioCubit>().getOccurences();
-                },
-                child: Text('${context.read<DcioCubit>().state}'))),
+        orElse: () => context.read<DcioCubit>().state.payload.occurences==null? Center(
+            child: CircularProgressIndicator()
+             )
+                :    SingleChildScrollView(
+            child: Column(
+              children: [
+                ...context.read<DcioCubit>().state.payload.occurences!.map((e) => Card(
+                      child: ListTile(
+                        title: Text("${e.obNo}"),
+                        subtitle: e.occurenceDetails!.isEmpty
+                            ? Text('')
+                            : Text(
+                                "${(jsonDecode(e.occurenceDetails!.first.details!)[0]['category']['name'])}"),
+                        trailing: IconButton(
+                            icon: const Icon(Icons.open_in_browser),
+                            onPressed: () {
+                              context.appNavigatorPush(NewCase(e: e));
+                               
+                            }),
+                      ),
+                    ))
+              ],
+            ),
+          )
+       
+                ,
         occurences: (payload) {
-          return SingleChildScrollView(
+          return
+           SingleChildScrollView(
             child: Column(
               children: [
                 ...payload.occurences!.map((e) => Card(

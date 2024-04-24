@@ -17,6 +17,12 @@ _$DcioStatePayloadImpl _$$DcioStatePayloadImplFromJson(
       users: (json['users'] as List<dynamic>?)
           ?.map((e) => Users.fromJson(e as Map<String, dynamic>))
           .toList(),
+      caseFile: json['caseFile'] == null
+          ? null
+          : NewCaseFile.fromJson(json['caseFile'] as Map<String, dynamic>),
+      officers: (json['officers'] as List<dynamic>?)
+          ?.map((e) => Users.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$DcioStatePayloadImplToJson(
@@ -26,4 +32,6 @@ Map<String, dynamic> _$$DcioStatePayloadImplToJson(
       'page': instance.page,
       'occurences': instance.occurences,
       'users': instance.users,
+      'caseFile': instance.caseFile,
+      'officers': instance.officers,
     };

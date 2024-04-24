@@ -10,6 +10,8 @@ abstract class DcioState with _$DcioState {
       _ErrorDcioState;
   const factory DcioState.occurences({required DcioStatePayload payload}) =
       _OccurencesDcioState;
+  const factory DcioState.casefile({required DcioStatePayload payload}) =
+      _CasefileDcioState;
 }
 
 @freezed
@@ -18,8 +20,9 @@ abstract class DcioStatePayload with _$DcioStatePayload {
       {@required String? error,
       @required int? page,
       List<Occurence>? occurences,
-      List<Users>? users
-      }) = _DcioStatePayload;
+      List<Users>? users,
+      NewCaseFile? caseFile,
+      @required List<Users>? officers}) = _DcioStatePayload;
 
   factory DcioStatePayload.fromJson(Map<String, dynamic> json) =>
       _$DcioStatePayloadFromJson(

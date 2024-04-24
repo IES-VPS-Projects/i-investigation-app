@@ -16,18 +16,25 @@ class _OfficersListingState extends State<OfficersListing> {
     // TODO: implement build
     return ListView(
       children:
-          context.read<DcioCubit>().state.payload.users!.map((Users document) {
-        return Draggable<Users>(
-            feedback: Material(child: Text("${document.name}")),
-            data: document,
-            childWhenDragging: Container(),
-            child: ListTile(
-              leading: const Icon(Icons.camera_enhance),
-              title: Text("${document.name}"),
-              subtitle: Text("${document.name}"),
-              trailing: const Icon(Icons.drag_handle),
-              dense: true,
-            ));
+          context.watch<DcioCubit>().state.payload.users!.map((Users document) {
+        return context
+                .watch<DcioCubit>()
+                .state
+                .payload
+                .officers!
+                .contains(document)
+            ? const SizedBox()
+            : Draggable<Users>(
+                feedback: Material(child: Text("${document.name}")),
+                data: document,
+                childWhenDragging: Container(),
+                child: ListTile(
+                  leading: const Icon(Icons.camera_enhance),
+                  title: Text("${document.name}"),
+                  subtitle: Text("${document.name}"),
+                  trailing: const Icon(Icons.drag_handle),
+                  dense: true,
+                ));
       }).toList(),
     );
   }

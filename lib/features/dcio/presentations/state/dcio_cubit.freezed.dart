@@ -23,6 +23,7 @@ mixin _$DcioState {
     required TResult Function(DcioStatePayload payload) loading,
     required TResult Function(DcioStatePayload payload) error,
     required TResult Function(DcioStatePayload payload) occurences,
+    required TResult Function(DcioStatePayload payload) casefile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,6 +32,7 @@ mixin _$DcioState {
     TResult? Function(DcioStatePayload payload)? loading,
     TResult? Function(DcioStatePayload payload)? error,
     TResult? Function(DcioStatePayload payload)? occurences,
+    TResult? Function(DcioStatePayload payload)? casefile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,6 +41,7 @@ mixin _$DcioState {
     TResult Function(DcioStatePayload payload)? loading,
     TResult Function(DcioStatePayload payload)? error,
     TResult Function(DcioStatePayload payload)? occurences,
+    TResult Function(DcioStatePayload payload)? casefile,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +51,7 @@ mixin _$DcioState {
     required TResult Function(_LoadingDcioState value) loading,
     required TResult Function(_ErrorDcioState value) error,
     required TResult Function(_OccurencesDcioState value) occurences,
+    required TResult Function(_CasefileDcioState value) casefile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +60,7 @@ mixin _$DcioState {
     TResult? Function(_LoadingDcioState value)? loading,
     TResult? Function(_ErrorDcioState value)? error,
     TResult? Function(_OccurencesDcioState value)? occurences,
+    TResult? Function(_CasefileDcioState value)? casefile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +69,7 @@ mixin _$DcioState {
     TResult Function(_LoadingDcioState value)? loading,
     TResult Function(_ErrorDcioState value)? error,
     TResult Function(_OccurencesDcioState value)? occurences,
+    TResult Function(_CasefileDcioState value)? casefile,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -189,6 +195,7 @@ class _$InitialDcioStateImpl implements _InitialDcioState {
     required TResult Function(DcioStatePayload payload) loading,
     required TResult Function(DcioStatePayload payload) error,
     required TResult Function(DcioStatePayload payload) occurences,
+    required TResult Function(DcioStatePayload payload) casefile,
   }) {
     return initial(payload);
   }
@@ -200,6 +207,7 @@ class _$InitialDcioStateImpl implements _InitialDcioState {
     TResult? Function(DcioStatePayload payload)? loading,
     TResult? Function(DcioStatePayload payload)? error,
     TResult? Function(DcioStatePayload payload)? occurences,
+    TResult? Function(DcioStatePayload payload)? casefile,
   }) {
     return initial?.call(payload);
   }
@@ -211,6 +219,7 @@ class _$InitialDcioStateImpl implements _InitialDcioState {
     TResult Function(DcioStatePayload payload)? loading,
     TResult Function(DcioStatePayload payload)? error,
     TResult Function(DcioStatePayload payload)? occurences,
+    TResult Function(DcioStatePayload payload)? casefile,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -226,6 +235,7 @@ class _$InitialDcioStateImpl implements _InitialDcioState {
     required TResult Function(_LoadingDcioState value) loading,
     required TResult Function(_ErrorDcioState value) error,
     required TResult Function(_OccurencesDcioState value) occurences,
+    required TResult Function(_CasefileDcioState value) casefile,
   }) {
     return initial(this);
   }
@@ -237,6 +247,7 @@ class _$InitialDcioStateImpl implements _InitialDcioState {
     TResult? Function(_LoadingDcioState value)? loading,
     TResult? Function(_ErrorDcioState value)? error,
     TResult? Function(_OccurencesDcioState value)? occurences,
+    TResult? Function(_CasefileDcioState value)? casefile,
   }) {
     return initial?.call(this);
   }
@@ -248,6 +259,7 @@ class _$InitialDcioStateImpl implements _InitialDcioState {
     TResult Function(_LoadingDcioState value)? loading,
     TResult Function(_ErrorDcioState value)? error,
     TResult Function(_OccurencesDcioState value)? occurences,
+    TResult Function(_CasefileDcioState value)? casefile,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -343,6 +355,7 @@ class _$LoadingDcioStateImpl implements _LoadingDcioState {
     required TResult Function(DcioStatePayload payload) loading,
     required TResult Function(DcioStatePayload payload) error,
     required TResult Function(DcioStatePayload payload) occurences,
+    required TResult Function(DcioStatePayload payload) casefile,
   }) {
     return loading(payload);
   }
@@ -354,6 +367,7 @@ class _$LoadingDcioStateImpl implements _LoadingDcioState {
     TResult? Function(DcioStatePayload payload)? loading,
     TResult? Function(DcioStatePayload payload)? error,
     TResult? Function(DcioStatePayload payload)? occurences,
+    TResult? Function(DcioStatePayload payload)? casefile,
   }) {
     return loading?.call(payload);
   }
@@ -365,6 +379,7 @@ class _$LoadingDcioStateImpl implements _LoadingDcioState {
     TResult Function(DcioStatePayload payload)? loading,
     TResult Function(DcioStatePayload payload)? error,
     TResult Function(DcioStatePayload payload)? occurences,
+    TResult Function(DcioStatePayload payload)? casefile,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -380,6 +395,7 @@ class _$LoadingDcioStateImpl implements _LoadingDcioState {
     required TResult Function(_LoadingDcioState value) loading,
     required TResult Function(_ErrorDcioState value) error,
     required TResult Function(_OccurencesDcioState value) occurences,
+    required TResult Function(_CasefileDcioState value) casefile,
   }) {
     return loading(this);
   }
@@ -391,6 +407,7 @@ class _$LoadingDcioStateImpl implements _LoadingDcioState {
     TResult? Function(_LoadingDcioState value)? loading,
     TResult? Function(_ErrorDcioState value)? error,
     TResult? Function(_OccurencesDcioState value)? occurences,
+    TResult? Function(_CasefileDcioState value)? casefile,
   }) {
     return loading?.call(this);
   }
@@ -402,6 +419,7 @@ class _$LoadingDcioStateImpl implements _LoadingDcioState {
     TResult Function(_LoadingDcioState value)? loading,
     TResult Function(_ErrorDcioState value)? error,
     TResult Function(_OccurencesDcioState value)? occurences,
+    TResult Function(_CasefileDcioState value)? casefile,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -497,6 +515,7 @@ class _$ErrorDcioStateImpl implements _ErrorDcioState {
     required TResult Function(DcioStatePayload payload) loading,
     required TResult Function(DcioStatePayload payload) error,
     required TResult Function(DcioStatePayload payload) occurences,
+    required TResult Function(DcioStatePayload payload) casefile,
   }) {
     return error(payload);
   }
@@ -508,6 +527,7 @@ class _$ErrorDcioStateImpl implements _ErrorDcioState {
     TResult? Function(DcioStatePayload payload)? loading,
     TResult? Function(DcioStatePayload payload)? error,
     TResult? Function(DcioStatePayload payload)? occurences,
+    TResult? Function(DcioStatePayload payload)? casefile,
   }) {
     return error?.call(payload);
   }
@@ -519,6 +539,7 @@ class _$ErrorDcioStateImpl implements _ErrorDcioState {
     TResult Function(DcioStatePayload payload)? loading,
     TResult Function(DcioStatePayload payload)? error,
     TResult Function(DcioStatePayload payload)? occurences,
+    TResult Function(DcioStatePayload payload)? casefile,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -534,6 +555,7 @@ class _$ErrorDcioStateImpl implements _ErrorDcioState {
     required TResult Function(_LoadingDcioState value) loading,
     required TResult Function(_ErrorDcioState value) error,
     required TResult Function(_OccurencesDcioState value) occurences,
+    required TResult Function(_CasefileDcioState value) casefile,
   }) {
     return error(this);
   }
@@ -545,6 +567,7 @@ class _$ErrorDcioStateImpl implements _ErrorDcioState {
     TResult? Function(_LoadingDcioState value)? loading,
     TResult? Function(_ErrorDcioState value)? error,
     TResult? Function(_OccurencesDcioState value)? occurences,
+    TResult? Function(_CasefileDcioState value)? casefile,
   }) {
     return error?.call(this);
   }
@@ -556,6 +579,7 @@ class _$ErrorDcioStateImpl implements _ErrorDcioState {
     TResult Function(_LoadingDcioState value)? loading,
     TResult Function(_ErrorDcioState value)? error,
     TResult Function(_OccurencesDcioState value)? occurences,
+    TResult Function(_CasefileDcioState value)? casefile,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -651,6 +675,7 @@ class _$OccurencesDcioStateImpl implements _OccurencesDcioState {
     required TResult Function(DcioStatePayload payload) loading,
     required TResult Function(DcioStatePayload payload) error,
     required TResult Function(DcioStatePayload payload) occurences,
+    required TResult Function(DcioStatePayload payload) casefile,
   }) {
     return occurences(payload);
   }
@@ -662,6 +687,7 @@ class _$OccurencesDcioStateImpl implements _OccurencesDcioState {
     TResult? Function(DcioStatePayload payload)? loading,
     TResult? Function(DcioStatePayload payload)? error,
     TResult? Function(DcioStatePayload payload)? occurences,
+    TResult? Function(DcioStatePayload payload)? casefile,
   }) {
     return occurences?.call(payload);
   }
@@ -673,6 +699,7 @@ class _$OccurencesDcioStateImpl implements _OccurencesDcioState {
     TResult Function(DcioStatePayload payload)? loading,
     TResult Function(DcioStatePayload payload)? error,
     TResult Function(DcioStatePayload payload)? occurences,
+    TResult Function(DcioStatePayload payload)? casefile,
     required TResult orElse(),
   }) {
     if (occurences != null) {
@@ -688,6 +715,7 @@ class _$OccurencesDcioStateImpl implements _OccurencesDcioState {
     required TResult Function(_LoadingDcioState value) loading,
     required TResult Function(_ErrorDcioState value) error,
     required TResult Function(_OccurencesDcioState value) occurences,
+    required TResult Function(_CasefileDcioState value) casefile,
   }) {
     return occurences(this);
   }
@@ -699,6 +727,7 @@ class _$OccurencesDcioStateImpl implements _OccurencesDcioState {
     TResult? Function(_LoadingDcioState value)? loading,
     TResult? Function(_ErrorDcioState value)? error,
     TResult? Function(_OccurencesDcioState value)? occurences,
+    TResult? Function(_CasefileDcioState value)? casefile,
   }) {
     return occurences?.call(this);
   }
@@ -710,6 +739,7 @@ class _$OccurencesDcioStateImpl implements _OccurencesDcioState {
     TResult Function(_LoadingDcioState value)? loading,
     TResult Function(_ErrorDcioState value)? error,
     TResult Function(_OccurencesDcioState value)? occurences,
+    TResult Function(_CasefileDcioState value)? casefile,
     required TResult orElse(),
   }) {
     if (occurences != null) {
@@ -731,6 +761,166 @@ abstract class _OccurencesDcioState implements DcioState {
       throw _privateConstructorUsedError;
 }
 
+/// @nodoc
+abstract class _$$CasefileDcioStateImplCopyWith<$Res>
+    implements $DcioStateCopyWith<$Res> {
+  factory _$$CasefileDcioStateImplCopyWith(_$CasefileDcioStateImpl value,
+          $Res Function(_$CasefileDcioStateImpl) then) =
+      __$$CasefileDcioStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({DcioStatePayload payload});
+
+  @override
+  $DcioStatePayloadCopyWith<$Res> get payload;
+}
+
+/// @nodoc
+class __$$CasefileDcioStateImplCopyWithImpl<$Res>
+    extends _$DcioStateCopyWithImpl<$Res, _$CasefileDcioStateImpl>
+    implements _$$CasefileDcioStateImplCopyWith<$Res> {
+  __$$CasefileDcioStateImplCopyWithImpl(_$CasefileDcioStateImpl _value,
+      $Res Function(_$CasefileDcioStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? payload = null,
+  }) {
+    return _then(_$CasefileDcioStateImpl(
+      payload: null == payload
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as DcioStatePayload,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CasefileDcioStateImpl implements _CasefileDcioState {
+  const _$CasefileDcioStateImpl({required this.payload});
+
+  @override
+  final DcioStatePayload payload;
+
+  @override
+  String toString() {
+    return 'DcioState.casefile(payload: $payload)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CasefileDcioStateImpl &&
+            (identical(other.payload, payload) || other.payload == payload));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, payload);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CasefileDcioStateImplCopyWith<_$CasefileDcioStateImpl> get copyWith =>
+      __$$CasefileDcioStateImplCopyWithImpl<_$CasefileDcioStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DcioStatePayload payload) initial,
+    required TResult Function(DcioStatePayload payload) loading,
+    required TResult Function(DcioStatePayload payload) error,
+    required TResult Function(DcioStatePayload payload) occurences,
+    required TResult Function(DcioStatePayload payload) casefile,
+  }) {
+    return casefile(payload);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DcioStatePayload payload)? initial,
+    TResult? Function(DcioStatePayload payload)? loading,
+    TResult? Function(DcioStatePayload payload)? error,
+    TResult? Function(DcioStatePayload payload)? occurences,
+    TResult? Function(DcioStatePayload payload)? casefile,
+  }) {
+    return casefile?.call(payload);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DcioStatePayload payload)? initial,
+    TResult Function(DcioStatePayload payload)? loading,
+    TResult Function(DcioStatePayload payload)? error,
+    TResult Function(DcioStatePayload payload)? occurences,
+    TResult Function(DcioStatePayload payload)? casefile,
+    required TResult orElse(),
+  }) {
+    if (casefile != null) {
+      return casefile(payload);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialDcioState value) initial,
+    required TResult Function(_LoadingDcioState value) loading,
+    required TResult Function(_ErrorDcioState value) error,
+    required TResult Function(_OccurencesDcioState value) occurences,
+    required TResult Function(_CasefileDcioState value) casefile,
+  }) {
+    return casefile(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialDcioState value)? initial,
+    TResult? Function(_LoadingDcioState value)? loading,
+    TResult? Function(_ErrorDcioState value)? error,
+    TResult? Function(_OccurencesDcioState value)? occurences,
+    TResult? Function(_CasefileDcioState value)? casefile,
+  }) {
+    return casefile?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialDcioState value)? initial,
+    TResult Function(_LoadingDcioState value)? loading,
+    TResult Function(_ErrorDcioState value)? error,
+    TResult Function(_OccurencesDcioState value)? occurences,
+    TResult Function(_CasefileDcioState value)? casefile,
+    required TResult orElse(),
+  }) {
+    if (casefile != null) {
+      return casefile(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CasefileDcioState implements DcioState {
+  const factory _CasefileDcioState({required final DcioStatePayload payload}) =
+      _$CasefileDcioStateImpl;
+
+  @override
+  DcioStatePayload get payload;
+  @override
+  @JsonKey(ignore: true)
+  _$$CasefileDcioStateImplCopyWith<_$CasefileDcioStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 DcioStatePayload _$DcioStatePayloadFromJson(Map<String, dynamic> json) {
   return _DcioStatePayload.fromJson(json);
 }
@@ -741,6 +931,8 @@ mixin _$DcioStatePayload {
   int? get page => throw _privateConstructorUsedError;
   List<Occurence>? get occurences => throw _privateConstructorUsedError;
   List<Users>? get users => throw _privateConstructorUsedError;
+  NewCaseFile? get caseFile => throw _privateConstructorUsedError;
+  List<Users>? get officers => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -758,7 +950,11 @@ abstract class $DcioStatePayloadCopyWith<$Res> {
       {String? error,
       int? page,
       List<Occurence>? occurences,
-      List<Users>? users});
+      List<Users>? users,
+      NewCaseFile? caseFile,
+      List<Users>? officers});
+
+  $NewCaseFileCopyWith<$Res>? get caseFile;
 }
 
 /// @nodoc
@@ -778,6 +974,8 @@ class _$DcioStatePayloadCopyWithImpl<$Res, $Val extends DcioStatePayload>
     Object? page = freezed,
     Object? occurences = freezed,
     Object? users = freezed,
+    Object? caseFile = freezed,
+    Object? officers = freezed,
   }) {
     return _then(_value.copyWith(
       error: freezed == error
@@ -796,7 +994,27 @@ class _$DcioStatePayloadCopyWithImpl<$Res, $Val extends DcioStatePayload>
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
               as List<Users>?,
+      caseFile: freezed == caseFile
+          ? _value.caseFile
+          : caseFile // ignore: cast_nullable_to_non_nullable
+              as NewCaseFile?,
+      officers: freezed == officers
+          ? _value.officers
+          : officers // ignore: cast_nullable_to_non_nullable
+              as List<Users>?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $NewCaseFileCopyWith<$Res>? get caseFile {
+    if (_value.caseFile == null) {
+      return null;
+    }
+
+    return $NewCaseFileCopyWith<$Res>(_value.caseFile!, (value) {
+      return _then(_value.copyWith(caseFile: value) as $Val);
+    });
   }
 }
 
@@ -812,7 +1030,12 @@ abstract class _$$DcioStatePayloadImplCopyWith<$Res>
       {String? error,
       int? page,
       List<Occurence>? occurences,
-      List<Users>? users});
+      List<Users>? users,
+      NewCaseFile? caseFile,
+      List<Users>? officers});
+
+  @override
+  $NewCaseFileCopyWith<$Res>? get caseFile;
 }
 
 /// @nodoc
@@ -830,6 +1053,8 @@ class __$$DcioStatePayloadImplCopyWithImpl<$Res>
     Object? page = freezed,
     Object? occurences = freezed,
     Object? users = freezed,
+    Object? caseFile = freezed,
+    Object? officers = freezed,
   }) {
     return _then(_$DcioStatePayloadImpl(
       error: freezed == error
@@ -848,6 +1073,14 @@ class __$$DcioStatePayloadImplCopyWithImpl<$Res>
           ? _value._users
           : users // ignore: cast_nullable_to_non_nullable
               as List<Users>?,
+      caseFile: freezed == caseFile
+          ? _value.caseFile
+          : caseFile // ignore: cast_nullable_to_non_nullable
+              as NewCaseFile?,
+      officers: freezed == officers
+          ? _value._officers
+          : officers // ignore: cast_nullable_to_non_nullable
+              as List<Users>?,
     ));
   }
 }
@@ -859,9 +1092,12 @@ class _$DcioStatePayloadImpl implements _DcioStatePayload {
       {this.error,
       this.page,
       final List<Occurence>? occurences,
-      final List<Users>? users})
+      final List<Users>? users,
+      this.caseFile,
+      final List<Users>? officers})
       : _occurences = occurences,
-        _users = users;
+        _users = users,
+        _officers = officers;
 
   factory _$DcioStatePayloadImpl.fromJson(Map<String, dynamic> json) =>
       _$$DcioStatePayloadImplFromJson(json);
@@ -891,8 +1127,20 @@ class _$DcioStatePayloadImpl implements _DcioStatePayload {
   }
 
   @override
+  final NewCaseFile? caseFile;
+  final List<Users>? _officers;
+  @override
+  List<Users>? get officers {
+    final value = _officers;
+    if (value == null) return null;
+    if (_officers is EqualUnmodifiableListView) return _officers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
   String toString() {
-    return 'DcioStatePayload(error: $error, page: $page, occurences: $occurences, users: $users)';
+    return 'DcioStatePayload(error: $error, page: $page, occurences: $occurences, users: $users, caseFile: $caseFile, officers: $officers)';
   }
 
   @override
@@ -904,7 +1152,10 @@ class _$DcioStatePayloadImpl implements _DcioStatePayload {
             (identical(other.page, page) || other.page == page) &&
             const DeepCollectionEquality()
                 .equals(other._occurences, _occurences) &&
-            const DeepCollectionEquality().equals(other._users, _users));
+            const DeepCollectionEquality().equals(other._users, _users) &&
+            (identical(other.caseFile, caseFile) ||
+                other.caseFile == caseFile) &&
+            const DeepCollectionEquality().equals(other._officers, _officers));
   }
 
   @JsonKey(ignore: true)
@@ -914,7 +1165,9 @@ class _$DcioStatePayloadImpl implements _DcioStatePayload {
       error,
       page,
       const DeepCollectionEquality().hash(_occurences),
-      const DeepCollectionEquality().hash(_users));
+      const DeepCollectionEquality().hash(_users),
+      caseFile,
+      const DeepCollectionEquality().hash(_officers));
 
   @JsonKey(ignore: true)
   @override
@@ -936,7 +1189,9 @@ abstract class _DcioStatePayload implements DcioStatePayload {
       {final String? error,
       final int? page,
       final List<Occurence>? occurences,
-      final List<Users>? users}) = _$DcioStatePayloadImpl;
+      final List<Users>? users,
+      final NewCaseFile? caseFile,
+      final List<Users>? officers}) = _$DcioStatePayloadImpl;
 
   factory _DcioStatePayload.fromJson(Map<String, dynamic> json) =
       _$DcioStatePayloadImpl.fromJson;
@@ -949,6 +1204,10 @@ abstract class _DcioStatePayload implements DcioStatePayload {
   List<Occurence>? get occurences;
   @override
   List<Users>? get users;
+  @override
+  NewCaseFile? get caseFile;
+  @override
+  List<Users>? get officers;
   @override
   @JsonKey(ignore: true)
   _$$DcioStatePayloadImplCopyWith<_$DcioStatePayloadImpl> get copyWith =>
