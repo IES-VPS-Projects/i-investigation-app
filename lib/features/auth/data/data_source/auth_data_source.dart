@@ -26,7 +26,7 @@ class AuthDataSourceImpl implements AuthDataSource {
     print(params);
     var response =
         await _networkService.postHttp(AuthEndPoints.login, body: params);
-    
+
     // if (response['error'] != null) {
     //   await handleApiFailure(
     //     source: 'login',

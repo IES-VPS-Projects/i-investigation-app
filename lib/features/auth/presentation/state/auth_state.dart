@@ -14,11 +14,10 @@ abstract class AuthState with _$AuthState {
 
 @freezed
 abstract class AuthStatePayload with _$AuthStatePayload {
-  const factory AuthStatePayload({
-    @required String? error,
-    @required int? page,
-    @required AuthResponseModel? user
-  }) = _AuthStatePayload;
+  const factory AuthStatePayload(
+      {@required String? error,
+      @required int? page,
+      @required AuthResponseModel? user}) = _AuthStatePayload;
 
   factory AuthStatePayload.fromJson(Map<String, dynamic> json) =>
       _$AuthStatePayloadFromJson(

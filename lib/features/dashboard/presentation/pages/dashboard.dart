@@ -13,8 +13,8 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
-      backgroundColor: Colors.black,
+    return Scaffold(
+        backgroundColor: Colors.black,
         appBar: AppBar(
           elevation: 0.0,
           backgroundColor: Colors.transparent,
@@ -24,9 +24,7 @@ class _DashboardState extends State<Dashboard> {
                 onPressed: () {
                   Navigator.pushNamed(context, "/notifications");
                 }),
-            IconButton(
-                icon: Icon(Icons.exit_to_app),
-                onPressed: (){})
+            IconButton(icon: Icon(Icons.exit_to_app), onPressed: () {})
           ],
         ),
         body: Column(
@@ -41,7 +39,5 @@ class _DashboardState extends State<Dashboard> {
             ),
           ],
         ));
-  
-
   }
 }

@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: providers,
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'I Investigation',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
           useMaterial3: true,

@@ -6,7 +6,7 @@ import 'network_service.dart';
 import 'rest_client.dart';
 
 class NetworkServiceImpl implements NetworkService {
- final  Dio _dio = Dio();
+  final Dio _dio = Dio();
   RestClient _restClient;
   NetworkServiceImpl(this._restClient);
 
@@ -59,7 +59,7 @@ class NetworkServiceImpl implements NetworkService {
   }) async {
     try {
       final response = await _dio.post(
-        BASE_URL+ endpoint,
+        BASE_URL + endpoint,
         queryParameters: params,
         data: body,
         // options: Options(

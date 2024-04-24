@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:iinvestigation/core/utilities/app_navigation.dart';
+import 'package:iinvestigation/features/dcio/presentations/pages/dashboard.dart';
 
 class DashGridMenu extends StatefulWidget {
   @override
@@ -10,37 +12,37 @@ class _DashGridMenuState extends State<DashGridMenu> {
     {
       "name": "DCIO Dashboard",
       "icon": Icons.dashboard,
-      "route": "/dcioDashboard",
+      "route": const DcioDashboard(),
       "iconColor": Colors.white
     },
     {
       "name": "New Case",
       "icon": Icons.create_new_folder,
-      "route": "/newCase",
+      "route": const DcioDashboard(),
       "iconColor": Colors.white
     },
     {
       "name": "Ongoing Cases",
       "icon": Icons.inbox,
-      "route": "/inbox",
+      "route": const DcioDashboard(),
       "iconColor": Colors.white,
     },
     {
       "name": "Closed",
       "icon": Icons.cloud_off,
-      "route": "/closedCase",
+      "route": const DcioDashboard(),
       "iconColor": Colors.white
     },
     {
       "name": "Unassigned",
       "icon": Icons.hourglass_full,
-      "route": "/unassigned",
+      "route": const DcioDashboard(),
       "iconColor": Colors.white
     },
     {
       "name": "Suspended",
       "icon": Icons.stop_screen_share,
-      "route": "/suspendedCase",
+      "route": const DcioDashboard(),
       "iconColor": Colors.white
     }
   ];
@@ -64,7 +66,7 @@ class _DashGridMenuState extends State<DashGridMenu> {
               alignment: FractionalOffset.center,
               children: <Widget>[
                 TextButton(
-                  style:const ButtonStyle(
+                  style: const ButtonStyle(
                       // backgroundColor: MaterialStatePropertyAll<Color>(Colors.black.withOpacity(.2))
                       ),
                   child: Padding(
@@ -78,12 +80,13 @@ class _DashGridMenuState extends State<DashGridMenu> {
                           size: 75.0,
                           color: menus[index]["iconColor"] as Color,
                         ),
-                        Text('${menus[index]["name"]}')
+                        Text('${menus[index]["name"]} ')
                       ],
                     ),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushNamed('${menus[index]["route"]}');
+                    context.appNavigatorPush(menus[index]['route'] as Widget);
+                    // Navigator.of(context).p('${menus[index]["route"]}');
                   },
                 ),
                 Positioned(
