@@ -22,6 +22,7 @@ mixin _$DcioState {
     required TResult Function(DcioStatePayload payload) initial,
     required TResult Function(DcioStatePayload payload) loading,
     required TResult Function(DcioStatePayload payload) error,
+    required TResult Function(DcioStatePayload payload) occurences,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,6 +30,7 @@ mixin _$DcioState {
     TResult? Function(DcioStatePayload payload)? initial,
     TResult? Function(DcioStatePayload payload)? loading,
     TResult? Function(DcioStatePayload payload)? error,
+    TResult? Function(DcioStatePayload payload)? occurences,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +38,7 @@ mixin _$DcioState {
     TResult Function(DcioStatePayload payload)? initial,
     TResult Function(DcioStatePayload payload)? loading,
     TResult Function(DcioStatePayload payload)? error,
+    TResult Function(DcioStatePayload payload)? occurences,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +47,7 @@ mixin _$DcioState {
     required TResult Function(_InitialDcioState value) initial,
     required TResult Function(_LoadingDcioState value) loading,
     required TResult Function(_ErrorDcioState value) error,
+    required TResult Function(_OccurencesDcioState value) occurences,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +55,7 @@ mixin _$DcioState {
     TResult? Function(_InitialDcioState value)? initial,
     TResult? Function(_LoadingDcioState value)? loading,
     TResult? Function(_ErrorDcioState value)? error,
+    TResult? Function(_OccurencesDcioState value)? occurences,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +63,7 @@ mixin _$DcioState {
     TResult Function(_InitialDcioState value)? initial,
     TResult Function(_LoadingDcioState value)? loading,
     TResult Function(_ErrorDcioState value)? error,
+    TResult Function(_OccurencesDcioState value)? occurences,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -182,6 +188,7 @@ class _$InitialDcioStateImpl implements _InitialDcioState {
     required TResult Function(DcioStatePayload payload) initial,
     required TResult Function(DcioStatePayload payload) loading,
     required TResult Function(DcioStatePayload payload) error,
+    required TResult Function(DcioStatePayload payload) occurences,
   }) {
     return initial(payload);
   }
@@ -192,6 +199,7 @@ class _$InitialDcioStateImpl implements _InitialDcioState {
     TResult? Function(DcioStatePayload payload)? initial,
     TResult? Function(DcioStatePayload payload)? loading,
     TResult? Function(DcioStatePayload payload)? error,
+    TResult? Function(DcioStatePayload payload)? occurences,
   }) {
     return initial?.call(payload);
   }
@@ -202,6 +210,7 @@ class _$InitialDcioStateImpl implements _InitialDcioState {
     TResult Function(DcioStatePayload payload)? initial,
     TResult Function(DcioStatePayload payload)? loading,
     TResult Function(DcioStatePayload payload)? error,
+    TResult Function(DcioStatePayload payload)? occurences,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -216,6 +225,7 @@ class _$InitialDcioStateImpl implements _InitialDcioState {
     required TResult Function(_InitialDcioState value) initial,
     required TResult Function(_LoadingDcioState value) loading,
     required TResult Function(_ErrorDcioState value) error,
+    required TResult Function(_OccurencesDcioState value) occurences,
   }) {
     return initial(this);
   }
@@ -226,6 +236,7 @@ class _$InitialDcioStateImpl implements _InitialDcioState {
     TResult? Function(_InitialDcioState value)? initial,
     TResult? Function(_LoadingDcioState value)? loading,
     TResult? Function(_ErrorDcioState value)? error,
+    TResult? Function(_OccurencesDcioState value)? occurences,
   }) {
     return initial?.call(this);
   }
@@ -236,6 +247,7 @@ class _$InitialDcioStateImpl implements _InitialDcioState {
     TResult Function(_InitialDcioState value)? initial,
     TResult Function(_LoadingDcioState value)? loading,
     TResult Function(_ErrorDcioState value)? error,
+    TResult Function(_OccurencesDcioState value)? occurences,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -330,6 +342,7 @@ class _$LoadingDcioStateImpl implements _LoadingDcioState {
     required TResult Function(DcioStatePayload payload) initial,
     required TResult Function(DcioStatePayload payload) loading,
     required TResult Function(DcioStatePayload payload) error,
+    required TResult Function(DcioStatePayload payload) occurences,
   }) {
     return loading(payload);
   }
@@ -340,6 +353,7 @@ class _$LoadingDcioStateImpl implements _LoadingDcioState {
     TResult? Function(DcioStatePayload payload)? initial,
     TResult? Function(DcioStatePayload payload)? loading,
     TResult? Function(DcioStatePayload payload)? error,
+    TResult? Function(DcioStatePayload payload)? occurences,
   }) {
     return loading?.call(payload);
   }
@@ -350,6 +364,7 @@ class _$LoadingDcioStateImpl implements _LoadingDcioState {
     TResult Function(DcioStatePayload payload)? initial,
     TResult Function(DcioStatePayload payload)? loading,
     TResult Function(DcioStatePayload payload)? error,
+    TResult Function(DcioStatePayload payload)? occurences,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -364,6 +379,7 @@ class _$LoadingDcioStateImpl implements _LoadingDcioState {
     required TResult Function(_InitialDcioState value) initial,
     required TResult Function(_LoadingDcioState value) loading,
     required TResult Function(_ErrorDcioState value) error,
+    required TResult Function(_OccurencesDcioState value) occurences,
   }) {
     return loading(this);
   }
@@ -374,6 +390,7 @@ class _$LoadingDcioStateImpl implements _LoadingDcioState {
     TResult? Function(_InitialDcioState value)? initial,
     TResult? Function(_LoadingDcioState value)? loading,
     TResult? Function(_ErrorDcioState value)? error,
+    TResult? Function(_OccurencesDcioState value)? occurences,
   }) {
     return loading?.call(this);
   }
@@ -384,6 +401,7 @@ class _$LoadingDcioStateImpl implements _LoadingDcioState {
     TResult Function(_InitialDcioState value)? initial,
     TResult Function(_LoadingDcioState value)? loading,
     TResult Function(_ErrorDcioState value)? error,
+    TResult Function(_OccurencesDcioState value)? occurences,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -478,6 +496,7 @@ class _$ErrorDcioStateImpl implements _ErrorDcioState {
     required TResult Function(DcioStatePayload payload) initial,
     required TResult Function(DcioStatePayload payload) loading,
     required TResult Function(DcioStatePayload payload) error,
+    required TResult Function(DcioStatePayload payload) occurences,
   }) {
     return error(payload);
   }
@@ -488,6 +507,7 @@ class _$ErrorDcioStateImpl implements _ErrorDcioState {
     TResult? Function(DcioStatePayload payload)? initial,
     TResult? Function(DcioStatePayload payload)? loading,
     TResult? Function(DcioStatePayload payload)? error,
+    TResult? Function(DcioStatePayload payload)? occurences,
   }) {
     return error?.call(payload);
   }
@@ -498,6 +518,7 @@ class _$ErrorDcioStateImpl implements _ErrorDcioState {
     TResult Function(DcioStatePayload payload)? initial,
     TResult Function(DcioStatePayload payload)? loading,
     TResult Function(DcioStatePayload payload)? error,
+    TResult Function(DcioStatePayload payload)? occurences,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -512,6 +533,7 @@ class _$ErrorDcioStateImpl implements _ErrorDcioState {
     required TResult Function(_InitialDcioState value) initial,
     required TResult Function(_LoadingDcioState value) loading,
     required TResult Function(_ErrorDcioState value) error,
+    required TResult Function(_OccurencesDcioState value) occurences,
   }) {
     return error(this);
   }
@@ -522,6 +544,7 @@ class _$ErrorDcioStateImpl implements _ErrorDcioState {
     TResult? Function(_InitialDcioState value)? initial,
     TResult? Function(_LoadingDcioState value)? loading,
     TResult? Function(_ErrorDcioState value)? error,
+    TResult? Function(_OccurencesDcioState value)? occurences,
   }) {
     return error?.call(this);
   }
@@ -532,6 +555,7 @@ class _$ErrorDcioStateImpl implements _ErrorDcioState {
     TResult Function(_InitialDcioState value)? initial,
     TResult Function(_LoadingDcioState value)? loading,
     TResult Function(_ErrorDcioState value)? error,
+    TResult Function(_OccurencesDcioState value)? occurences,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -553,6 +577,160 @@ abstract class _ErrorDcioState implements DcioState {
       throw _privateConstructorUsedError;
 }
 
+/// @nodoc
+abstract class _$$OccurencesDcioStateImplCopyWith<$Res>
+    implements $DcioStateCopyWith<$Res> {
+  factory _$$OccurencesDcioStateImplCopyWith(_$OccurencesDcioStateImpl value,
+          $Res Function(_$OccurencesDcioStateImpl) then) =
+      __$$OccurencesDcioStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({DcioStatePayload payload});
+
+  @override
+  $DcioStatePayloadCopyWith<$Res> get payload;
+}
+
+/// @nodoc
+class __$$OccurencesDcioStateImplCopyWithImpl<$Res>
+    extends _$DcioStateCopyWithImpl<$Res, _$OccurencesDcioStateImpl>
+    implements _$$OccurencesDcioStateImplCopyWith<$Res> {
+  __$$OccurencesDcioStateImplCopyWithImpl(_$OccurencesDcioStateImpl _value,
+      $Res Function(_$OccurencesDcioStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? payload = null,
+  }) {
+    return _then(_$OccurencesDcioStateImpl(
+      payload: null == payload
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as DcioStatePayload,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OccurencesDcioStateImpl implements _OccurencesDcioState {
+  const _$OccurencesDcioStateImpl({required this.payload});
+
+  @override
+  final DcioStatePayload payload;
+
+  @override
+  String toString() {
+    return 'DcioState.occurences(payload: $payload)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OccurencesDcioStateImpl &&
+            (identical(other.payload, payload) || other.payload == payload));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, payload);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OccurencesDcioStateImplCopyWith<_$OccurencesDcioStateImpl> get copyWith =>
+      __$$OccurencesDcioStateImplCopyWithImpl<_$OccurencesDcioStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DcioStatePayload payload) initial,
+    required TResult Function(DcioStatePayload payload) loading,
+    required TResult Function(DcioStatePayload payload) error,
+    required TResult Function(DcioStatePayload payload) occurences,
+  }) {
+    return occurences(payload);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DcioStatePayload payload)? initial,
+    TResult? Function(DcioStatePayload payload)? loading,
+    TResult? Function(DcioStatePayload payload)? error,
+    TResult? Function(DcioStatePayload payload)? occurences,
+  }) {
+    return occurences?.call(payload);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DcioStatePayload payload)? initial,
+    TResult Function(DcioStatePayload payload)? loading,
+    TResult Function(DcioStatePayload payload)? error,
+    TResult Function(DcioStatePayload payload)? occurences,
+    required TResult orElse(),
+  }) {
+    if (occurences != null) {
+      return occurences(payload);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialDcioState value) initial,
+    required TResult Function(_LoadingDcioState value) loading,
+    required TResult Function(_ErrorDcioState value) error,
+    required TResult Function(_OccurencesDcioState value) occurences,
+  }) {
+    return occurences(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialDcioState value)? initial,
+    TResult? Function(_LoadingDcioState value)? loading,
+    TResult? Function(_ErrorDcioState value)? error,
+    TResult? Function(_OccurencesDcioState value)? occurences,
+  }) {
+    return occurences?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialDcioState value)? initial,
+    TResult Function(_LoadingDcioState value)? loading,
+    TResult Function(_ErrorDcioState value)? error,
+    TResult Function(_OccurencesDcioState value)? occurences,
+    required TResult orElse(),
+  }) {
+    if (occurences != null) {
+      return occurences(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OccurencesDcioState implements DcioState {
+  const factory _OccurencesDcioState(
+      {required final DcioStatePayload payload}) = _$OccurencesDcioStateImpl;
+
+  @override
+  DcioStatePayload get payload;
+  @override
+  @JsonKey(ignore: true)
+  _$$OccurencesDcioStateImplCopyWith<_$OccurencesDcioStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 DcioStatePayload _$DcioStatePayloadFromJson(Map<String, dynamic> json) {
   return _DcioStatePayload.fromJson(json);
 }
@@ -561,6 +739,8 @@ DcioStatePayload _$DcioStatePayloadFromJson(Map<String, dynamic> json) {
 mixin _$DcioStatePayload {
   String? get error => throw _privateConstructorUsedError;
   int? get page => throw _privateConstructorUsedError;
+  List<Occurence>? get occurences => throw _privateConstructorUsedError;
+  List<Users>? get users => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -574,7 +754,11 @@ abstract class $DcioStatePayloadCopyWith<$Res> {
           DcioStatePayload value, $Res Function(DcioStatePayload) then) =
       _$DcioStatePayloadCopyWithImpl<$Res, DcioStatePayload>;
   @useResult
-  $Res call({String? error, int? page});
+  $Res call(
+      {String? error,
+      int? page,
+      List<Occurence>? occurences,
+      List<Users>? users});
 }
 
 /// @nodoc
@@ -592,6 +776,8 @@ class _$DcioStatePayloadCopyWithImpl<$Res, $Val extends DcioStatePayload>
   $Res call({
     Object? error = freezed,
     Object? page = freezed,
+    Object? occurences = freezed,
+    Object? users = freezed,
   }) {
     return _then(_value.copyWith(
       error: freezed == error
@@ -602,6 +788,14 @@ class _$DcioStatePayloadCopyWithImpl<$Res, $Val extends DcioStatePayload>
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
               as int?,
+      occurences: freezed == occurences
+          ? _value.occurences
+          : occurences // ignore: cast_nullable_to_non_nullable
+              as List<Occurence>?,
+      users: freezed == users
+          ? _value.users
+          : users // ignore: cast_nullable_to_non_nullable
+              as List<Users>?,
     ) as $Val);
   }
 }
@@ -614,7 +808,11 @@ abstract class _$$DcioStatePayloadImplCopyWith<$Res>
       __$$DcioStatePayloadImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? error, int? page});
+  $Res call(
+      {String? error,
+      int? page,
+      List<Occurence>? occurences,
+      List<Users>? users});
 }
 
 /// @nodoc
@@ -630,6 +828,8 @@ class __$$DcioStatePayloadImplCopyWithImpl<$Res>
   $Res call({
     Object? error = freezed,
     Object? page = freezed,
+    Object? occurences = freezed,
+    Object? users = freezed,
   }) {
     return _then(_$DcioStatePayloadImpl(
       error: freezed == error
@@ -640,6 +840,14 @@ class __$$DcioStatePayloadImplCopyWithImpl<$Res>
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
               as int?,
+      occurences: freezed == occurences
+          ? _value._occurences
+          : occurences // ignore: cast_nullable_to_non_nullable
+              as List<Occurence>?,
+      users: freezed == users
+          ? _value._users
+          : users // ignore: cast_nullable_to_non_nullable
+              as List<Users>?,
     ));
   }
 }
@@ -647,7 +855,13 @@ class __$$DcioStatePayloadImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$DcioStatePayloadImpl implements _DcioStatePayload {
-  const _$DcioStatePayloadImpl({this.error, this.page});
+  const _$DcioStatePayloadImpl(
+      {this.error,
+      this.page,
+      final List<Occurence>? occurences,
+      final List<Users>? users})
+      : _occurences = occurences,
+        _users = users;
 
   factory _$DcioStatePayloadImpl.fromJson(Map<String, dynamic> json) =>
       _$$DcioStatePayloadImplFromJson(json);
@@ -656,10 +870,29 @@ class _$DcioStatePayloadImpl implements _DcioStatePayload {
   final String? error;
   @override
   final int? page;
+  final List<Occurence>? _occurences;
+  @override
+  List<Occurence>? get occurences {
+    final value = _occurences;
+    if (value == null) return null;
+    if (_occurences is EqualUnmodifiableListView) return _occurences;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<Users>? _users;
+  @override
+  List<Users>? get users {
+    final value = _users;
+    if (value == null) return null;
+    if (_users is EqualUnmodifiableListView) return _users;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'DcioStatePayload(error: $error, page: $page)';
+    return 'DcioStatePayload(error: $error, page: $page, occurences: $occurences, users: $users)';
   }
 
   @override
@@ -668,12 +901,20 @@ class _$DcioStatePayloadImpl implements _DcioStatePayload {
         (other.runtimeType == runtimeType &&
             other is _$DcioStatePayloadImpl &&
             (identical(other.error, error) || other.error == error) &&
-            (identical(other.page, page) || other.page == page));
+            (identical(other.page, page) || other.page == page) &&
+            const DeepCollectionEquality()
+                .equals(other._occurences, _occurences) &&
+            const DeepCollectionEquality().equals(other._users, _users));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, error, page);
+  int get hashCode => Object.hash(
+      runtimeType,
+      error,
+      page,
+      const DeepCollectionEquality().hash(_occurences),
+      const DeepCollectionEquality().hash(_users));
 
   @JsonKey(ignore: true)
   @override
@@ -691,8 +932,11 @@ class _$DcioStatePayloadImpl implements _DcioStatePayload {
 }
 
 abstract class _DcioStatePayload implements DcioStatePayload {
-  const factory _DcioStatePayload({final String? error, final int? page}) =
-      _$DcioStatePayloadImpl;
+  const factory _DcioStatePayload(
+      {final String? error,
+      final int? page,
+      final List<Occurence>? occurences,
+      final List<Users>? users}) = _$DcioStatePayloadImpl;
 
   factory _DcioStatePayload.fromJson(Map<String, dynamic> json) =
       _$DcioStatePayloadImpl.fromJson;
@@ -701,6 +945,10 @@ abstract class _DcioStatePayload implements DcioStatePayload {
   String? get error;
   @override
   int? get page;
+  @override
+  List<Occurence>? get occurences;
+  @override
+  List<Users>? get users;
   @override
   @JsonKey(ignore: true)
   _$$DcioStatePayloadImplCopyWith<_$DcioStatePayloadImpl> get copyWith =>

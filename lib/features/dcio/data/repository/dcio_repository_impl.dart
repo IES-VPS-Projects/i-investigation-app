@@ -8,8 +8,7 @@ class DcioRepositoryImpl implements DcioRepository {
   DcioRepositoryImpl(this._dataSource);
 
   @override
-  Future<List<Occurence>> getOccurences() {
-    // TODO: implement getOccurences
-    throw UnimplementedError();
+  Future<List<Occurence>> getOccurences() async {
+    return await _dataSource.getOccurences();
   }
 }

@@ -11,7 +11,8 @@ class _$DciohModuleDI extends DciohModuleDI {
   void _configure() {
     final KiwiContainer container = KiwiContainer();
     container
-      ..registerSingleton((c) => DcioCubit())
+      ..registerSingleton((c) => DcioCubit(c<GetOccurences>()))
+      ..registerSingleton((c) => GetOccurences(c<DcioRepository>()))
       ..registerFactory<DcioDataSource>(
           (c) => DcioDataSourceImpl(c<NetworkService>()))
       ..registerFactory<DcioRepository>(

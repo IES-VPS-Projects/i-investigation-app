@@ -8,14 +8,18 @@ abstract class DcioState with _$DcioState {
       _LoadingDcioState;
   const factory DcioState.error({required DcioStatePayload payload}) =
       _ErrorDcioState;
+  const factory DcioState.occurences({required DcioStatePayload payload}) =
+      _OccurencesDcioState;
 }
 
 @freezed
 abstract class DcioStatePayload with _$DcioStatePayload {
-  const factory DcioStatePayload({
-    @required String? error,
-    @required int? page,
-  }) = _DcioStatePayload;
+  const factory DcioStatePayload(
+      {@required String? error,
+      @required int? page,
+      List<Occurence>? occurences,
+      List<Users>? users
+      }) = _DcioStatePayload;
 
   factory DcioStatePayload.fromJson(Map<String, dynamic> json) =>
       _$DcioStatePayloadFromJson(

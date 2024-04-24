@@ -1,3 +1,3 @@
-class DcioEndpoints{
+class DcioEndpoints {
   static String occurences = 'occurences';
 }

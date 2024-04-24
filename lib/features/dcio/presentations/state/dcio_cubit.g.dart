@@ -11,6 +11,12 @@ _$DcioStatePayloadImpl _$$DcioStatePayloadImplFromJson(
     _$DcioStatePayloadImpl(
       error: json['error'] as String?,
       page: json['page'] as int?,
+      occurences: (json['occurences'] as List<dynamic>?)
+          ?.map((e) => Occurence.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      users: (json['users'] as List<dynamic>?)
+          ?.map((e) => Users.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$DcioStatePayloadImplToJson(
@@ -18,4 +24,6 @@ Map<String, dynamic> _$$DcioStatePayloadImplToJson(
     <String, dynamic>{
       'error': instance.error,
       'page': instance.page,
+      'occurences': instance.occurences,
+      'users': instance.users,
     };
