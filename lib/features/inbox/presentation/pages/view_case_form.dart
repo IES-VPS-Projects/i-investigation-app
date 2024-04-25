@@ -1,5 +1,10 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:iinvestigation/core/data/datasources/local_storage_data_source.dart';
 import 'package:iinvestigation/features/inbox/data/models/open_cases/open_cases.dart';
+
+import 'case_menu.dart';
 
 class ViewCaseForm extends StatefulWidget {
   final OpenCases caseObject;
@@ -13,47 +18,64 @@ class _ViewCaseFormState extends State<ViewCaseForm> {
   @override
   void initState() {
     super.initState();
+    getServiceNumber();
+  }
+  dynamic _profile = '22';
+
+  void getServiceNumber () async {
+    _profile =  await getData('service_Number');
+    setState(() {
+      
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.only(top: 12.0),
+    return  Padding(
+        padding:const  EdgeInsets.only(top: 12.0),
         child: Stack(
           children: <Widget>[
-            // widget.hasAccepted
-            //     ? CaseMenu(caseObject)
-            //     : Stack(
-            //         children: <Widget>[
-            //           IgnorePointer(child: CaseMenu(caseObject)),
-            //           Positioned.fill(
-            //             child: BackdropFilter(
-            //               filter: ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),
-            //               child: Column(
-            //                 mainAxisSize: MainAxisSize.max,
-            //                 mainAxisAlignment: MainAxisAlignment.end,
-            //                 children: <Widget>[
-            //                   ButtonBar(
-            //                     children: <Widget>[
-            //                       FlatButton(
-            //                           onPressed: () {
-            //                             Navigator.pop(context);
-            //                           },
-            //                           textColor: Colors.red,
-            //                           child: Text("Decline Case")),
-            //                       RaisedButton(
-            //                           onPressed: _confirmAccept,
-            //                           textColor: Colors.white,
-            //                           color: Colors.green,
-            //                           child: Text("Accept Case"))
-            //                     ],
-            //                   )
-            //                 ],
-            //               ),
-            //             ),
-            //           )
-            //         ],
-            //       ),
+
+            Text("${widget.hasAccepted}"),
+            // Text("${widget.hasAccepted}"),
+            // Text("${widget.caseObject.caseFileOfficers?.where((element)=>element.user!.serviceNumber =='30002').first}")
+            widget.hasAccepted =="PENDING"
+                ? Text("caseObject")
+                : Stack(
+                    children: <Widget>[
+                      IgnorePointer(child: CaseMenu(caseObject: widget.caseObject,)),
+                      Positioned.fill(
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              ButtonBar(
+                                children: <Widget>[
+                                  
+                                   TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      style: ButtonStyle(backgroundColor: MaterialStatePropertyAll<Color>(Colors.red)),
+                                      child:const Text("Decline Case")),
+                                      // ElevatedButton(onPressed: onPressed, child: child)
+                                  ElevatedButton(
+                                      onPressed: (){},
+                                      style: const ButtonStyle(
+                                        backgroundColor: MaterialStatePropertyAll<Color>(Colors.green),
+                                        foregroundColor: MaterialStatePropertyAll<Color>(Colors.white)
+                                        ), 
+                                      child: Text("Accept Case"))
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
           ],
         ));
   }

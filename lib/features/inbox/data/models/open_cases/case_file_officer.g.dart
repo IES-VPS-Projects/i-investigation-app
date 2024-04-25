@@ -12,6 +12,7 @@ _$CaseFileOfficerImpl _$$CaseFileOfficerImplFromJson(
       id: json['id'] as int?,
       caseFileId: json['caseFileId'] as int?,
       userId: json['userId'] as int?,
+      accepted: json['accepted'] as String?,
       user: json['user'] == null
           ? null
           : User.fromJson(json['user'] as Map<String, dynamic>),
@@ -23,5 +24,6 @@ Map<String, dynamic> _$$CaseFileOfficerImplToJson(
       'id': instance.id,
       'caseFileId': instance.caseFileId,
       'userId': instance.userId,
+      'accepted': instance.accepted,
       'user': instance.user,
     };

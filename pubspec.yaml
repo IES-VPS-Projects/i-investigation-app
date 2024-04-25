@@ -47,6 +47,7 @@ dependencies:
   flutter_bloc: 
   bloc: 
   json_annotation: 
+  flutter_staggered_grid_view:
 
 
   # The following adds the Cupertino Icons font to your application.

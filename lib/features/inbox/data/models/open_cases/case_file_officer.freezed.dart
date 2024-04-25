@@ -23,6 +23,7 @@ mixin _$CaseFileOfficer {
   int? get id => throw _privateConstructorUsedError;
   int? get caseFileId => throw _privateConstructorUsedError;
   int? get userId => throw _privateConstructorUsedError;
+  String? get accepted => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +38,8 @@ abstract class $CaseFileOfficerCopyWith<$Res> {
           CaseFileOfficer value, $Res Function(CaseFileOfficer) then) =
       _$CaseFileOfficerCopyWithImpl<$Res, CaseFileOfficer>;
   @useResult
-  $Res call({int? id, int? caseFileId, int? userId, User? user});
+  $Res call(
+      {int? id, int? caseFileId, int? userId, String? accepted, User? user});
 
   $UserCopyWith<$Res>? get user;
 }
@@ -58,6 +60,7 @@ class _$CaseFileOfficerCopyWithImpl<$Res, $Val extends CaseFileOfficer>
     Object? id = freezed,
     Object? caseFileId = freezed,
     Object? userId = freezed,
+    Object? accepted = freezed,
     Object? user = freezed,
   }) {
     return _then(_value.copyWith(
@@ -73,6 +76,10 @@ class _$CaseFileOfficerCopyWithImpl<$Res, $Val extends CaseFileOfficer>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int?,
+      accepted: freezed == accepted
+          ? _value.accepted
+          : accepted // ignore: cast_nullable_to_non_nullable
+              as String?,
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -101,7 +108,8 @@ abstract class _$$CaseFileOfficerImplCopyWith<$Res>
       __$$CaseFileOfficerImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, int? caseFileId, int? userId, User? user});
+  $Res call(
+      {int? id, int? caseFileId, int? userId, String? accepted, User? user});
 
   @override
   $UserCopyWith<$Res>? get user;
@@ -121,6 +129,7 @@ class __$$CaseFileOfficerImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? caseFileId = freezed,
     Object? userId = freezed,
+    Object? accepted = freezed,
     Object? user = freezed,
   }) {
     return _then(_$CaseFileOfficerImpl(
@@ -136,6 +145,10 @@ class __$$CaseFileOfficerImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int?,
+      accepted: freezed == accepted
+          ? _value.accepted
+          : accepted // ignore: cast_nullable_to_non_nullable
+              as String?,
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -147,7 +160,8 @@ class __$$CaseFileOfficerImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CaseFileOfficerImpl implements _CaseFileOfficer {
-  _$CaseFileOfficerImpl({this.id, this.caseFileId, this.userId, this.user});
+  _$CaseFileOfficerImpl(
+      {this.id, this.caseFileId, this.userId, this.accepted, this.user});
 
   factory _$CaseFileOfficerImpl.fromJson(Map<String, dynamic> json) =>
       _$$CaseFileOfficerImplFromJson(json);
@@ -159,11 +173,13 @@ class _$CaseFileOfficerImpl implements _CaseFileOfficer {
   @override
   final int? userId;
   @override
+  final String? accepted;
+  @override
   final User? user;
 
   @override
   String toString() {
-    return 'CaseFileOfficer(id: $id, caseFileId: $caseFileId, userId: $userId, user: $user)';
+    return 'CaseFileOfficer(id: $id, caseFileId: $caseFileId, userId: $userId, accepted: $accepted, user: $user)';
   }
 
   @override
@@ -175,12 +191,15 @@ class _$CaseFileOfficerImpl implements _CaseFileOfficer {
             (identical(other.caseFileId, caseFileId) ||
                 other.caseFileId == caseFileId) &&
             (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.accepted, accepted) ||
+                other.accepted == accepted) &&
             (identical(other.user, user) || other.user == user));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, caseFileId, userId, user);
+  int get hashCode =>
+      Object.hash(runtimeType, id, caseFileId, userId, accepted, user);
 
   @JsonKey(ignore: true)
   @override
@@ -202,6 +221,7 @@ abstract class _CaseFileOfficer implements CaseFileOfficer {
       {final int? id,
       final int? caseFileId,
       final int? userId,
+      final String? accepted,
       final User? user}) = _$CaseFileOfficerImpl;
 
   factory _CaseFileOfficer.fromJson(Map<String, dynamic> json) =
@@ -213,6 +233,8 @@ abstract class _CaseFileOfficer implements CaseFileOfficer {
   int? get caseFileId;
   @override
   int? get userId;
+  @override
+  String? get accepted;
   @override
   User? get user;
   @override

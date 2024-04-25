@@ -11,6 +11,7 @@ class CaseFileOfficer with _$CaseFileOfficer {
     int? id,
     int? caseFileId,
     int? userId,
+    String? accepted,
     User? user,
   }) = _CaseFileOfficer;
 
