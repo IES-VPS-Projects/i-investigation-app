@@ -1,129 +1,152 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iinvestigation/core/utilities/utilities.dart';
 import 'package:iinvestigation/features/inbox/data/models/open_cases/open_cases.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:iinvestigation/features/inbox/presentation/pages/suspects.dart';
 
 import 'widgets/case_summary.dart';
 
-
-
 class CaseMenu extends StatefulWidget {
- final OpenCases caseObject;
+  final OpenCases caseObject;
 
   CaseMenu({required this.caseObject});
   @override
   _CaseMenuState createState() => _CaseMenuState();
 }
 
-class _CaseMenuState extends State<CaseMenu> {  
+class _CaseMenuState extends State<CaseMenu> {
   List<Widget> _tiles = [];
 
   @override
-  void initState() {
-   
-
-    _tiles = <Widget>[
-      CaseSummary(widget.caseObject),
-      _menuTile(
-          Colors.red,
-          Image.asset(
-            "assets/images/suspect.png",
-            height: 50.0,
-            width: 37.5,
-          ),
-          "Suspects",
-          "SubHeading", () {
-        // Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //         builder: (context) => Suspects(id: caseObject.id)));
-      }, 1),
-      _menuTile(
-          Colors.cyan,
-          Image.asset(
-            "assets/images/witness.png",
-            height: 50.0,
-            width: 37.5,
-          ),
-          "Witnesses",
-          "SubHeading", () {
-        // Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //         builder: (context) => Witnesses(id: caseObject.id)));
-      }, 1),
-      _menuTile(
-          Colors.blueGrey,
-          Image.asset(
-            "assets/images/citation.png",
-            height: 50.0,
-            width: 37.5,
-          ),
-          "Case notes",
-          "SubHeading", () {
-        // Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //         builder: (context) => CaseNotes(id: caseObject.id)));
-      }, 1),
-      _menuTile(
-          Colors.lightBlueAccent,
-          Image.asset(
-            "assets/images/evidence.png",
-            height: 50.0,
-            width: 37.5,
-          ),
-          "Materials",
-          "SubHeading", () {
-        // Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //         builder: (context) => CaseMaterial(
-        //               id: caseObject.id,
-        //             )));
-      }, 1),
-      _menuTile(
-          Colors.amber,
-          Image.asset(
-            "assets/images/offences.png",
-            height: 50.0,
-            width: 37.5,
-          ),
-          "Offences",
-          "SubHeading", () {
-        // Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //         builder: (context) => Offences(
-        //               id: caseObject.id,
-        //             )));
-      }, 1),
-      _menuTile(
-          Colors.blue,
-          Image.asset(
-            "assets/images/summary.png",
-            height: 50.0,
-            width: 37.5,
-          ),
-          "Summary",
-          "SubHeading", () {
-        // Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //         builder: (context) => CaseSummaryDoc(
-        //               docId: caseObject.id,
-        //             )));
-      }, 1),
-    ];
-  }
+  void initState() {}
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return StaggeredGrid.count(
-      crossAxisCount: 4, 
-      children: _tiles,
+      crossAxisCount: 4,
       mainAxisSpacing: 4.0,
-      crossAxisSpacing: 4.0, 
+      crossAxisSpacing: 4.0,
+      children: <Widget>[
+        StaggeredGridTile.count(
+            crossAxisCellCount: 4,
+            mainAxisCellCount: 3,
+            child: CaseSummary(widget.caseObject)),
+        StaggeredGridTile.count(
+            crossAxisCellCount: 2,
+            mainAxisCellCount: 1,
+            child: _menuTile(
+                Colors.red,
+                Image.asset(
+                  "assets/images/suspect.png",
+                  height: 50.0,
+                  width: 37.5,
+                ),
+                "Suspects",
+                "SubHeading", () {
+              print(22);
+              // context.appNavigatorPush(Suspects(caseFile: widget.caseObject));
+              WidgetsBinding.instance!.addPostFrameCallback((_) {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            Suspects(caseFile: widget.caseObject)));
+              });
+            }, 1)),
+        StaggeredGridTile.count(
+            crossAxisCellCount: 2,
+            mainAxisCellCount: 1,
+            child: _menuTile(
+                Colors.cyan,
+                Image.asset(
+                  "assets/images/witness.png",
+                  height: 50.0,
+                  width: 37.5,
+                ),
+                "Witnesses",
+                "SubHeading", () {
+              // Navigator.push(
+              //     context,
+              //     MaterialPageRoute(
+              //         builder: (context) => Witnesses(id: caseObject.id)));
+            }, 1)),
+        StaggeredGridTile.count(
+            crossAxisCellCount: 2,
+            mainAxisCellCount: 1,
+            child: _menuTile(
+                Colors.blueGrey,
+                Image.asset(
+                  "assets/images/citation.png",
+                  height: 50.0,
+                  width: 37.5,
+                ),
+                "Case notes",
+                "SubHeading", () {
+              // Navigator.push(
+              //     context,
+              //     MaterialPageRoute(
+              //         builder: (context) => CaseNotes(id: caseObject.id)));
+            }, 1)),
+        StaggeredGridTile.count(
+            crossAxisCellCount: 2,
+            mainAxisCellCount: 1,
+            child: _menuTile(
+                Colors.lightBlueAccent,
+                Image.asset(
+                  "assets/images/evidence.png",
+                  height: 50.0,
+                  width: 37.5,
+                ),
+                "Materials",
+                "SubHeading", () {
+              // Navigator.push(
+              //     context,
+              //     MaterialPageRoute(
+              //         builder: (context) => CaseMaterial(
+              //               id: caseObject.id,
+              //             )));
+            }, 1)),
+        StaggeredGridTile.count(
+            crossAxisCellCount: 2,
+            mainAxisCellCount: 1,
+            child: _menuTile(
+                Colors.amber,
+                Image.asset(
+                  "assets/images/offences.png",
+                  height: 50.0,
+                  width: 37.5,
+                ),
+                "Offences",
+                "SubHeading", () {
+              // Navigator.push(
+              //     context,
+              //     MaterialPageRoute(
+              //         builder: (context) => Offences(
+              //               id: caseObject.id,
+              //             )));
+            }, 1)),
+        StaggeredGridTile.count(
+            crossAxisCellCount: 2,
+            mainAxisCellCount: 1,
+            child: _menuTile(
+                Colors.blue,
+                Image.asset(
+                  "assets/images/summary.png",
+                  height: 50.0,
+                  width: 37.5,
+                ),
+                "Summary",
+                "SubHeading", () {
+              // Navigator.push(
+              //     context,
+              //     MaterialPageRoute(
+              //         builder: (context) => CaseSummaryDoc(
+              //               docId: caseObject.id,
+              //             )));
+            }, 1)),
+      ],
     );
   }
 }
@@ -142,13 +165,13 @@ class _menuTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Card(
+    return Card(
       color: Colors.white,
-      child:  InkWell(
-        onTap: (){},
+      child: InkWell(
+        onTap: onTap(),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child:  Center(
+          child: Center(
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

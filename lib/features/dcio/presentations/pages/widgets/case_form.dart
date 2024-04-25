@@ -162,7 +162,8 @@ class _CaseFormState extends State<CaseForm> {
                                   ),
                                 ),
                                 onTap: () {
-                                  context.appNavigatorPush(OfficerPicker());
+                                  context
+                                      .appNavigatorPush(const OfficerPicker());
                                   // Navigator.push(
                                   //     context,
                                   //     MaterialPageRoute(

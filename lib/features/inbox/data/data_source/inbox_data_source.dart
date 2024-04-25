@@ -3,8 +3,11 @@ import 'package:iinvestigation/core/platform/connection_status.dart';
 import 'package:iinvestigation/features/inbox/data/data_source/endpoints.dart';
 import 'package:iinvestigation/features/inbox/data/models/open_cases/open_cases.dart';
 
+import '../models/iprs_model/iprs_model.dart';
+
 abstract class InboxDataSource {
   Future<List<OpenCases>> getOpenCases();
+  Future<IprsModel> searchIPrs({required String idNo});
 }
 
 class InboxDataSourceImpl implements InboxDataSource {
@@ -26,5 +29,12 @@ class InboxDataSourceImpl implements InboxDataSource {
     return (response['data'] as List)
         .map((e) => OpenCases.fromJson(e))
         .toList();
+  }
+
+  @override
+  Future<IprsModel> searchIPrs({required String idNo}) async {
+    var response = await _networkService
+        .getHttp("${InboxEndpoints.serchIprs}?id_no=$idNo");
+    return IprsModel.fromJson(response['data']);
   }
 }

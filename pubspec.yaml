@@ -48,6 +48,8 @@ dependencies:
   bloc: 
   json_annotation: 
   flutter_staggered_grid_view:
+  image_picker:
+  carousel_slider:
 
 
   # The following adds the Cupertino Icons font to your application.

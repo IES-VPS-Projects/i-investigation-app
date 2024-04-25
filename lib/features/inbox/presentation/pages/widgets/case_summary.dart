@@ -1,60 +1,69 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:iinvestigation/features/inbox/data/models/open_cases/case_file_officer.dart';
 import 'package:iinvestigation/features/inbox/data/models/open_cases/open_cases.dart';
 
 class CaseSummary extends StatelessWidget {
-  CaseSummary(this.caseObject);
+  CaseSummary(this.caseObject, {super.key});
   OpenCases caseObject;
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return Card(
-      color: Colors.blueGrey,
-      child: InkWell(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              Text(
-                "Case Dashboard:",
-                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Table(
-                  children: <TableRow>[
-                    TableRow(children: <Widget>[
-                      Text("Case Heading"),
-                      Text("{caseObject.heading}"),
-                    ]),
-                    TableRow(
-                      children: <Widget>[
-                        Text("Linked OB number"),
-                        Text("${caseObject.occurence?.obNo}"),
-                      ],
-                    ),
-                    TableRow(
-                      children: <Widget>[
-                        Text("Created: "),
-                        // Text(timeago.format(DateTime.fromMillisecondsSinceEpoch(
-                        //     caseObject.createTs.millisecondsSinceEpoch))),
-                      ],
-                    ),
-                  ],
+    return SizedBox(
+      height: MediaQuery.of(context).size.height / 2,
+      width: MediaQuery.of(context).size.width,
+      child: Card(
+        color: Colors.blueGrey,
+        child: InkWell(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                const Text(
+                  "Case Dashboard:",
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
                 ),
-              ),
-              Text(
-                "Assigned officers:",
-                style: TextStyle(fontSize: 8),
-              ),
-              Expanded(
-                child: _AssignedCard(
-                  assigned: caseObject.caseFileOfficers ==null?[]:caseObject.caseFileOfficers!,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Table(
+                    children: <TableRow>[
+                      TableRow(children: <Widget>[
+                        const Text("Case Heading"),
+                        Text(
+                            "${(jsonDecode(caseObject.occurence!.occurenceDetails!.first.details!) as List).map((e) => e['category']['name'])}"),
+                      ]),
+                      TableRow(
+                        children: <Widget>[
+                          const Text("Linked OB number"),
+                          Text("${caseObject.occurence?.obNo}"),
+                        ],
+                      ),
+                      TableRow(
+                        children: <Widget>[
+                          Text("Created: "),
+                          Text("${caseObject.occurence?.postedDate}")
+                          // Text(timeago.format(DateTime.fromMillisecondsSinceEpoch(
+                          //     caseObject.createTs.millisecondsSinceEpoch))),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              )
-            ],
+                const Text(
+                  "Assigned officers:",
+                  style: TextStyle(fontSize: 15),
+                ),
+                Expanded(
+                  child: _AssignedCard(
+                    assigned: caseObject.caseFileOfficers == null
+                        ? []
+                        : caseObject.caseFileOfficers!,
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -69,35 +78,42 @@ class _AssignedCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return GridView.count(
-        // Create a grid with 2 columns. If you change the scrollDirection to
-        // horizontal, this would produce 2 rows.
-        crossAxisCount: 1,
-        scrollDirection: Axis.horizontal,
+    return GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3, // number of items in each row
+          mainAxisSpacing: 8.0, // spacing between rows
+          crossAxisSpacing: 8.0, // spacing between columns
+        ),
+        itemCount: assigned.length,
+        padding: const EdgeInsets.all(8.0),
         // Generate 100 Widgets that display their index in the List
-        children: List.generate(assigned.length, (index) {
-          return Card(
-            color: Colors.white,
-            child: InkWell(
-              onTap: (){},
-              child:  Center(
-                        child: Text(
-                          "${assigned[index].user?.name}",
-                          style: TextStyle(fontSize: 7, color: Colors.black, fontWeight: FontWeight.bold),
-                        ),
-                      )
-               ),
-          );
-        }));
+        itemBuilder: (context, index) => Card(
+              color: Colors.white,
+              child: InkWell(
+                  onTap: () {},
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "${assigned[index].user?.name} ",
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  )),
+            ));
   }
 
   Widget createAvatar(String name) {
     String init = name[0].toUpperCase();
     return CircleAvatar(
       backgroundColor: Colors.blueGrey,
-      child: Text(init, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+      child: Text(
+        init,
+        style:
+            const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+      ),
     );
   }
 }
-

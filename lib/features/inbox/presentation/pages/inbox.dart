@@ -68,8 +68,7 @@ class _InboxPageState extends State<InboxPage> {
                                                 "${(jsonDecode(document.occurence!.occurenceDetails!.first.details!) as List).map((e) => e['category']['name'])}")),
                                 Align(
                                     alignment: FractionalOffset.centerLeft,
-                                    child:  Text(
-                                        "${document.occurence?.obNo}")),
+                                    child: Text("${document.occurence?.obNo}")),
                               ],
                             ),
                             isThreeLine: true,
@@ -79,7 +78,7 @@ class _InboxPageState extends State<InboxPage> {
                                     label: Icon(Icons.check_box),
                                     backgroundColor: Colors.green,
                                   )
-                                : const  Chip(
+                                : const Chip(
                                     labelPadding: EdgeInsets.all(0.1),
                                     label: Icon(Icons.hourglass_full),
                                     backgroundColor: Colors.red,

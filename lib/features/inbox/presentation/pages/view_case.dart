@@ -36,10 +36,13 @@ class _ViewCaseState extends State<ViewCase> {
               appBar: AppBar(
                 title: Text("View Case File"),
               ),
-              body:
-               ViewCaseForm(
+              body: ViewCaseForm(
                 caseObject: widget.caseFile,
-                hasAccepted:  widget.caseFile.caseFileOfficers?.where((element)=>element.user!.serviceNumber ==snapshot.data).first.accepted,
+                hasAccepted: widget.caseFile.caseFileOfficers
+                    ?.where((element) =>
+                        element.user!.serviceNumber == snapshot.data)
+                    .first
+                    .accepted,
               ),
             );
           } else if (snapshot.hasError) {
