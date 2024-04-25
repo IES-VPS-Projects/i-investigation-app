@@ -35,12 +35,13 @@ class DcioCubit extends Cubit<DcioState> {
   }
 
   Future<void> createCaseFile({required Map occurenceId}) async {
-     emit(DcioState.loading(payload: state.payload.copyWith( )));
-   
+    emit(DcioState.loading(payload: state.payload.copyWith()));
+
     var results = await _createCaseFile(occurenceId);
     logger.i(occurenceId);
     results.fold((l) {
-      emit(DcioState.casefile(payload: state.payload.copyWith(caseFile: l, officers: [])));
+      emit(DcioState.casefile(
+          payload: state.payload.copyWith(caseFile: l, officers: [])));
     },
         (r) => emit(DcioState.error(
             payload: state.payload.copyWith(error: r.message))));

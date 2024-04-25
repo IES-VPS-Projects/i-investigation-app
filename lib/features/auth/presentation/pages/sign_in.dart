@@ -18,14 +18,12 @@ class _SignInState extends State<SignIn> {
   String email = "";
   String password = "";
 
-
   bool _loading = false;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-   
   }
 
   @override
@@ -146,7 +144,6 @@ class _SignInState extends State<SignIn> {
       var payload = {"serice_number": email, "password": password};
 
       context.read<AuthCubit>().login(payload).then((_) {
-      
         context.appNavigatorPush(const Dashboard());
       });
       // .then(;

@@ -14,19 +14,16 @@ class NewCase extends StatefulWidget {
 }
 
 class _NewCaseState extends State<NewCase> {
-
   @override
-  void initState() { 
+  void initState() {
     super.initState();
   }
 
-
-
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:const Text("Add Case"),
+        title: const Text("Add Case"),
         centerTitle: true,
       ),
       body: CaseForm(

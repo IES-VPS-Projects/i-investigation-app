@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iinvestigation/core/utilities/app_navigation.dart';
 import 'package:iinvestigation/features/dcio/presentations/pages/dashboard.dart';
+import 'package:iinvestigation/features/inbox/presentation/pages/inbox.dart';
 
 class DashGridMenu extends StatefulWidget {
   @override
@@ -24,7 +25,7 @@ class _DashGridMenuState extends State<DashGridMenu> {
     {
       "name": "Ongoing Cases",
       "icon": Icons.inbox,
-      "route": const DcioDashboard(),
+      "route": const InboxPage(),
       "iconColor": Colors.white,
     },
     {

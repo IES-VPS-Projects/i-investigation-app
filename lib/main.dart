@@ -41,8 +41,15 @@ class _MyAppState extends State<MyApp> {
       providers: providers,
       child: MaterialApp(
         title: 'I Investigation',
+        // theme: ThemeData(
+        //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+        //   useMaterial3: true,
+        // ),
+
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+          brightness: Brightness.dark,
+          fontFamily: 'GoogleSans',
+          primarySwatch: Colors.blueGrey,
           useMaterial3: true,
         ),
         home: FutureBuilder(

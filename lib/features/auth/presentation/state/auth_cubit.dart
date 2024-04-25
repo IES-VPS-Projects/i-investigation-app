@@ -18,15 +18,15 @@ class AuthCubit extends Cubit<AuthState> {
         ));
 
   Future<void> login(Map payload) async {
-  late LocalStorage localStorage  = LocalStorage();
+    late LocalStorage localStorage = LocalStorage();
     localStorage.initialize();
     emit(AuthState.loading(payload: state.payload.copyWith()));
     var results = await _login(payload);
     results.fold((l) {
       logger.t(l);
       logger.t('store');
-       localStorage.storeData('name', l.data!.name!);
-       localStorage.storeData('service_Number', l.data!.serviceNumber!);
+      localStorage.storeData('name', l.data!.name!);
+      localStorage.storeData('service_Number', l.data!.serviceNumber!);
       localStorage.storeData('token', l.token!);
 
       emit(AuthState.login(payload: state.payload.copyWith(user: l)));

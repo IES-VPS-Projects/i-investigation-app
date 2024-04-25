@@ -203,7 +203,7 @@ class _CaseFormState extends State<CaseForm> {
                                   context.showCustomSnackBar(
                                       "Created Successfully",
                                       isError: false);
-                                      context.appNavigatorPush(const Dashboard());
+                                  context.appNavigatorPush(const Dashboard());
                                 });
                               },
                               style: const ButtonStyle(
