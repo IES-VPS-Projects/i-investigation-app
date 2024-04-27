@@ -1,12 +1,12 @@
 class IPRS {
-  final int id;
+  final String id;
   final String firstName;
   final String middleName;
   final String lastName;
   final String gender;
-  final int genderId;
-  final String nationality;
-  final int nationalityId;
+  final int? genderId;
+  final String? nationality;
+  final int? nationalityId;
   final String? countyOfBirth;
   final String? districtOfBirth;
   final String? divisionOfBirth;
@@ -76,7 +76,7 @@ class IPRS {
     String? locationOfBirth,
   }) {
     return IPRS(
-        id: id ?? this.id,
+        id: this.id,
         firstName: firstName ?? this.firstName,
         middleName: middleName ?? this.middleName,
         lastName: lastName ?? this.lastName,

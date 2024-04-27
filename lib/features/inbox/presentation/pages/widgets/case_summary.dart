@@ -10,7 +10,7 @@ class CaseSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height / 2,
+      height: MediaQuery.of(context).size.height / 3.5,
       width: MediaQuery.of(context).size.width,
       child: Card(
         color: Colors.blueGrey,

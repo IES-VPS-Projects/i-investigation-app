@@ -36,7 +36,7 @@ class _CaseMenuState extends State<CaseMenu> {
         StaggeredGridTile.count(
             crossAxisCellCount: 2,
             mainAxisCellCount: 1,
-            child: _menuTile(
+            child: _MenuTile(
                 Colors.red,
                 Image.asset(
                   "assets/images/suspect.png",
@@ -46,19 +46,19 @@ class _CaseMenuState extends State<CaseMenu> {
                 "Suspects",
                 "SubHeading", () {
               print(22);
-              // context.appNavigatorPush(Suspects(caseFile: widget.caseObject));
-              WidgetsBinding.instance!.addPostFrameCallback((_) {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            Suspects(caseFile: widget.caseObject)));
-              });
+              context.appNavigatorPush(Suspects(caseFile: widget.caseObject));
+              // WidgetsBinding.instance!.addPostFrameCallback((_) {
+              // Navigator.push(
+              //     context,
+              //     MaterialPageRoute(
+              //         builder: (context) =>
+              //             Suspects(caseFile: widget.caseObject)));
+              // });
             }, 1)),
         StaggeredGridTile.count(
             crossAxisCellCount: 2,
             mainAxisCellCount: 1,
-            child: _menuTile(
+            child: _MenuTile(
                 Colors.cyan,
                 Image.asset(
                   "assets/images/witness.png",
@@ -75,7 +75,7 @@ class _CaseMenuState extends State<CaseMenu> {
         StaggeredGridTile.count(
             crossAxisCellCount: 2,
             mainAxisCellCount: 1,
-            child: _menuTile(
+            child: _MenuTile(
                 Colors.blueGrey,
                 Image.asset(
                   "assets/images/citation.png",
@@ -92,7 +92,7 @@ class _CaseMenuState extends State<CaseMenu> {
         StaggeredGridTile.count(
             crossAxisCellCount: 2,
             mainAxisCellCount: 1,
-            child: _menuTile(
+            child: _MenuTile(
                 Colors.lightBlueAccent,
                 Image.asset(
                   "assets/images/evidence.png",
@@ -111,7 +111,7 @@ class _CaseMenuState extends State<CaseMenu> {
         StaggeredGridTile.count(
             crossAxisCellCount: 2,
             mainAxisCellCount: 1,
-            child: _menuTile(
+            child: _MenuTile(
                 Colors.amber,
                 Image.asset(
                   "assets/images/offences.png",
@@ -130,7 +130,7 @@ class _CaseMenuState extends State<CaseMenu> {
         StaggeredGridTile.count(
             crossAxisCellCount: 2,
             mainAxisCellCount: 1,
-            child: _menuTile(
+            child: _MenuTile(
                 Colors.blue,
                 Image.asset(
                   "assets/images/summary.png",
@@ -151,10 +151,10 @@ class _CaseMenuState extends State<CaseMenu> {
   }
 }
 
-class _menuTile extends StatelessWidget {
+class _MenuTile extends StatelessWidget {
   final Function onTap;
 
-  const _menuTile(this.backgroundColor, this.image, this.heading,
+  const _MenuTile(this.backgroundColor, this.image, this.heading,
       this.subHeading, this.onTap, this.count);
 
   final Color backgroundColor;
@@ -165,10 +165,10 @@ class _menuTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.white,
-      child: InkWell(
-        onTap: onTap(),
+    return InkWell(
+      onTap: () => onTap(),
+      child: Card(
+        color: Colors.white,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Center(

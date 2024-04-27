@@ -6,6 +6,8 @@ abstract class InboxState with _$InboxState {
       _InitialInboxState;
   const factory InboxState.loading({required InboxStatePayload payload}) =
       _LoadingInboxState;
+  const factory InboxState.createdSuspect(
+      {required InboxStatePayload payload}) = _CreatedSuspectInboxState;
   const factory InboxState.errorIPRS({required InboxStatePayload payload}) =
       _ErrorIPRSInboxState;
   const factory InboxState.doneIPRS({required InboxStatePayload payload}) =
@@ -16,6 +18,8 @@ abstract class InboxState with _$InboxState {
       _ErrorInboxState;
   const factory InboxState.cases({required InboxStatePayload payload}) =
       _CasesInboxState;
+  const factory InboxState.caseFile({required InboxStatePayload payload}) =
+      _CaseFileInboxState;
 }
 
 @freezed
@@ -24,6 +28,7 @@ abstract class InboxStatePayload with _$InboxStatePayload {
       {@required String? error,
       @required int? page,
       List<OpenCases>? cases,
+      CaseFile? caseFile, 
       IprsModel? iprsModel}) = _InboxStatePayload;
 
   factory InboxStatePayload.fromJson(Map<String, dynamic> json) =>

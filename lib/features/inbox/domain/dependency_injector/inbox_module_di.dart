@@ -7,6 +7,9 @@ import 'package:iinvestigation/features/inbox/domain/usecases/search_iprs.dart';
 import 'package:iinvestigation/features/inbox/presentation/state/inbox_cubit.dart';
 import 'package:kiwi/kiwi.dart';
 
+import '../usecases/create_suspect.dart';
+import '../usecases/get_case_file.dart';
+
 part 'inbox_module_di.g.dart';
 
 abstract class InboxModuleDI {
@@ -21,6 +24,8 @@ abstract class InboxModuleDI {
   @Register.singleton(InboxCubit)
   @Register.singleton(GetOpenCases)
   @Register.singleton(SearchIPRS)
+  @Register.singleton(CaseFileUseCase)
+  @Register.singleton(CreateSuspect)
   @Register.factory(InboxRepository, from: InboxRepositoryImpl)
   @Register.factory(InboxDataSource, from: InboxDataSourceImpl)
   void _configure();

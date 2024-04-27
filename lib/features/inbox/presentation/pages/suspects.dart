@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iinvestigation/core/utilities/utilities.dart';
 import 'package:iinvestigation/features/inbox/data/models/open_cases/open_cases.dart';
 import 'package:iinvestigation/features/inbox/presentation/pages/suspect_form.dart';
+import 'package:iinvestigation/features/inbox/presentation/state/inbox_cubit.dart';
 
-class Suspects extends StatelessWidget {
+class Suspects extends StatefulWidget {
   final OpenCases caseFile;
   Suspects({super.key, required this.caseFile});
+
+  @override
+  State<Suspects> createState() => _SuspectsState();
+}
+
+class _SuspectsState extends State<Suspects> {
+  @override
+  void initState() { 
+    super.initState();
+    context.read<InboxCubit>().getCaseFile( fd: widget.caseFile.id!);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +30,7 @@ class Suspects extends StatelessWidget {
             TextButton(
                 onPressed: () {
                   context.appNavigatorPush(
-                      SuspectsForm(id: caseFile.id!.toString()));
+                      SuspectsForm(id: widget.caseFile.id!.toString()));
                 },
                 // color: Colors.green,
                 child: Row(
@@ -28,7 +41,16 @@ class Suspects extends StatelessWidget {
                 ))
           ],
         ),
-        body: Text('data')
+        body: 
+        context.watch<InboxCubit>().state.maybeWhen(
+          orElse: (){
+          return Text('${widget.caseFile.id}');
+
+        },
+        caseFile: (payload) => Text("${payload.caseFile}"),
+
+        
+        )
 
         // StreamBuilder<QuerySnapshot>(
         //   stream: Firestore.instance

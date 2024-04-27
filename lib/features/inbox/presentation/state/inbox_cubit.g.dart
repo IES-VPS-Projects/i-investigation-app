@@ -14,6 +14,9 @@ _$InboxStatePayloadImpl _$$InboxStatePayloadImplFromJson(
       cases: (json['cases'] as List<dynamic>?)
           ?.map((e) => OpenCases.fromJson(e as Map<String, dynamic>))
           .toList(),
+      caseFile: json['caseFile'] == null
+          ? null
+          : CaseFile.fromJson(json['caseFile'] as Map<String, dynamic>),
       iprsModel: json['iprsModel'] == null
           ? null
           : IprsModel.fromJson(json['iprsModel'] as Map<String, dynamic>),
@@ -25,5 +28,6 @@ Map<String, dynamic> _$$InboxStatePayloadImplToJson(
       'error': instance.error,
       'page': instance.page,
       'cases': instance.cases,
+      'caseFile': instance.caseFile,
       'iprsModel': instance.iprsModel,
     };

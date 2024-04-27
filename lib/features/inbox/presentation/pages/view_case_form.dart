@@ -37,10 +37,9 @@ class _ViewCaseFormState extends State<ViewCaseForm> {
             widget.hasAccepted == "PENDING"
                 ? Stack(
                     children: <Widget>[
-                      IgnorePointer(
-                          child: CaseMenu(
+                      CaseMenu(
                         caseObject: widget.caseObject,
-                      )),
+                      ),
                       // Positioned.fill(
                       //   child: BackdropFilter(
                       //     filter: ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),

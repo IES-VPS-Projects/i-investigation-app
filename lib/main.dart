@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 import 'package:iinvestigation/core/domain/di/configure_dependencies.dart';
 import 'package:iinvestigation/core/presentation/state/register_blocs.dart';
 import 'package:iinvestigation/features/auth/presentation/pages/sign_in.dart';
@@ -52,18 +53,20 @@ class _MyAppState extends State<MyApp> {
           primarySwatch: Colors.blueGrey,
           useMaterial3: true,
         ),
-        home: FutureBuilder(
-            future: futureToken,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return snapshot.data!.isEmpty
-                    ? const SignIn()
-                    : const Dashboard();
-              } else if (snapshot.hasError) {
-                return Text("${snapshot.error}");
-              }
-              return const CircularProgressIndicator();
-            }),
+        home: ProgressHUD(
+          child: FutureBuilder(
+              future: futureToken,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return snapshot.data!.isEmpty
+                      ? const SignIn()
+                      : const Dashboard();
+                } else if (snapshot.hasError) {
+                  return Text("${snapshot.error}");
+                }
+                return const CircularProgressIndicator();
+              }),
+        ),
       ),
     );
   }

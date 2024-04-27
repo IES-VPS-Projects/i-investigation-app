@@ -21,33 +21,39 @@ mixin _$InboxState {
   TResult when<TResult extends Object?>({
     required TResult Function(InboxStatePayload payload) initial,
     required TResult Function(InboxStatePayload payload) loading,
+    required TResult Function(InboxStatePayload payload) createdSuspect,
     required TResult Function(InboxStatePayload payload) errorIPRS,
     required TResult Function(InboxStatePayload payload) doneIPRS,
     required TResult Function(InboxStatePayload payload) loadingIPRS,
     required TResult Function(InboxStatePayload payload) error,
     required TResult Function(InboxStatePayload payload) cases,
+    required TResult Function(InboxStatePayload payload) caseFile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(InboxStatePayload payload)? initial,
     TResult? Function(InboxStatePayload payload)? loading,
+    TResult? Function(InboxStatePayload payload)? createdSuspect,
     TResult? Function(InboxStatePayload payload)? errorIPRS,
     TResult? Function(InboxStatePayload payload)? doneIPRS,
     TResult? Function(InboxStatePayload payload)? loadingIPRS,
     TResult? Function(InboxStatePayload payload)? error,
     TResult? Function(InboxStatePayload payload)? cases,
+    TResult? Function(InboxStatePayload payload)? caseFile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(InboxStatePayload payload)? initial,
     TResult Function(InboxStatePayload payload)? loading,
+    TResult Function(InboxStatePayload payload)? createdSuspect,
     TResult Function(InboxStatePayload payload)? errorIPRS,
     TResult Function(InboxStatePayload payload)? doneIPRS,
     TResult Function(InboxStatePayload payload)? loadingIPRS,
     TResult Function(InboxStatePayload payload)? error,
     TResult Function(InboxStatePayload payload)? cases,
+    TResult Function(InboxStatePayload payload)? caseFile,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,33 +61,39 @@ mixin _$InboxState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialInboxState value) initial,
     required TResult Function(_LoadingInboxState value) loading,
+    required TResult Function(_CreatedSuspectInboxState value) createdSuspect,
     required TResult Function(_ErrorIPRSInboxState value) errorIPRS,
     required TResult Function(_DoneIPRSInboxState value) doneIPRS,
     required TResult Function(_LoadingIPRSInboxState value) loadingIPRS,
     required TResult Function(_ErrorInboxState value) error,
     required TResult Function(_CasesInboxState value) cases,
+    required TResult Function(_CaseFileInboxState value) caseFile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialInboxState value)? initial,
     TResult? Function(_LoadingInboxState value)? loading,
+    TResult? Function(_CreatedSuspectInboxState value)? createdSuspect,
     TResult? Function(_ErrorIPRSInboxState value)? errorIPRS,
     TResult? Function(_DoneIPRSInboxState value)? doneIPRS,
     TResult? Function(_LoadingIPRSInboxState value)? loadingIPRS,
     TResult? Function(_ErrorInboxState value)? error,
     TResult? Function(_CasesInboxState value)? cases,
+    TResult? Function(_CaseFileInboxState value)? caseFile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialInboxState value)? initial,
     TResult Function(_LoadingInboxState value)? loading,
+    TResult Function(_CreatedSuspectInboxState value)? createdSuspect,
     TResult Function(_ErrorIPRSInboxState value)? errorIPRS,
     TResult Function(_DoneIPRSInboxState value)? doneIPRS,
     TResult Function(_LoadingIPRSInboxState value)? loadingIPRS,
     TResult Function(_ErrorInboxState value)? error,
     TResult Function(_CasesInboxState value)? cases,
+    TResult Function(_CaseFileInboxState value)? caseFile,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -206,11 +218,13 @@ class _$InitialInboxStateImpl implements _InitialInboxState {
   TResult when<TResult extends Object?>({
     required TResult Function(InboxStatePayload payload) initial,
     required TResult Function(InboxStatePayload payload) loading,
+    required TResult Function(InboxStatePayload payload) createdSuspect,
     required TResult Function(InboxStatePayload payload) errorIPRS,
     required TResult Function(InboxStatePayload payload) doneIPRS,
     required TResult Function(InboxStatePayload payload) loadingIPRS,
     required TResult Function(InboxStatePayload payload) error,
     required TResult Function(InboxStatePayload payload) cases,
+    required TResult Function(InboxStatePayload payload) caseFile,
   }) {
     return initial(payload);
   }
@@ -220,11 +234,13 @@ class _$InitialInboxStateImpl implements _InitialInboxState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(InboxStatePayload payload)? initial,
     TResult? Function(InboxStatePayload payload)? loading,
+    TResult? Function(InboxStatePayload payload)? createdSuspect,
     TResult? Function(InboxStatePayload payload)? errorIPRS,
     TResult? Function(InboxStatePayload payload)? doneIPRS,
     TResult? Function(InboxStatePayload payload)? loadingIPRS,
     TResult? Function(InboxStatePayload payload)? error,
     TResult? Function(InboxStatePayload payload)? cases,
+    TResult? Function(InboxStatePayload payload)? caseFile,
   }) {
     return initial?.call(payload);
   }
@@ -234,11 +250,13 @@ class _$InitialInboxStateImpl implements _InitialInboxState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(InboxStatePayload payload)? initial,
     TResult Function(InboxStatePayload payload)? loading,
+    TResult Function(InboxStatePayload payload)? createdSuspect,
     TResult Function(InboxStatePayload payload)? errorIPRS,
     TResult Function(InboxStatePayload payload)? doneIPRS,
     TResult Function(InboxStatePayload payload)? loadingIPRS,
     TResult Function(InboxStatePayload payload)? error,
     TResult Function(InboxStatePayload payload)? cases,
+    TResult Function(InboxStatePayload payload)? caseFile,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -252,11 +270,13 @@ class _$InitialInboxStateImpl implements _InitialInboxState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialInboxState value) initial,
     required TResult Function(_LoadingInboxState value) loading,
+    required TResult Function(_CreatedSuspectInboxState value) createdSuspect,
     required TResult Function(_ErrorIPRSInboxState value) errorIPRS,
     required TResult Function(_DoneIPRSInboxState value) doneIPRS,
     required TResult Function(_LoadingIPRSInboxState value) loadingIPRS,
     required TResult Function(_ErrorInboxState value) error,
     required TResult Function(_CasesInboxState value) cases,
+    required TResult Function(_CaseFileInboxState value) caseFile,
   }) {
     return initial(this);
   }
@@ -266,11 +286,13 @@ class _$InitialInboxStateImpl implements _InitialInboxState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialInboxState value)? initial,
     TResult? Function(_LoadingInboxState value)? loading,
+    TResult? Function(_CreatedSuspectInboxState value)? createdSuspect,
     TResult? Function(_ErrorIPRSInboxState value)? errorIPRS,
     TResult? Function(_DoneIPRSInboxState value)? doneIPRS,
     TResult? Function(_LoadingIPRSInboxState value)? loadingIPRS,
     TResult? Function(_ErrorInboxState value)? error,
     TResult? Function(_CasesInboxState value)? cases,
+    TResult? Function(_CaseFileInboxState value)? caseFile,
   }) {
     return initial?.call(this);
   }
@@ -280,11 +302,13 @@ class _$InitialInboxStateImpl implements _InitialInboxState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialInboxState value)? initial,
     TResult Function(_LoadingInboxState value)? loading,
+    TResult Function(_CreatedSuspectInboxState value)? createdSuspect,
     TResult Function(_ErrorIPRSInboxState value)? errorIPRS,
     TResult Function(_DoneIPRSInboxState value)? doneIPRS,
     TResult Function(_LoadingIPRSInboxState value)? loadingIPRS,
     TResult Function(_ErrorInboxState value)? error,
     TResult Function(_CasesInboxState value)? cases,
+    TResult Function(_CaseFileInboxState value)? caseFile,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -378,11 +402,13 @@ class _$LoadingInboxStateImpl implements _LoadingInboxState {
   TResult when<TResult extends Object?>({
     required TResult Function(InboxStatePayload payload) initial,
     required TResult Function(InboxStatePayload payload) loading,
+    required TResult Function(InboxStatePayload payload) createdSuspect,
     required TResult Function(InboxStatePayload payload) errorIPRS,
     required TResult Function(InboxStatePayload payload) doneIPRS,
     required TResult Function(InboxStatePayload payload) loadingIPRS,
     required TResult Function(InboxStatePayload payload) error,
     required TResult Function(InboxStatePayload payload) cases,
+    required TResult Function(InboxStatePayload payload) caseFile,
   }) {
     return loading(payload);
   }
@@ -392,11 +418,13 @@ class _$LoadingInboxStateImpl implements _LoadingInboxState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(InboxStatePayload payload)? initial,
     TResult? Function(InboxStatePayload payload)? loading,
+    TResult? Function(InboxStatePayload payload)? createdSuspect,
     TResult? Function(InboxStatePayload payload)? errorIPRS,
     TResult? Function(InboxStatePayload payload)? doneIPRS,
     TResult? Function(InboxStatePayload payload)? loadingIPRS,
     TResult? Function(InboxStatePayload payload)? error,
     TResult? Function(InboxStatePayload payload)? cases,
+    TResult? Function(InboxStatePayload payload)? caseFile,
   }) {
     return loading?.call(payload);
   }
@@ -406,11 +434,13 @@ class _$LoadingInboxStateImpl implements _LoadingInboxState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(InboxStatePayload payload)? initial,
     TResult Function(InboxStatePayload payload)? loading,
+    TResult Function(InboxStatePayload payload)? createdSuspect,
     TResult Function(InboxStatePayload payload)? errorIPRS,
     TResult Function(InboxStatePayload payload)? doneIPRS,
     TResult Function(InboxStatePayload payload)? loadingIPRS,
     TResult Function(InboxStatePayload payload)? error,
     TResult Function(InboxStatePayload payload)? cases,
+    TResult Function(InboxStatePayload payload)? caseFile,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -424,11 +454,13 @@ class _$LoadingInboxStateImpl implements _LoadingInboxState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialInboxState value) initial,
     required TResult Function(_LoadingInboxState value) loading,
+    required TResult Function(_CreatedSuspectInboxState value) createdSuspect,
     required TResult Function(_ErrorIPRSInboxState value) errorIPRS,
     required TResult Function(_DoneIPRSInboxState value) doneIPRS,
     required TResult Function(_LoadingIPRSInboxState value) loadingIPRS,
     required TResult Function(_ErrorInboxState value) error,
     required TResult Function(_CasesInboxState value) cases,
+    required TResult Function(_CaseFileInboxState value) caseFile,
   }) {
     return loading(this);
   }
@@ -438,11 +470,13 @@ class _$LoadingInboxStateImpl implements _LoadingInboxState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialInboxState value)? initial,
     TResult? Function(_LoadingInboxState value)? loading,
+    TResult? Function(_CreatedSuspectInboxState value)? createdSuspect,
     TResult? Function(_ErrorIPRSInboxState value)? errorIPRS,
     TResult? Function(_DoneIPRSInboxState value)? doneIPRS,
     TResult? Function(_LoadingIPRSInboxState value)? loadingIPRS,
     TResult? Function(_ErrorInboxState value)? error,
     TResult? Function(_CasesInboxState value)? cases,
+    TResult? Function(_CaseFileInboxState value)? caseFile,
   }) {
     return loading?.call(this);
   }
@@ -452,11 +486,13 @@ class _$LoadingInboxStateImpl implements _LoadingInboxState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialInboxState value)? initial,
     TResult Function(_LoadingInboxState value)? loading,
+    TResult Function(_CreatedSuspectInboxState value)? createdSuspect,
     TResult Function(_ErrorIPRSInboxState value)? errorIPRS,
     TResult Function(_DoneIPRSInboxState value)? doneIPRS,
     TResult Function(_LoadingIPRSInboxState value)? loadingIPRS,
     TResult Function(_ErrorInboxState value)? error,
     TResult Function(_CasesInboxState value)? cases,
+    TResult Function(_CaseFileInboxState value)? caseFile,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -476,6 +512,193 @@ abstract class _LoadingInboxState implements InboxState {
   @JsonKey(ignore: true)
   _$$LoadingInboxStateImplCopyWith<_$LoadingInboxStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CreatedSuspectInboxStateImplCopyWith<$Res>
+    implements $InboxStateCopyWith<$Res> {
+  factory _$$CreatedSuspectInboxStateImplCopyWith(
+          _$CreatedSuspectInboxStateImpl value,
+          $Res Function(_$CreatedSuspectInboxStateImpl) then) =
+      __$$CreatedSuspectInboxStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({InboxStatePayload payload});
+
+  @override
+  $InboxStatePayloadCopyWith<$Res> get payload;
+}
+
+/// @nodoc
+class __$$CreatedSuspectInboxStateImplCopyWithImpl<$Res>
+    extends _$InboxStateCopyWithImpl<$Res, _$CreatedSuspectInboxStateImpl>
+    implements _$$CreatedSuspectInboxStateImplCopyWith<$Res> {
+  __$$CreatedSuspectInboxStateImplCopyWithImpl(
+      _$CreatedSuspectInboxStateImpl _value,
+      $Res Function(_$CreatedSuspectInboxStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? payload = null,
+  }) {
+    return _then(_$CreatedSuspectInboxStateImpl(
+      payload: null == payload
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as InboxStatePayload,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CreatedSuspectInboxStateImpl implements _CreatedSuspectInboxState {
+  const _$CreatedSuspectInboxStateImpl({required this.payload});
+
+  @override
+  final InboxStatePayload payload;
+
+  @override
+  String toString() {
+    return 'InboxState.createdSuspect(payload: $payload)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreatedSuspectInboxStateImpl &&
+            (identical(other.payload, payload) || other.payload == payload));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, payload);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreatedSuspectInboxStateImplCopyWith<_$CreatedSuspectInboxStateImpl>
+      get copyWith => __$$CreatedSuspectInboxStateImplCopyWithImpl<
+          _$CreatedSuspectInboxStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(InboxStatePayload payload) initial,
+    required TResult Function(InboxStatePayload payload) loading,
+    required TResult Function(InboxStatePayload payload) createdSuspect,
+    required TResult Function(InboxStatePayload payload) errorIPRS,
+    required TResult Function(InboxStatePayload payload) doneIPRS,
+    required TResult Function(InboxStatePayload payload) loadingIPRS,
+    required TResult Function(InboxStatePayload payload) error,
+    required TResult Function(InboxStatePayload payload) cases,
+    required TResult Function(InboxStatePayload payload) caseFile,
+  }) {
+    return createdSuspect(payload);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(InboxStatePayload payload)? initial,
+    TResult? Function(InboxStatePayload payload)? loading,
+    TResult? Function(InboxStatePayload payload)? createdSuspect,
+    TResult? Function(InboxStatePayload payload)? errorIPRS,
+    TResult? Function(InboxStatePayload payload)? doneIPRS,
+    TResult? Function(InboxStatePayload payload)? loadingIPRS,
+    TResult? Function(InboxStatePayload payload)? error,
+    TResult? Function(InboxStatePayload payload)? cases,
+    TResult? Function(InboxStatePayload payload)? caseFile,
+  }) {
+    return createdSuspect?.call(payload);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(InboxStatePayload payload)? initial,
+    TResult Function(InboxStatePayload payload)? loading,
+    TResult Function(InboxStatePayload payload)? createdSuspect,
+    TResult Function(InboxStatePayload payload)? errorIPRS,
+    TResult Function(InboxStatePayload payload)? doneIPRS,
+    TResult Function(InboxStatePayload payload)? loadingIPRS,
+    TResult Function(InboxStatePayload payload)? error,
+    TResult Function(InboxStatePayload payload)? cases,
+    TResult Function(InboxStatePayload payload)? caseFile,
+    required TResult orElse(),
+  }) {
+    if (createdSuspect != null) {
+      return createdSuspect(payload);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialInboxState value) initial,
+    required TResult Function(_LoadingInboxState value) loading,
+    required TResult Function(_CreatedSuspectInboxState value) createdSuspect,
+    required TResult Function(_ErrorIPRSInboxState value) errorIPRS,
+    required TResult Function(_DoneIPRSInboxState value) doneIPRS,
+    required TResult Function(_LoadingIPRSInboxState value) loadingIPRS,
+    required TResult Function(_ErrorInboxState value) error,
+    required TResult Function(_CasesInboxState value) cases,
+    required TResult Function(_CaseFileInboxState value) caseFile,
+  }) {
+    return createdSuspect(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialInboxState value)? initial,
+    TResult? Function(_LoadingInboxState value)? loading,
+    TResult? Function(_CreatedSuspectInboxState value)? createdSuspect,
+    TResult? Function(_ErrorIPRSInboxState value)? errorIPRS,
+    TResult? Function(_DoneIPRSInboxState value)? doneIPRS,
+    TResult? Function(_LoadingIPRSInboxState value)? loadingIPRS,
+    TResult? Function(_ErrorInboxState value)? error,
+    TResult? Function(_CasesInboxState value)? cases,
+    TResult? Function(_CaseFileInboxState value)? caseFile,
+  }) {
+    return createdSuspect?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialInboxState value)? initial,
+    TResult Function(_LoadingInboxState value)? loading,
+    TResult Function(_CreatedSuspectInboxState value)? createdSuspect,
+    TResult Function(_ErrorIPRSInboxState value)? errorIPRS,
+    TResult Function(_DoneIPRSInboxState value)? doneIPRS,
+    TResult Function(_LoadingIPRSInboxState value)? loadingIPRS,
+    TResult Function(_ErrorInboxState value)? error,
+    TResult Function(_CasesInboxState value)? cases,
+    TResult Function(_CaseFileInboxState value)? caseFile,
+    required TResult orElse(),
+  }) {
+    if (createdSuspect != null) {
+      return createdSuspect(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CreatedSuspectInboxState implements InboxState {
+  const factory _CreatedSuspectInboxState(
+          {required final InboxStatePayload payload}) =
+      _$CreatedSuspectInboxStateImpl;
+
+  @override
+  InboxStatePayload get payload;
+  @override
+  @JsonKey(ignore: true)
+  _$$CreatedSuspectInboxStateImplCopyWith<_$CreatedSuspectInboxStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -550,11 +773,13 @@ class _$ErrorIPRSInboxStateImpl implements _ErrorIPRSInboxState {
   TResult when<TResult extends Object?>({
     required TResult Function(InboxStatePayload payload) initial,
     required TResult Function(InboxStatePayload payload) loading,
+    required TResult Function(InboxStatePayload payload) createdSuspect,
     required TResult Function(InboxStatePayload payload) errorIPRS,
     required TResult Function(InboxStatePayload payload) doneIPRS,
     required TResult Function(InboxStatePayload payload) loadingIPRS,
     required TResult Function(InboxStatePayload payload) error,
     required TResult Function(InboxStatePayload payload) cases,
+    required TResult Function(InboxStatePayload payload) caseFile,
   }) {
     return errorIPRS(payload);
   }
@@ -564,11 +789,13 @@ class _$ErrorIPRSInboxStateImpl implements _ErrorIPRSInboxState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(InboxStatePayload payload)? initial,
     TResult? Function(InboxStatePayload payload)? loading,
+    TResult? Function(InboxStatePayload payload)? createdSuspect,
     TResult? Function(InboxStatePayload payload)? errorIPRS,
     TResult? Function(InboxStatePayload payload)? doneIPRS,
     TResult? Function(InboxStatePayload payload)? loadingIPRS,
     TResult? Function(InboxStatePayload payload)? error,
     TResult? Function(InboxStatePayload payload)? cases,
+    TResult? Function(InboxStatePayload payload)? caseFile,
   }) {
     return errorIPRS?.call(payload);
   }
@@ -578,11 +805,13 @@ class _$ErrorIPRSInboxStateImpl implements _ErrorIPRSInboxState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(InboxStatePayload payload)? initial,
     TResult Function(InboxStatePayload payload)? loading,
+    TResult Function(InboxStatePayload payload)? createdSuspect,
     TResult Function(InboxStatePayload payload)? errorIPRS,
     TResult Function(InboxStatePayload payload)? doneIPRS,
     TResult Function(InboxStatePayload payload)? loadingIPRS,
     TResult Function(InboxStatePayload payload)? error,
     TResult Function(InboxStatePayload payload)? cases,
+    TResult Function(InboxStatePayload payload)? caseFile,
     required TResult orElse(),
   }) {
     if (errorIPRS != null) {
@@ -596,11 +825,13 @@ class _$ErrorIPRSInboxStateImpl implements _ErrorIPRSInboxState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialInboxState value) initial,
     required TResult Function(_LoadingInboxState value) loading,
+    required TResult Function(_CreatedSuspectInboxState value) createdSuspect,
     required TResult Function(_ErrorIPRSInboxState value) errorIPRS,
     required TResult Function(_DoneIPRSInboxState value) doneIPRS,
     required TResult Function(_LoadingIPRSInboxState value) loadingIPRS,
     required TResult Function(_ErrorInboxState value) error,
     required TResult Function(_CasesInboxState value) cases,
+    required TResult Function(_CaseFileInboxState value) caseFile,
   }) {
     return errorIPRS(this);
   }
@@ -610,11 +841,13 @@ class _$ErrorIPRSInboxStateImpl implements _ErrorIPRSInboxState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialInboxState value)? initial,
     TResult? Function(_LoadingInboxState value)? loading,
+    TResult? Function(_CreatedSuspectInboxState value)? createdSuspect,
     TResult? Function(_ErrorIPRSInboxState value)? errorIPRS,
     TResult? Function(_DoneIPRSInboxState value)? doneIPRS,
     TResult? Function(_LoadingIPRSInboxState value)? loadingIPRS,
     TResult? Function(_ErrorInboxState value)? error,
     TResult? Function(_CasesInboxState value)? cases,
+    TResult? Function(_CaseFileInboxState value)? caseFile,
   }) {
     return errorIPRS?.call(this);
   }
@@ -624,11 +857,13 @@ class _$ErrorIPRSInboxStateImpl implements _ErrorIPRSInboxState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialInboxState value)? initial,
     TResult Function(_LoadingInboxState value)? loading,
+    TResult Function(_CreatedSuspectInboxState value)? createdSuspect,
     TResult Function(_ErrorIPRSInboxState value)? errorIPRS,
     TResult Function(_DoneIPRSInboxState value)? doneIPRS,
     TResult Function(_LoadingIPRSInboxState value)? loadingIPRS,
     TResult Function(_ErrorInboxState value)? error,
     TResult Function(_CasesInboxState value)? cases,
+    TResult Function(_CaseFileInboxState value)? caseFile,
     required TResult orElse(),
   }) {
     if (errorIPRS != null) {
@@ -722,11 +957,13 @@ class _$DoneIPRSInboxStateImpl implements _DoneIPRSInboxState {
   TResult when<TResult extends Object?>({
     required TResult Function(InboxStatePayload payload) initial,
     required TResult Function(InboxStatePayload payload) loading,
+    required TResult Function(InboxStatePayload payload) createdSuspect,
     required TResult Function(InboxStatePayload payload) errorIPRS,
     required TResult Function(InboxStatePayload payload) doneIPRS,
     required TResult Function(InboxStatePayload payload) loadingIPRS,
     required TResult Function(InboxStatePayload payload) error,
     required TResult Function(InboxStatePayload payload) cases,
+    required TResult Function(InboxStatePayload payload) caseFile,
   }) {
     return doneIPRS(payload);
   }
@@ -736,11 +973,13 @@ class _$DoneIPRSInboxStateImpl implements _DoneIPRSInboxState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(InboxStatePayload payload)? initial,
     TResult? Function(InboxStatePayload payload)? loading,
+    TResult? Function(InboxStatePayload payload)? createdSuspect,
     TResult? Function(InboxStatePayload payload)? errorIPRS,
     TResult? Function(InboxStatePayload payload)? doneIPRS,
     TResult? Function(InboxStatePayload payload)? loadingIPRS,
     TResult? Function(InboxStatePayload payload)? error,
     TResult? Function(InboxStatePayload payload)? cases,
+    TResult? Function(InboxStatePayload payload)? caseFile,
   }) {
     return doneIPRS?.call(payload);
   }
@@ -750,11 +989,13 @@ class _$DoneIPRSInboxStateImpl implements _DoneIPRSInboxState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(InboxStatePayload payload)? initial,
     TResult Function(InboxStatePayload payload)? loading,
+    TResult Function(InboxStatePayload payload)? createdSuspect,
     TResult Function(InboxStatePayload payload)? errorIPRS,
     TResult Function(InboxStatePayload payload)? doneIPRS,
     TResult Function(InboxStatePayload payload)? loadingIPRS,
     TResult Function(InboxStatePayload payload)? error,
     TResult Function(InboxStatePayload payload)? cases,
+    TResult Function(InboxStatePayload payload)? caseFile,
     required TResult orElse(),
   }) {
     if (doneIPRS != null) {
@@ -768,11 +1009,13 @@ class _$DoneIPRSInboxStateImpl implements _DoneIPRSInboxState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialInboxState value) initial,
     required TResult Function(_LoadingInboxState value) loading,
+    required TResult Function(_CreatedSuspectInboxState value) createdSuspect,
     required TResult Function(_ErrorIPRSInboxState value) errorIPRS,
     required TResult Function(_DoneIPRSInboxState value) doneIPRS,
     required TResult Function(_LoadingIPRSInboxState value) loadingIPRS,
     required TResult Function(_ErrorInboxState value) error,
     required TResult Function(_CasesInboxState value) cases,
+    required TResult Function(_CaseFileInboxState value) caseFile,
   }) {
     return doneIPRS(this);
   }
@@ -782,11 +1025,13 @@ class _$DoneIPRSInboxStateImpl implements _DoneIPRSInboxState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialInboxState value)? initial,
     TResult? Function(_LoadingInboxState value)? loading,
+    TResult? Function(_CreatedSuspectInboxState value)? createdSuspect,
     TResult? Function(_ErrorIPRSInboxState value)? errorIPRS,
     TResult? Function(_DoneIPRSInboxState value)? doneIPRS,
     TResult? Function(_LoadingIPRSInboxState value)? loadingIPRS,
     TResult? Function(_ErrorInboxState value)? error,
     TResult? Function(_CasesInboxState value)? cases,
+    TResult? Function(_CaseFileInboxState value)? caseFile,
   }) {
     return doneIPRS?.call(this);
   }
@@ -796,11 +1041,13 @@ class _$DoneIPRSInboxStateImpl implements _DoneIPRSInboxState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialInboxState value)? initial,
     TResult Function(_LoadingInboxState value)? loading,
+    TResult Function(_CreatedSuspectInboxState value)? createdSuspect,
     TResult Function(_ErrorIPRSInboxState value)? errorIPRS,
     TResult Function(_DoneIPRSInboxState value)? doneIPRS,
     TResult Function(_LoadingIPRSInboxState value)? loadingIPRS,
     TResult Function(_ErrorInboxState value)? error,
     TResult Function(_CasesInboxState value)? cases,
+    TResult Function(_CaseFileInboxState value)? caseFile,
     required TResult orElse(),
   }) {
     if (doneIPRS != null) {
@@ -895,11 +1142,13 @@ class _$LoadingIPRSInboxStateImpl implements _LoadingIPRSInboxState {
   TResult when<TResult extends Object?>({
     required TResult Function(InboxStatePayload payload) initial,
     required TResult Function(InboxStatePayload payload) loading,
+    required TResult Function(InboxStatePayload payload) createdSuspect,
     required TResult Function(InboxStatePayload payload) errorIPRS,
     required TResult Function(InboxStatePayload payload) doneIPRS,
     required TResult Function(InboxStatePayload payload) loadingIPRS,
     required TResult Function(InboxStatePayload payload) error,
     required TResult Function(InboxStatePayload payload) cases,
+    required TResult Function(InboxStatePayload payload) caseFile,
   }) {
     return loadingIPRS(payload);
   }
@@ -909,11 +1158,13 @@ class _$LoadingIPRSInboxStateImpl implements _LoadingIPRSInboxState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(InboxStatePayload payload)? initial,
     TResult? Function(InboxStatePayload payload)? loading,
+    TResult? Function(InboxStatePayload payload)? createdSuspect,
     TResult? Function(InboxStatePayload payload)? errorIPRS,
     TResult? Function(InboxStatePayload payload)? doneIPRS,
     TResult? Function(InboxStatePayload payload)? loadingIPRS,
     TResult? Function(InboxStatePayload payload)? error,
     TResult? Function(InboxStatePayload payload)? cases,
+    TResult? Function(InboxStatePayload payload)? caseFile,
   }) {
     return loadingIPRS?.call(payload);
   }
@@ -923,11 +1174,13 @@ class _$LoadingIPRSInboxStateImpl implements _LoadingIPRSInboxState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(InboxStatePayload payload)? initial,
     TResult Function(InboxStatePayload payload)? loading,
+    TResult Function(InboxStatePayload payload)? createdSuspect,
     TResult Function(InboxStatePayload payload)? errorIPRS,
     TResult Function(InboxStatePayload payload)? doneIPRS,
     TResult Function(InboxStatePayload payload)? loadingIPRS,
     TResult Function(InboxStatePayload payload)? error,
     TResult Function(InboxStatePayload payload)? cases,
+    TResult Function(InboxStatePayload payload)? caseFile,
     required TResult orElse(),
   }) {
     if (loadingIPRS != null) {
@@ -941,11 +1194,13 @@ class _$LoadingIPRSInboxStateImpl implements _LoadingIPRSInboxState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialInboxState value) initial,
     required TResult Function(_LoadingInboxState value) loading,
+    required TResult Function(_CreatedSuspectInboxState value) createdSuspect,
     required TResult Function(_ErrorIPRSInboxState value) errorIPRS,
     required TResult Function(_DoneIPRSInboxState value) doneIPRS,
     required TResult Function(_LoadingIPRSInboxState value) loadingIPRS,
     required TResult Function(_ErrorInboxState value) error,
     required TResult Function(_CasesInboxState value) cases,
+    required TResult Function(_CaseFileInboxState value) caseFile,
   }) {
     return loadingIPRS(this);
   }
@@ -955,11 +1210,13 @@ class _$LoadingIPRSInboxStateImpl implements _LoadingIPRSInboxState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialInboxState value)? initial,
     TResult? Function(_LoadingInboxState value)? loading,
+    TResult? Function(_CreatedSuspectInboxState value)? createdSuspect,
     TResult? Function(_ErrorIPRSInboxState value)? errorIPRS,
     TResult? Function(_DoneIPRSInboxState value)? doneIPRS,
     TResult? Function(_LoadingIPRSInboxState value)? loadingIPRS,
     TResult? Function(_ErrorInboxState value)? error,
     TResult? Function(_CasesInboxState value)? cases,
+    TResult? Function(_CaseFileInboxState value)? caseFile,
   }) {
     return loadingIPRS?.call(this);
   }
@@ -969,11 +1226,13 @@ class _$LoadingIPRSInboxStateImpl implements _LoadingIPRSInboxState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialInboxState value)? initial,
     TResult Function(_LoadingInboxState value)? loading,
+    TResult Function(_CreatedSuspectInboxState value)? createdSuspect,
     TResult Function(_ErrorIPRSInboxState value)? errorIPRS,
     TResult Function(_DoneIPRSInboxState value)? doneIPRS,
     TResult Function(_LoadingIPRSInboxState value)? loadingIPRS,
     TResult Function(_ErrorInboxState value)? error,
     TResult Function(_CasesInboxState value)? cases,
+    TResult Function(_CaseFileInboxState value)? caseFile,
     required TResult orElse(),
   }) {
     if (loadingIPRS != null) {
@@ -1067,11 +1326,13 @@ class _$ErrorInboxStateImpl implements _ErrorInboxState {
   TResult when<TResult extends Object?>({
     required TResult Function(InboxStatePayload payload) initial,
     required TResult Function(InboxStatePayload payload) loading,
+    required TResult Function(InboxStatePayload payload) createdSuspect,
     required TResult Function(InboxStatePayload payload) errorIPRS,
     required TResult Function(InboxStatePayload payload) doneIPRS,
     required TResult Function(InboxStatePayload payload) loadingIPRS,
     required TResult Function(InboxStatePayload payload) error,
     required TResult Function(InboxStatePayload payload) cases,
+    required TResult Function(InboxStatePayload payload) caseFile,
   }) {
     return error(payload);
   }
@@ -1081,11 +1342,13 @@ class _$ErrorInboxStateImpl implements _ErrorInboxState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(InboxStatePayload payload)? initial,
     TResult? Function(InboxStatePayload payload)? loading,
+    TResult? Function(InboxStatePayload payload)? createdSuspect,
     TResult? Function(InboxStatePayload payload)? errorIPRS,
     TResult? Function(InboxStatePayload payload)? doneIPRS,
     TResult? Function(InboxStatePayload payload)? loadingIPRS,
     TResult? Function(InboxStatePayload payload)? error,
     TResult? Function(InboxStatePayload payload)? cases,
+    TResult? Function(InboxStatePayload payload)? caseFile,
   }) {
     return error?.call(payload);
   }
@@ -1095,11 +1358,13 @@ class _$ErrorInboxStateImpl implements _ErrorInboxState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(InboxStatePayload payload)? initial,
     TResult Function(InboxStatePayload payload)? loading,
+    TResult Function(InboxStatePayload payload)? createdSuspect,
     TResult Function(InboxStatePayload payload)? errorIPRS,
     TResult Function(InboxStatePayload payload)? doneIPRS,
     TResult Function(InboxStatePayload payload)? loadingIPRS,
     TResult Function(InboxStatePayload payload)? error,
     TResult Function(InboxStatePayload payload)? cases,
+    TResult Function(InboxStatePayload payload)? caseFile,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1113,11 +1378,13 @@ class _$ErrorInboxStateImpl implements _ErrorInboxState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialInboxState value) initial,
     required TResult Function(_LoadingInboxState value) loading,
+    required TResult Function(_CreatedSuspectInboxState value) createdSuspect,
     required TResult Function(_ErrorIPRSInboxState value) errorIPRS,
     required TResult Function(_DoneIPRSInboxState value) doneIPRS,
     required TResult Function(_LoadingIPRSInboxState value) loadingIPRS,
     required TResult Function(_ErrorInboxState value) error,
     required TResult Function(_CasesInboxState value) cases,
+    required TResult Function(_CaseFileInboxState value) caseFile,
   }) {
     return error(this);
   }
@@ -1127,11 +1394,13 @@ class _$ErrorInboxStateImpl implements _ErrorInboxState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialInboxState value)? initial,
     TResult? Function(_LoadingInboxState value)? loading,
+    TResult? Function(_CreatedSuspectInboxState value)? createdSuspect,
     TResult? Function(_ErrorIPRSInboxState value)? errorIPRS,
     TResult? Function(_DoneIPRSInboxState value)? doneIPRS,
     TResult? Function(_LoadingIPRSInboxState value)? loadingIPRS,
     TResult? Function(_ErrorInboxState value)? error,
     TResult? Function(_CasesInboxState value)? cases,
+    TResult? Function(_CaseFileInboxState value)? caseFile,
   }) {
     return error?.call(this);
   }
@@ -1141,11 +1410,13 @@ class _$ErrorInboxStateImpl implements _ErrorInboxState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialInboxState value)? initial,
     TResult Function(_LoadingInboxState value)? loading,
+    TResult Function(_CreatedSuspectInboxState value)? createdSuspect,
     TResult Function(_ErrorIPRSInboxState value)? errorIPRS,
     TResult Function(_DoneIPRSInboxState value)? doneIPRS,
     TResult Function(_LoadingIPRSInboxState value)? loadingIPRS,
     TResult Function(_ErrorInboxState value)? error,
     TResult Function(_CasesInboxState value)? cases,
+    TResult Function(_CaseFileInboxState value)? caseFile,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1239,11 +1510,13 @@ class _$CasesInboxStateImpl implements _CasesInboxState {
   TResult when<TResult extends Object?>({
     required TResult Function(InboxStatePayload payload) initial,
     required TResult Function(InboxStatePayload payload) loading,
+    required TResult Function(InboxStatePayload payload) createdSuspect,
     required TResult Function(InboxStatePayload payload) errorIPRS,
     required TResult Function(InboxStatePayload payload) doneIPRS,
     required TResult Function(InboxStatePayload payload) loadingIPRS,
     required TResult Function(InboxStatePayload payload) error,
     required TResult Function(InboxStatePayload payload) cases,
+    required TResult Function(InboxStatePayload payload) caseFile,
   }) {
     return cases(payload);
   }
@@ -1253,11 +1526,13 @@ class _$CasesInboxStateImpl implements _CasesInboxState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(InboxStatePayload payload)? initial,
     TResult? Function(InboxStatePayload payload)? loading,
+    TResult? Function(InboxStatePayload payload)? createdSuspect,
     TResult? Function(InboxStatePayload payload)? errorIPRS,
     TResult? Function(InboxStatePayload payload)? doneIPRS,
     TResult? Function(InboxStatePayload payload)? loadingIPRS,
     TResult? Function(InboxStatePayload payload)? error,
     TResult? Function(InboxStatePayload payload)? cases,
+    TResult? Function(InboxStatePayload payload)? caseFile,
   }) {
     return cases?.call(payload);
   }
@@ -1267,11 +1542,13 @@ class _$CasesInboxStateImpl implements _CasesInboxState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(InboxStatePayload payload)? initial,
     TResult Function(InboxStatePayload payload)? loading,
+    TResult Function(InboxStatePayload payload)? createdSuspect,
     TResult Function(InboxStatePayload payload)? errorIPRS,
     TResult Function(InboxStatePayload payload)? doneIPRS,
     TResult Function(InboxStatePayload payload)? loadingIPRS,
     TResult Function(InboxStatePayload payload)? error,
     TResult Function(InboxStatePayload payload)? cases,
+    TResult Function(InboxStatePayload payload)? caseFile,
     required TResult orElse(),
   }) {
     if (cases != null) {
@@ -1285,11 +1562,13 @@ class _$CasesInboxStateImpl implements _CasesInboxState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialInboxState value) initial,
     required TResult Function(_LoadingInboxState value) loading,
+    required TResult Function(_CreatedSuspectInboxState value) createdSuspect,
     required TResult Function(_ErrorIPRSInboxState value) errorIPRS,
     required TResult Function(_DoneIPRSInboxState value) doneIPRS,
     required TResult Function(_LoadingIPRSInboxState value) loadingIPRS,
     required TResult Function(_ErrorInboxState value) error,
     required TResult Function(_CasesInboxState value) cases,
+    required TResult Function(_CaseFileInboxState value) caseFile,
   }) {
     return cases(this);
   }
@@ -1299,11 +1578,13 @@ class _$CasesInboxStateImpl implements _CasesInboxState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialInboxState value)? initial,
     TResult? Function(_LoadingInboxState value)? loading,
+    TResult? Function(_CreatedSuspectInboxState value)? createdSuspect,
     TResult? Function(_ErrorIPRSInboxState value)? errorIPRS,
     TResult? Function(_DoneIPRSInboxState value)? doneIPRS,
     TResult? Function(_LoadingIPRSInboxState value)? loadingIPRS,
     TResult? Function(_ErrorInboxState value)? error,
     TResult? Function(_CasesInboxState value)? cases,
+    TResult? Function(_CaseFileInboxState value)? caseFile,
   }) {
     return cases?.call(this);
   }
@@ -1313,11 +1594,13 @@ class _$CasesInboxStateImpl implements _CasesInboxState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialInboxState value)? initial,
     TResult Function(_LoadingInboxState value)? loading,
+    TResult Function(_CreatedSuspectInboxState value)? createdSuspect,
     TResult Function(_ErrorIPRSInboxState value)? errorIPRS,
     TResult Function(_DoneIPRSInboxState value)? doneIPRS,
     TResult Function(_LoadingIPRSInboxState value)? loadingIPRS,
     TResult Function(_ErrorInboxState value)? error,
     TResult Function(_CasesInboxState value)? cases,
+    TResult Function(_CaseFileInboxState value)? caseFile,
     required TResult orElse(),
   }) {
     if (cases != null) {
@@ -1339,6 +1622,190 @@ abstract class _CasesInboxState implements InboxState {
       throw _privateConstructorUsedError;
 }
 
+/// @nodoc
+abstract class _$$CaseFileInboxStateImplCopyWith<$Res>
+    implements $InboxStateCopyWith<$Res> {
+  factory _$$CaseFileInboxStateImplCopyWith(_$CaseFileInboxStateImpl value,
+          $Res Function(_$CaseFileInboxStateImpl) then) =
+      __$$CaseFileInboxStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({InboxStatePayload payload});
+
+  @override
+  $InboxStatePayloadCopyWith<$Res> get payload;
+}
+
+/// @nodoc
+class __$$CaseFileInboxStateImplCopyWithImpl<$Res>
+    extends _$InboxStateCopyWithImpl<$Res, _$CaseFileInboxStateImpl>
+    implements _$$CaseFileInboxStateImplCopyWith<$Res> {
+  __$$CaseFileInboxStateImplCopyWithImpl(_$CaseFileInboxStateImpl _value,
+      $Res Function(_$CaseFileInboxStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? payload = null,
+  }) {
+    return _then(_$CaseFileInboxStateImpl(
+      payload: null == payload
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as InboxStatePayload,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CaseFileInboxStateImpl implements _CaseFileInboxState {
+  const _$CaseFileInboxStateImpl({required this.payload});
+
+  @override
+  final InboxStatePayload payload;
+
+  @override
+  String toString() {
+    return 'InboxState.caseFile(payload: $payload)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CaseFileInboxStateImpl &&
+            (identical(other.payload, payload) || other.payload == payload));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, payload);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CaseFileInboxStateImplCopyWith<_$CaseFileInboxStateImpl> get copyWith =>
+      __$$CaseFileInboxStateImplCopyWithImpl<_$CaseFileInboxStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(InboxStatePayload payload) initial,
+    required TResult Function(InboxStatePayload payload) loading,
+    required TResult Function(InboxStatePayload payload) createdSuspect,
+    required TResult Function(InboxStatePayload payload) errorIPRS,
+    required TResult Function(InboxStatePayload payload) doneIPRS,
+    required TResult Function(InboxStatePayload payload) loadingIPRS,
+    required TResult Function(InboxStatePayload payload) error,
+    required TResult Function(InboxStatePayload payload) cases,
+    required TResult Function(InboxStatePayload payload) caseFile,
+  }) {
+    return caseFile(payload);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(InboxStatePayload payload)? initial,
+    TResult? Function(InboxStatePayload payload)? loading,
+    TResult? Function(InboxStatePayload payload)? createdSuspect,
+    TResult? Function(InboxStatePayload payload)? errorIPRS,
+    TResult? Function(InboxStatePayload payload)? doneIPRS,
+    TResult? Function(InboxStatePayload payload)? loadingIPRS,
+    TResult? Function(InboxStatePayload payload)? error,
+    TResult? Function(InboxStatePayload payload)? cases,
+    TResult? Function(InboxStatePayload payload)? caseFile,
+  }) {
+    return caseFile?.call(payload);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(InboxStatePayload payload)? initial,
+    TResult Function(InboxStatePayload payload)? loading,
+    TResult Function(InboxStatePayload payload)? createdSuspect,
+    TResult Function(InboxStatePayload payload)? errorIPRS,
+    TResult Function(InboxStatePayload payload)? doneIPRS,
+    TResult Function(InboxStatePayload payload)? loadingIPRS,
+    TResult Function(InboxStatePayload payload)? error,
+    TResult Function(InboxStatePayload payload)? cases,
+    TResult Function(InboxStatePayload payload)? caseFile,
+    required TResult orElse(),
+  }) {
+    if (caseFile != null) {
+      return caseFile(payload);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialInboxState value) initial,
+    required TResult Function(_LoadingInboxState value) loading,
+    required TResult Function(_CreatedSuspectInboxState value) createdSuspect,
+    required TResult Function(_ErrorIPRSInboxState value) errorIPRS,
+    required TResult Function(_DoneIPRSInboxState value) doneIPRS,
+    required TResult Function(_LoadingIPRSInboxState value) loadingIPRS,
+    required TResult Function(_ErrorInboxState value) error,
+    required TResult Function(_CasesInboxState value) cases,
+    required TResult Function(_CaseFileInboxState value) caseFile,
+  }) {
+    return caseFile(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialInboxState value)? initial,
+    TResult? Function(_LoadingInboxState value)? loading,
+    TResult? Function(_CreatedSuspectInboxState value)? createdSuspect,
+    TResult? Function(_ErrorIPRSInboxState value)? errorIPRS,
+    TResult? Function(_DoneIPRSInboxState value)? doneIPRS,
+    TResult? Function(_LoadingIPRSInboxState value)? loadingIPRS,
+    TResult? Function(_ErrorInboxState value)? error,
+    TResult? Function(_CasesInboxState value)? cases,
+    TResult? Function(_CaseFileInboxState value)? caseFile,
+  }) {
+    return caseFile?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialInboxState value)? initial,
+    TResult Function(_LoadingInboxState value)? loading,
+    TResult Function(_CreatedSuspectInboxState value)? createdSuspect,
+    TResult Function(_ErrorIPRSInboxState value)? errorIPRS,
+    TResult Function(_DoneIPRSInboxState value)? doneIPRS,
+    TResult Function(_LoadingIPRSInboxState value)? loadingIPRS,
+    TResult Function(_ErrorInboxState value)? error,
+    TResult Function(_CasesInboxState value)? cases,
+    TResult Function(_CaseFileInboxState value)? caseFile,
+    required TResult orElse(),
+  }) {
+    if (caseFile != null) {
+      return caseFile(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CaseFileInboxState implements InboxState {
+  const factory _CaseFileInboxState(
+      {required final InboxStatePayload payload}) = _$CaseFileInboxStateImpl;
+
+  @override
+  InboxStatePayload get payload;
+  @override
+  @JsonKey(ignore: true)
+  _$$CaseFileInboxStateImplCopyWith<_$CaseFileInboxStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 InboxStatePayload _$InboxStatePayloadFromJson(Map<String, dynamic> json) {
   return _InboxStatePayload.fromJson(json);
 }
@@ -1348,6 +1815,7 @@ mixin _$InboxStatePayload {
   String? get error => throw _privateConstructorUsedError;
   int? get page => throw _privateConstructorUsedError;
   List<OpenCases>? get cases => throw _privateConstructorUsedError;
+  CaseFile? get caseFile => throw _privateConstructorUsedError;
   IprsModel? get iprsModel => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1363,8 +1831,13 @@ abstract class $InboxStatePayloadCopyWith<$Res> {
       _$InboxStatePayloadCopyWithImpl<$Res, InboxStatePayload>;
   @useResult
   $Res call(
-      {String? error, int? page, List<OpenCases>? cases, IprsModel? iprsModel});
+      {String? error,
+      int? page,
+      List<OpenCases>? cases,
+      CaseFile? caseFile,
+      IprsModel? iprsModel});
 
+  $CaseFileCopyWith<$Res>? get caseFile;
   $IprsModelCopyWith<$Res>? get iprsModel;
 }
 
@@ -1384,6 +1857,7 @@ class _$InboxStatePayloadCopyWithImpl<$Res, $Val extends InboxStatePayload>
     Object? error = freezed,
     Object? page = freezed,
     Object? cases = freezed,
+    Object? caseFile = freezed,
     Object? iprsModel = freezed,
   }) {
     return _then(_value.copyWith(
@@ -1399,11 +1873,27 @@ class _$InboxStatePayloadCopyWithImpl<$Res, $Val extends InboxStatePayload>
           ? _value.cases
           : cases // ignore: cast_nullable_to_non_nullable
               as List<OpenCases>?,
+      caseFile: freezed == caseFile
+          ? _value.caseFile
+          : caseFile // ignore: cast_nullable_to_non_nullable
+              as CaseFile?,
       iprsModel: freezed == iprsModel
           ? _value.iprsModel
           : iprsModel // ignore: cast_nullable_to_non_nullable
               as IprsModel?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CaseFileCopyWith<$Res>? get caseFile {
+    if (_value.caseFile == null) {
+      return null;
+    }
+
+    return $CaseFileCopyWith<$Res>(_value.caseFile!, (value) {
+      return _then(_value.copyWith(caseFile: value) as $Val);
+    });
   }
 
   @override
@@ -1428,8 +1918,14 @@ abstract class _$$InboxStatePayloadImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? error, int? page, List<OpenCases>? cases, IprsModel? iprsModel});
+      {String? error,
+      int? page,
+      List<OpenCases>? cases,
+      CaseFile? caseFile,
+      IprsModel? iprsModel});
 
+  @override
+  $CaseFileCopyWith<$Res>? get caseFile;
   @override
   $IprsModelCopyWith<$Res>? get iprsModel;
 }
@@ -1448,6 +1944,7 @@ class __$$InboxStatePayloadImplCopyWithImpl<$Res>
     Object? error = freezed,
     Object? page = freezed,
     Object? cases = freezed,
+    Object? caseFile = freezed,
     Object? iprsModel = freezed,
   }) {
     return _then(_$InboxStatePayloadImpl(
@@ -1463,6 +1960,10 @@ class __$$InboxStatePayloadImplCopyWithImpl<$Res>
           ? _value._cases
           : cases // ignore: cast_nullable_to_non_nullable
               as List<OpenCases>?,
+      caseFile: freezed == caseFile
+          ? _value.caseFile
+          : caseFile // ignore: cast_nullable_to_non_nullable
+              as CaseFile?,
       iprsModel: freezed == iprsModel
           ? _value.iprsModel
           : iprsModel // ignore: cast_nullable_to_non_nullable
@@ -1475,7 +1976,11 @@ class __$$InboxStatePayloadImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$InboxStatePayloadImpl implements _InboxStatePayload {
   const _$InboxStatePayloadImpl(
-      {this.error, this.page, final List<OpenCases>? cases, this.iprsModel})
+      {this.error,
+      this.page,
+      final List<OpenCases>? cases,
+      this.caseFile,
+      this.iprsModel})
       : _cases = cases;
 
   factory _$InboxStatePayloadImpl.fromJson(Map<String, dynamic> json) =>
@@ -1496,11 +2001,13 @@ class _$InboxStatePayloadImpl implements _InboxStatePayload {
   }
 
   @override
+  final CaseFile? caseFile;
+  @override
   final IprsModel? iprsModel;
 
   @override
   String toString() {
-    return 'InboxStatePayload(error: $error, page: $page, cases: $cases, iprsModel: $iprsModel)';
+    return 'InboxStatePayload(error: $error, page: $page, cases: $cases, caseFile: $caseFile, iprsModel: $iprsModel)';
   }
 
   @override
@@ -1511,6 +2018,8 @@ class _$InboxStatePayloadImpl implements _InboxStatePayload {
             (identical(other.error, error) || other.error == error) &&
             (identical(other.page, page) || other.page == page) &&
             const DeepCollectionEquality().equals(other._cases, _cases) &&
+            (identical(other.caseFile, caseFile) ||
+                other.caseFile == caseFile) &&
             (identical(other.iprsModel, iprsModel) ||
                 other.iprsModel == iprsModel));
   }
@@ -1518,7 +2027,7 @@ class _$InboxStatePayloadImpl implements _InboxStatePayload {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, error, page,
-      const DeepCollectionEquality().hash(_cases), iprsModel);
+      const DeepCollectionEquality().hash(_cases), caseFile, iprsModel);
 
   @JsonKey(ignore: true)
   @override
@@ -1540,6 +2049,7 @@ abstract class _InboxStatePayload implements InboxStatePayload {
       {final String? error,
       final int? page,
       final List<OpenCases>? cases,
+      final CaseFile? caseFile,
       final IprsModel? iprsModel}) = _$InboxStatePayloadImpl;
 
   factory _InboxStatePayload.fromJson(Map<String, dynamic> json) =
@@ -1551,6 +2061,8 @@ abstract class _InboxStatePayload implements InboxStatePayload {
   int? get page;
   @override
   List<OpenCases>? get cases;
+  @override
+  CaseFile? get caseFile;
   @override
   IprsModel? get iprsModel;
   @override

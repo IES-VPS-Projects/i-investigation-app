@@ -31,15 +31,8 @@ class _InboxPageState extends State<InboxPage> {
         ),
         body: context.watch<InboxCubit>().state.maybeMap(
               orElse: () {
-                return Column(
-                  children: [
-                    TextButton(
-                        onPressed: () {
-                          context.read<InboxCubit>().getAllCases();
-                        },
-                        child: Text(
-                            '${context.watch<InboxCubit>().state.payload.cases}'))
-                  ],
+                return Center(
+                  child: CircularProgressIndicator(),
                 );
               },
               cases: (value) => value.payload.cases == null

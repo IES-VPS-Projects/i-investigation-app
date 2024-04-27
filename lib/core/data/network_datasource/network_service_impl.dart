@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:iinvestigation/core/data/datasources/local_storage_data_source.dart';
 import 'package:iinvestigation/core/data/network_datasource/config.dart';
 
 import '../../utilities/logging_utils.dart';
@@ -58,16 +59,19 @@ class NetworkServiceImpl implements NetworkService {
     bool tokenRequired = true,
   }) async {
     try {
-      final response = await _dio.post(
+      print(tokenRequired);
+      var token = await getData('token');
+      print(token);
+      final response = await _restClient.dio.post(
         BASE_URL + endpoint,
         queryParameters: params,
         data: body,
-        // options: Options(
-        //   extra: {
-        //     'token-required': tokenRequired,
-        //   },
-        //   headers: headers,
-        // ),
+        options: Options(
+          extra: {'token-required': tokenRequired},
+          headers: tokenRequired == false
+              ? headers
+              : {"Authorization": "Authorization $token"},
+        ),
       );
 
       logger.i('\n\n ${response.statusCode} \n\n');

@@ -11,9 +11,12 @@ class _$InboxModuleDI extends InboxModuleDI {
   void _configure() {
     final KiwiContainer container = KiwiContainer();
     container
-      ..registerSingleton((c) => InboxCubit(c<GetOpenCases>(), c<SearchIPRS>()))
+      ..registerSingleton((c) => InboxCubit(c<CaseFileUseCase>(),
+          c<GetOpenCases>(), c<SearchIPRS>(), c<CreateSuspect>()))
       ..registerSingleton((c) => GetOpenCases(c<InboxRepository>()))
       ..registerSingleton((c) => SearchIPRS(c<InboxRepository>()))
+      ..registerSingleton((c) => CaseFileUseCase(c<InboxRepository>()))
+      ..registerSingleton((c) => CreateSuspect(c<InboxRepository>()))
       ..registerFactory<InboxRepository>(
           (c) => InboxRepositoryImpl(c<InboxDataSource>()))
       ..registerFactory<InboxDataSource>(
