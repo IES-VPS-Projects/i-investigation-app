@@ -1815,8 +1815,10 @@ mixin _$InboxStatePayload {
   String? get error => throw _privateConstructorUsedError;
   int? get page => throw _privateConstructorUsedError;
   List<OpenCases>? get cases => throw _privateConstructorUsedError;
-  CaseFile? get caseFile => throw _privateConstructorUsedError;
+  caseFIle.CaseFile? get caseFile => throw _privateConstructorUsedError;
   IprsModel? get iprsModel => throw _privateConstructorUsedError;
+  List<PenalCodeResponse>? get penalCodes => throw _privateConstructorUsedError;
+  String? get recordingPath => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1834,8 +1836,10 @@ abstract class $InboxStatePayloadCopyWith<$Res> {
       {String? error,
       int? page,
       List<OpenCases>? cases,
-      CaseFile? caseFile,
-      IprsModel? iprsModel});
+      caseFIle.CaseFile? caseFile,
+      IprsModel? iprsModel,
+      List<PenalCodeResponse>? penalCodes,
+      String? recordingPath});
 
   $CaseFileCopyWith<$Res>? get caseFile;
   $IprsModelCopyWith<$Res>? get iprsModel;
@@ -1859,6 +1863,8 @@ class _$InboxStatePayloadCopyWithImpl<$Res, $Val extends InboxStatePayload>
     Object? cases = freezed,
     Object? caseFile = freezed,
     Object? iprsModel = freezed,
+    Object? penalCodes = freezed,
+    Object? recordingPath = freezed,
   }) {
     return _then(_value.copyWith(
       error: freezed == error
@@ -1876,11 +1882,19 @@ class _$InboxStatePayloadCopyWithImpl<$Res, $Val extends InboxStatePayload>
       caseFile: freezed == caseFile
           ? _value.caseFile
           : caseFile // ignore: cast_nullable_to_non_nullable
-              as CaseFile?,
+              as caseFIle.CaseFile?,
       iprsModel: freezed == iprsModel
           ? _value.iprsModel
           : iprsModel // ignore: cast_nullable_to_non_nullable
               as IprsModel?,
+      penalCodes: freezed == penalCodes
+          ? _value.penalCodes
+          : penalCodes // ignore: cast_nullable_to_non_nullable
+              as List<PenalCodeResponse>?,
+      recordingPath: freezed == recordingPath
+          ? _value.recordingPath
+          : recordingPath // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -1921,8 +1935,10 @@ abstract class _$$InboxStatePayloadImplCopyWith<$Res>
       {String? error,
       int? page,
       List<OpenCases>? cases,
-      CaseFile? caseFile,
-      IprsModel? iprsModel});
+      caseFIle.CaseFile? caseFile,
+      IprsModel? iprsModel,
+      List<PenalCodeResponse>? penalCodes,
+      String? recordingPath});
 
   @override
   $CaseFileCopyWith<$Res>? get caseFile;
@@ -1946,6 +1962,8 @@ class __$$InboxStatePayloadImplCopyWithImpl<$Res>
     Object? cases = freezed,
     Object? caseFile = freezed,
     Object? iprsModel = freezed,
+    Object? penalCodes = freezed,
+    Object? recordingPath = freezed,
   }) {
     return _then(_$InboxStatePayloadImpl(
       error: freezed == error
@@ -1963,11 +1981,19 @@ class __$$InboxStatePayloadImplCopyWithImpl<$Res>
       caseFile: freezed == caseFile
           ? _value.caseFile
           : caseFile // ignore: cast_nullable_to_non_nullable
-              as CaseFile?,
+              as caseFIle.CaseFile?,
       iprsModel: freezed == iprsModel
           ? _value.iprsModel
           : iprsModel // ignore: cast_nullable_to_non_nullable
               as IprsModel?,
+      penalCodes: freezed == penalCodes
+          ? _value._penalCodes
+          : penalCodes // ignore: cast_nullable_to_non_nullable
+              as List<PenalCodeResponse>?,
+      recordingPath: freezed == recordingPath
+          ? _value.recordingPath
+          : recordingPath // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1980,8 +2006,11 @@ class _$InboxStatePayloadImpl implements _InboxStatePayload {
       this.page,
       final List<OpenCases>? cases,
       this.caseFile,
-      this.iprsModel})
-      : _cases = cases;
+      this.iprsModel,
+      final List<PenalCodeResponse>? penalCodes,
+      this.recordingPath})
+      : _cases = cases,
+        _penalCodes = penalCodes;
 
   factory _$InboxStatePayloadImpl.fromJson(Map<String, dynamic> json) =>
       _$$InboxStatePayloadImplFromJson(json);
@@ -2001,13 +2030,25 @@ class _$InboxStatePayloadImpl implements _InboxStatePayload {
   }
 
   @override
-  final CaseFile? caseFile;
+  final caseFIle.CaseFile? caseFile;
   @override
   final IprsModel? iprsModel;
+  final List<PenalCodeResponse>? _penalCodes;
+  @override
+  List<PenalCodeResponse>? get penalCodes {
+    final value = _penalCodes;
+    if (value == null) return null;
+    if (_penalCodes is EqualUnmodifiableListView) return _penalCodes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final String? recordingPath;
 
   @override
   String toString() {
-    return 'InboxStatePayload(error: $error, page: $page, cases: $cases, caseFile: $caseFile, iprsModel: $iprsModel)';
+    return 'InboxStatePayload(error: $error, page: $page, cases: $cases, caseFile: $caseFile, iprsModel: $iprsModel, penalCodes: $penalCodes, recordingPath: $recordingPath)';
   }
 
   @override
@@ -2021,13 +2062,24 @@ class _$InboxStatePayloadImpl implements _InboxStatePayload {
             (identical(other.caseFile, caseFile) ||
                 other.caseFile == caseFile) &&
             (identical(other.iprsModel, iprsModel) ||
-                other.iprsModel == iprsModel));
+                other.iprsModel == iprsModel) &&
+            const DeepCollectionEquality()
+                .equals(other._penalCodes, _penalCodes) &&
+            (identical(other.recordingPath, recordingPath) ||
+                other.recordingPath == recordingPath));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, error, page,
-      const DeepCollectionEquality().hash(_cases), caseFile, iprsModel);
+  int get hashCode => Object.hash(
+      runtimeType,
+      error,
+      page,
+      const DeepCollectionEquality().hash(_cases),
+      caseFile,
+      iprsModel,
+      const DeepCollectionEquality().hash(_penalCodes),
+      recordingPath);
 
   @JsonKey(ignore: true)
   @override
@@ -2049,8 +2101,10 @@ abstract class _InboxStatePayload implements InboxStatePayload {
       {final String? error,
       final int? page,
       final List<OpenCases>? cases,
-      final CaseFile? caseFile,
-      final IprsModel? iprsModel}) = _$InboxStatePayloadImpl;
+      final caseFIle.CaseFile? caseFile,
+      final IprsModel? iprsModel,
+      final List<PenalCodeResponse>? penalCodes,
+      final String? recordingPath}) = _$InboxStatePayloadImpl;
 
   factory _InboxStatePayload.fromJson(Map<String, dynamic> json) =
       _$InboxStatePayloadImpl.fromJson;
@@ -2062,9 +2116,13 @@ abstract class _InboxStatePayload implements InboxStatePayload {
   @override
   List<OpenCases>? get cases;
   @override
-  CaseFile? get caseFile;
+  caseFIle.CaseFile? get caseFile;
   @override
   IprsModel? get iprsModel;
+  @override
+  List<PenalCodeResponse>? get penalCodes;
+  @override
+  String? get recordingPath;
   @override
   @JsonKey(ignore: true)
   _$$InboxStatePayloadImplCopyWith<_$InboxStatePayloadImpl> get copyWith =>

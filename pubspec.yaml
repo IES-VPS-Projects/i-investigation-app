@@ -49,7 +49,11 @@ dependencies:
   json_annotation: 
   flutter_staggered_grid_view:
   image_picker:
-  carousel_slider:
+  carousel_slider: 
+  record: ^5.0.5
+  audioplayers:
+  video_player:
+  dropdown_search:
 
 
   # The following adds the Cupertino Icons font to your application.

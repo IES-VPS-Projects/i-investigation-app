@@ -1,10 +1,17 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iinvestigation/core/utilities/utilities.dart';
 import 'package:iinvestigation/features/inbox/data/models/open_cases/open_cases.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:iinvestigation/features/inbox/presentation/pages/case_material.dart';
+import 'package:iinvestigation/features/inbox/presentation/pages/case_notes.dart';
+import 'package:iinvestigation/features/inbox/presentation/pages/penal_code.dart';
 import 'package:iinvestigation/features/inbox/presentation/pages/suspects.dart';
+import 'package:iinvestigation/features/inbox/presentation/pages/witnesses.dart';
+import 'package:iinvestigation/features/inbox/presentation/state/inbox_cubit.dart';
 
+import 'summary.dart';
 import 'widgets/case_summary.dart';
 
 class CaseMenu extends StatefulWidget {
@@ -47,14 +54,17 @@ class _CaseMenuState extends State<CaseMenu> {
                 "SubHeading", () {
               print(22);
               context.appNavigatorPush(Suspects(caseFile: widget.caseObject));
-              // WidgetsBinding.instance!.addPostFrameCallback((_) {
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (context) =>
-              //             Suspects(caseFile: widget.caseObject)));
-              // });
-            }, 1)),
+            },
+                context.watch<InboxCubit>().state.payload.caseFile == null
+                    ? 0
+                    : context
+                        .watch<InboxCubit>()
+                        .state
+                        .payload
+                        .caseFile!
+                        .data!
+                        .caseNotesSuspect!
+                        .length)),
         StaggeredGridTile.count(
             crossAxisCellCount: 2,
             mainAxisCellCount: 1,
@@ -67,11 +77,22 @@ class _CaseMenuState extends State<CaseMenu> {
                 ),
                 "Witnesses",
                 "SubHeading", () {
+              context.appNavigatorPush(Witnesses(caseFile: widget.caseObject));
               // Navigator.push(
               //     context,
               //     MaterialPageRoute(
               //         builder: (context) => Witnesses(id: caseObject.id)));
-            }, 1)),
+            },
+                context.watch<InboxCubit>().state.payload.caseFile == null
+                    ? 0
+                    : context
+                        .watch<InboxCubit>()
+                        .state
+                        .payload
+                        .caseFile!
+                        .data!
+                        .caseNotesWitness!
+                        .length)),
         StaggeredGridTile.count(
             crossAxisCellCount: 2,
             mainAxisCellCount: 1,
@@ -84,11 +105,25 @@ class _CaseMenuState extends State<CaseMenu> {
                 ),
                 "Case notes",
                 "SubHeading", () {
+              context.appNavigatorPush(CaseNotes(
+                id: widget.caseObject.id!,
+              ));
+
               // Navigator.push(
               //     context,
               //     MaterialPageRoute(
               //         builder: (context) => CaseNotes(id: caseObject.id)));
-            }, 1)),
+            },
+                context.watch<InboxCubit>().state.payload.caseFile == null
+                    ? 0
+                    : context
+                        .watch<InboxCubit>()
+                        .state
+                        .payload
+                        .caseFile!
+                        .data!
+                        .caseNotes!
+                        .length)),
         StaggeredGridTile.count(
             crossAxisCellCount: 2,
             mainAxisCellCount: 1,
@@ -101,13 +136,26 @@ class _CaseMenuState extends State<CaseMenu> {
                 ),
                 "Materials",
                 "SubHeading", () {
+              context.appNavigatorPush(CaseMaterial(
+                id: widget.caseObject.id!,
+              ));
               // Navigator.push(
               //     context,
               //     MaterialPageRoute(
               //         builder: (context) => CaseMaterial(
               //               id: caseObject.id,
               //             )));
-            }, 1)),
+            },
+                context.watch<InboxCubit>().state.payload.caseFile == null
+                    ? 0
+                    : context
+                        .watch<InboxCubit>()
+                        .state
+                        .payload
+                        .caseFile!
+                        .data!
+                        .caseMaterial!
+                        .length)),
         StaggeredGridTile.count(
             crossAxisCellCount: 2,
             mainAxisCellCount: 1,
@@ -120,13 +168,18 @@ class _CaseMenuState extends State<CaseMenu> {
                 ),
                 "Offences",
                 "SubHeading", () {
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (context) => Offences(
-              //               id: caseObject.id,
-              //             )));
-            }, 1)),
+              context.appNavigatorPush(PenalCode(id: widget.caseObject.id!));
+            },
+                context.watch<InboxCubit>().state.payload.caseFile == null
+                    ? 0
+                    : context
+                        .watch<InboxCubit>()
+                        .state
+                        .payload
+                        .caseFile!
+                        .data!
+                        .caseNotesOffences!
+                        .length)),
         StaggeredGridTile.count(
             crossAxisCellCount: 2,
             mainAxisCellCount: 1,
@@ -139,6 +192,8 @@ class _CaseMenuState extends State<CaseMenu> {
                 ),
                 "Summary",
                 "SubHeading", () {
+                    context.appNavigatorPush(const SummaryPage());
+            
               // Navigator.push(
               //     context,
               //     MaterialPageRoute(

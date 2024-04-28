@@ -13,18 +13,18 @@ import 'package:iinvestigation/core/utilities/logging_utils.dart';
 import 'package:iinvestigation/features/inbox/presentation/state/inbox_cubit.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'widgets/IPRS_dialog.dart';
+import 'IPRS_dialog.dart';
 
-class SuspectsForm extends StatefulWidget {
+class WitnessForm extends StatefulWidget {
   final String id;
 
-  SuspectsForm({required this.id});
+  WitnessForm({required this.id});
 
   @override
   _SuspectsFormState createState() => _SuspectsFormState();
 }
 
-class _SuspectsFormState extends State<SuspectsForm> {
+class _SuspectsFormState extends State<WitnessForm> {
   final _formKey = GlobalKey<FormState>();
   final _formKeyIPRS = GlobalKey<FormState>();
   Map<String, dynamic> formData = {};
@@ -38,9 +38,6 @@ class _SuspectsFormState extends State<SuspectsForm> {
   bool _loading = false;
 
   @override
-  void initState() {}
-
-  @override
   Widget build(BuildContext context) {
     // TODO: implement build
 
@@ -50,7 +47,7 @@ class _SuspectsFormState extends State<SuspectsForm> {
             appBar: AppBar(
               backgroundColor: Colors.transparent,
               elevation: 0.0,
-              title: Text("Add suspect"),
+              title: const Text("Add Witness"),
               actions: <Widget>[
                 TextButton(
                     onPressed: onSave,
@@ -279,8 +276,9 @@ class _SuspectsFormState extends State<SuspectsForm> {
         'files':
             await MultipartFile.fromFile(file.first.path, filename: fileName)
       });
-      context.read<InboxCubit>().createSuspect(fd: fd).then((value) {
-        context.showCustomSnackBar("Created Suspect");
+      context.read<InboxCubit>().createWitness(fd: fd).then((value) {
+        context.read<InboxCubit>().getCaseFile(fd: int.parse(widget.id));
+        context.showCustomSnackBar("Created Witness");
         context.back();
       });
     }

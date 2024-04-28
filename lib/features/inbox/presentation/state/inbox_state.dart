@@ -28,8 +28,10 @@ abstract class InboxStatePayload with _$InboxStatePayload {
       {@required String? error,
       @required int? page,
       List<OpenCases>? cases,
-      CaseFile? caseFile, 
-      IprsModel? iprsModel}) = _InboxStatePayload;
+      CaseFile? caseFile,
+      IprsModel? iprsModel,
+      List<PenalCodeResponse>? penalCodes,
+      String? recordingPath}) = _InboxStatePayload;
 
   factory InboxStatePayload.fromJson(Map<String, dynamic> json) =>
       _$InboxStatePayloadFromJson(

@@ -31,11 +31,69 @@ class _InboxPageState extends State<InboxPage> {
         ),
         body: context.watch<InboxCubit>().state.maybeMap(
               orElse: () {
-                return Center(
+                return
+                context.watch<InboxCubit>().state.payload.cases == null
+                  ? Center(
                   child: CircularProgressIndicator(),
-                );
+                )
+                  : ListView(
+                      children:  context.watch<InboxCubit>().state.payload.cases!.map((document) {
+                        return Card(
+                          child: ListTile(
+                            leading:
+                                createAvatar("${document.occurence!.obNo}"),
+                            title: Text("${document.occurence?.obNo}"),
+                            subtitle: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Align(
+                                    alignment: FractionalOffset.centerLeft,
+                                    child: document
+                                                .occurence!.occurenceDetails ==
+                                            null
+                                        ? Text('${document.occurence}')
+                                        : document.occurence!.occurenceDetails!
+                                                .isEmpty
+                                            ? const Text('')
+                                            : Text(
+                                                "${(jsonDecode(document.occurence!.occurenceDetails!.first.details!) as List).map((e) => e['category']['name'])}")),
+                                Align(
+                                    alignment: FractionalOffset.centerLeft,
+                                    child: Text("${document.occurence?.obNo}")),
+                              ],
+                            ),
+                            isThreeLine: true,
+                            trailing: document.status == "OPEN"
+                                ? const Chip(
+                                    labelPadding: EdgeInsets.all(0.1),
+                                    label: Icon(Icons.check_box),
+                                    backgroundColor: Colors.green,
+                                  )
+                                : const Chip(
+                                    labelPadding: EdgeInsets.all(0.1),
+                                    label: Icon(Icons.hourglass_full),
+                                    backgroundColor: Colors.red,
+                                  ),
+                            onTap: () {
+                              context.appNavigatorPush(ViewCase(document));
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (context) => ViewCase(document)));
+                            },
+                            dense: true,
+                          ),
+                        );
+                      }).toList(),
+                    )
+           
+                
+                
+                 ;
               },
-              cases: (value) => value.payload.cases == null
+              cases: (value) => 
+              value.payload.cases == null
                   ? SizedBox()
                   : ListView(
                       children: value.payload.cases!.map((document) {
@@ -88,6 +146,10 @@ class _InboxPageState extends State<InboxPage> {
                         );
                       }).toList(),
                     ),
+           
+           
+           
+           
             ));
   }
 

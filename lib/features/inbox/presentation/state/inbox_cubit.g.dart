@@ -20,6 +20,10 @@ _$InboxStatePayloadImpl _$$InboxStatePayloadImplFromJson(
       iprsModel: json['iprsModel'] == null
           ? null
           : IprsModel.fromJson(json['iprsModel'] as Map<String, dynamic>),
+      penalCodes: (json['penalCodes'] as List<dynamic>?)
+          ?.map((e) => PenalCodeResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      recordingPath: json['recordingPath'] as String?,
     );
 
 Map<String, dynamic> _$$InboxStatePayloadImplToJson(
@@ -30,4 +34,6 @@ Map<String, dynamic> _$$InboxStatePayloadImplToJson(
       'cases': instance.cases,
       'caseFile': instance.caseFile,
       'iprsModel': instance.iprsModel,
+      'penalCodes': instance.penalCodes,
+      'recordingPath': instance.recordingPath,
     };

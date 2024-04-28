@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iinvestigation/core/data/network_datasource/config.dart';
 import 'package:iinvestigation/core/utilities/utilities.dart';
 import 'package:iinvestigation/features/inbox/data/models/open_cases/open_cases.dart';
-import 'package:iinvestigation/features/inbox/presentation/pages/suspect_form.dart';
+import 'package:iinvestigation/features/inbox/presentation/pages/widgets/suspect_form.dart';
 import 'package:iinvestigation/features/inbox/presentation/state/inbox_cubit.dart';
 
 class Suspects extends StatefulWidget {
@@ -15,10 +16,11 @@ class Suspects extends StatefulWidget {
 
 class _SuspectsState extends State<Suspects> {
   @override
-  void initState() { 
+  void initState() {
     super.initState();
-    context.read<InboxCubit>().getCaseFile( fd: widget.caseFile.id!);
+    context.read<InboxCubit>().getCaseFile(fd: widget.caseFile.id!);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,16 +43,25 @@ class _SuspectsState extends State<Suspects> {
                 ))
           ],
         ),
-        body: 
-        context.watch<InboxCubit>().state.maybeWhen(
-          orElse: (){
-          return Text('${widget.caseFile.id}');
-
-        },
-        caseFile: (payload) => Text("${payload.caseFile}"),
-
-        
-        )
+        body: context.watch<InboxCubit>().state.maybeWhen(
+              orElse: () {
+                return const SizedBox();
+              },
+              loading: (_) => const Center(
+                child: CircularProgressIndicator(),
+              ),
+              caseFile: (payload) => ListView(
+                children: [
+                  ...payload.caseFile!.data!.caseNotesSuspect!.map((e) =>
+                      ListTile(
+                        visualDensity: VisualDensity.comfortable,
+                        leading: Image.network("$BASE_URLASSETS${e.picture}"),
+                        title: Text("${e.iprs?.firstName} ${e.iprs?.lastName}"),
+                        subtitle: Text("${e.iprs?.idNo}  "),
+                      ))
+                ],
+              ),
+            )
 
         // StreamBuilder<QuerySnapshot>(
         //   stream: Firestore.instance

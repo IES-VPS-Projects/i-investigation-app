@@ -33,9 +33,17 @@ mixin _$Data {
   @JsonKey(name: 'CaseSummary')
   List<dynamic>? get caseSummary => throw _privateConstructorUsedError;
   @JsonKey(name: 'CaseMaterial')
-  List<dynamic>? get caseMaterial => throw _privateConstructorUsedError;
+  List<CaseMaterial>? get caseMaterial => throw _privateConstructorUsedError;
+  @JsonKey(name: 'CaseNotesWitness')
+  List<CaseNotesWitness>? get caseNotesWitness =>
+      throw _privateConstructorUsedError;
   @JsonKey(name: 'CaseNotesSuspect')
   List<CaseNotesSuspect>? get caseNotesSuspect =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: 'CaseNotes')
+  List<CaseNote>? get caseNotes => throw _privateConstructorUsedError;
+  @JsonKey(name: 'CaseNotesOffences')
+  List<CaseNotesOffence>? get caseNotesOffences =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -58,9 +66,14 @@ abstract class $DataCopyWith<$Res> {
       @JsonKey(name: 'CaseFileOfficers')
       List<CaseFileOfficer>? caseFileOfficers,
       @JsonKey(name: 'CaseSummary') List<dynamic>? caseSummary,
-      @JsonKey(name: 'CaseMaterial') List<dynamic>? caseMaterial,
+      @JsonKey(name: 'CaseMaterial') List<CaseMaterial>? caseMaterial,
+      @JsonKey(name: 'CaseNotesWitness')
+      List<CaseNotesWitness>? caseNotesWitness,
       @JsonKey(name: 'CaseNotesSuspect')
-      List<CaseNotesSuspect>? caseNotesSuspect});
+      List<CaseNotesSuspect>? caseNotesSuspect,
+      @JsonKey(name: 'CaseNotes') List<CaseNote>? caseNotes,
+      @JsonKey(name: 'CaseNotesOffences')
+      List<CaseNotesOffence>? caseNotesOffences});
 }
 
 /// @nodoc
@@ -85,7 +98,10 @@ class _$DataCopyWithImpl<$Res, $Val extends Data>
     Object? caseFileOfficers = freezed,
     Object? caseSummary = freezed,
     Object? caseMaterial = freezed,
+    Object? caseNotesWitness = freezed,
     Object? caseNotesSuspect = freezed,
+    Object? caseNotes = freezed,
+    Object? caseNotesOffences = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -123,11 +139,23 @@ class _$DataCopyWithImpl<$Res, $Val extends Data>
       caseMaterial: freezed == caseMaterial
           ? _value.caseMaterial
           : caseMaterial // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<CaseMaterial>?,
+      caseNotesWitness: freezed == caseNotesWitness
+          ? _value.caseNotesWitness
+          : caseNotesWitness // ignore: cast_nullable_to_non_nullable
+              as List<CaseNotesWitness>?,
       caseNotesSuspect: freezed == caseNotesSuspect
           ? _value.caseNotesSuspect
           : caseNotesSuspect // ignore: cast_nullable_to_non_nullable
               as List<CaseNotesSuspect>?,
+      caseNotes: freezed == caseNotes
+          ? _value.caseNotes
+          : caseNotes // ignore: cast_nullable_to_non_nullable
+              as List<CaseNote>?,
+      caseNotesOffences: freezed == caseNotesOffences
+          ? _value.caseNotesOffences
+          : caseNotesOffences // ignore: cast_nullable_to_non_nullable
+              as List<CaseNotesOffence>?,
     ) as $Val);
   }
 }
@@ -149,9 +177,14 @@ abstract class _$$DataImplCopyWith<$Res> implements $DataCopyWith<$Res> {
       @JsonKey(name: 'CaseFileOfficers')
       List<CaseFileOfficer>? caseFileOfficers,
       @JsonKey(name: 'CaseSummary') List<dynamic>? caseSummary,
-      @JsonKey(name: 'CaseMaterial') List<dynamic>? caseMaterial,
+      @JsonKey(name: 'CaseMaterial') List<CaseMaterial>? caseMaterial,
+      @JsonKey(name: 'CaseNotesWitness')
+      List<CaseNotesWitness>? caseNotesWitness,
       @JsonKey(name: 'CaseNotesSuspect')
-      List<CaseNotesSuspect>? caseNotesSuspect});
+      List<CaseNotesSuspect>? caseNotesSuspect,
+      @JsonKey(name: 'CaseNotes') List<CaseNote>? caseNotes,
+      @JsonKey(name: 'CaseNotesOffences')
+      List<CaseNotesOffence>? caseNotesOffences});
 }
 
 /// @nodoc
@@ -173,7 +206,10 @@ class __$$DataImplCopyWithImpl<$Res>
     Object? caseFileOfficers = freezed,
     Object? caseSummary = freezed,
     Object? caseMaterial = freezed,
+    Object? caseNotesWitness = freezed,
     Object? caseNotesSuspect = freezed,
+    Object? caseNotes = freezed,
+    Object? caseNotesOffences = freezed,
   }) {
     return _then(_$DataImpl(
       id: freezed == id
@@ -211,11 +247,23 @@ class __$$DataImplCopyWithImpl<$Res>
       caseMaterial: freezed == caseMaterial
           ? _value._caseMaterial
           : caseMaterial // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<CaseMaterial>?,
+      caseNotesWitness: freezed == caseNotesWitness
+          ? _value._caseNotesWitness
+          : caseNotesWitness // ignore: cast_nullable_to_non_nullable
+              as List<CaseNotesWitness>?,
       caseNotesSuspect: freezed == caseNotesSuspect
           ? _value._caseNotesSuspect
           : caseNotesSuspect // ignore: cast_nullable_to_non_nullable
               as List<CaseNotesSuspect>?,
+      caseNotes: freezed == caseNotes
+          ? _value._caseNotes
+          : caseNotes // ignore: cast_nullable_to_non_nullable
+              as List<CaseNote>?,
+      caseNotesOffences: freezed == caseNotesOffences
+          ? _value._caseNotesOffences
+          : caseNotesOffences // ignore: cast_nullable_to_non_nullable
+              as List<CaseNotesOffence>?,
     ));
   }
 }
@@ -233,13 +281,21 @@ class _$DataImpl implements _Data {
       @JsonKey(name: 'CaseFileOfficers')
       final List<CaseFileOfficer>? caseFileOfficers,
       @JsonKey(name: 'CaseSummary') final List<dynamic>? caseSummary,
-      @JsonKey(name: 'CaseMaterial') final List<dynamic>? caseMaterial,
+      @JsonKey(name: 'CaseMaterial') final List<CaseMaterial>? caseMaterial,
+      @JsonKey(name: 'CaseNotesWitness')
+      final List<CaseNotesWitness>? caseNotesWitness,
       @JsonKey(name: 'CaseNotesSuspect')
-      final List<CaseNotesSuspect>? caseNotesSuspect})
+      final List<CaseNotesSuspect>? caseNotesSuspect,
+      @JsonKey(name: 'CaseNotes') final List<CaseNote>? caseNotes,
+      @JsonKey(name: 'CaseNotesOffences')
+      final List<CaseNotesOffence>? caseNotesOffences})
       : _caseFileOfficers = caseFileOfficers,
         _caseSummary = caseSummary,
         _caseMaterial = caseMaterial,
-        _caseNotesSuspect = caseNotesSuspect;
+        _caseNotesWitness = caseNotesWitness,
+        _caseNotesSuspect = caseNotesSuspect,
+        _caseNotes = caseNotes,
+        _caseNotesOffences = caseNotesOffences;
 
   factory _$DataImpl.fromJson(Map<String, dynamic> json) =>
       _$$DataImplFromJson(json);
@@ -280,13 +336,25 @@ class _$DataImpl implements _Data {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<dynamic>? _caseMaterial;
+  final List<CaseMaterial>? _caseMaterial;
   @override
   @JsonKey(name: 'CaseMaterial')
-  List<dynamic>? get caseMaterial {
+  List<CaseMaterial>? get caseMaterial {
     final value = _caseMaterial;
     if (value == null) return null;
     if (_caseMaterial is EqualUnmodifiableListView) return _caseMaterial;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<CaseNotesWitness>? _caseNotesWitness;
+  @override
+  @JsonKey(name: 'CaseNotesWitness')
+  List<CaseNotesWitness>? get caseNotesWitness {
+    final value = _caseNotesWitness;
+    if (value == null) return null;
+    if (_caseNotesWitness is EqualUnmodifiableListView)
+      return _caseNotesWitness;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -303,9 +371,32 @@ class _$DataImpl implements _Data {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<CaseNote>? _caseNotes;
+  @override
+  @JsonKey(name: 'CaseNotes')
+  List<CaseNote>? get caseNotes {
+    final value = _caseNotes;
+    if (value == null) return null;
+    if (_caseNotes is EqualUnmodifiableListView) return _caseNotes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<CaseNotesOffence>? _caseNotesOffences;
+  @override
+  @JsonKey(name: 'CaseNotesOffences')
+  List<CaseNotesOffence>? get caseNotesOffences {
+    final value = _caseNotesOffences;
+    if (value == null) return null;
+    if (_caseNotesOffences is EqualUnmodifiableListView)
+      return _caseNotesOffences;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   String toString() {
-    return 'Data(id: $id, available: $available, userId: $userId, status: $status, createdAt: $createdAt, occurenceId: $occurenceId, caseFileOfficers: $caseFileOfficers, caseSummary: $caseSummary, caseMaterial: $caseMaterial, caseNotesSuspect: $caseNotesSuspect)';
+    return 'Data(id: $id, available: $available, userId: $userId, status: $status, createdAt: $createdAt, occurenceId: $occurenceId, caseFileOfficers: $caseFileOfficers, caseSummary: $caseSummary, caseMaterial: $caseMaterial, caseNotesWitness: $caseNotesWitness, caseNotesSuspect: $caseNotesSuspect, caseNotes: $caseNotes, caseNotesOffences: $caseNotesOffences)';
   }
 
   @override
@@ -329,7 +420,13 @@ class _$DataImpl implements _Data {
             const DeepCollectionEquality()
                 .equals(other._caseMaterial, _caseMaterial) &&
             const DeepCollectionEquality()
-                .equals(other._caseNotesSuspect, _caseNotesSuspect));
+                .equals(other._caseNotesWitness, _caseNotesWitness) &&
+            const DeepCollectionEquality()
+                .equals(other._caseNotesSuspect, _caseNotesSuspect) &&
+            const DeepCollectionEquality()
+                .equals(other._caseNotes, _caseNotes) &&
+            const DeepCollectionEquality()
+                .equals(other._caseNotesOffences, _caseNotesOffences));
   }
 
   @JsonKey(ignore: true)
@@ -345,7 +442,10 @@ class _$DataImpl implements _Data {
       const DeepCollectionEquality().hash(_caseFileOfficers),
       const DeepCollectionEquality().hash(_caseSummary),
       const DeepCollectionEquality().hash(_caseMaterial),
-      const DeepCollectionEquality().hash(_caseNotesSuspect));
+      const DeepCollectionEquality().hash(_caseNotesWitness),
+      const DeepCollectionEquality().hash(_caseNotesSuspect),
+      const DeepCollectionEquality().hash(_caseNotes),
+      const DeepCollectionEquality().hash(_caseNotesOffences));
 
   @JsonKey(ignore: true)
   @override
@@ -372,9 +472,14 @@ abstract class _Data implements Data {
       @JsonKey(name: 'CaseFileOfficers')
       final List<CaseFileOfficer>? caseFileOfficers,
       @JsonKey(name: 'CaseSummary') final List<dynamic>? caseSummary,
-      @JsonKey(name: 'CaseMaterial') final List<dynamic>? caseMaterial,
+      @JsonKey(name: 'CaseMaterial') final List<CaseMaterial>? caseMaterial,
+      @JsonKey(name: 'CaseNotesWitness')
+      final List<CaseNotesWitness>? caseNotesWitness,
       @JsonKey(name: 'CaseNotesSuspect')
-      final List<CaseNotesSuspect>? caseNotesSuspect}) = _$DataImpl;
+      final List<CaseNotesSuspect>? caseNotesSuspect,
+      @JsonKey(name: 'CaseNotes') final List<CaseNote>? caseNotes,
+      @JsonKey(name: 'CaseNotesOffences')
+      final List<CaseNotesOffence>? caseNotesOffences}) = _$DataImpl;
 
   factory _Data.fromJson(Map<String, dynamic> json) = _$DataImpl.fromJson;
 
@@ -399,10 +504,19 @@ abstract class _Data implements Data {
   List<dynamic>? get caseSummary;
   @override
   @JsonKey(name: 'CaseMaterial')
-  List<dynamic>? get caseMaterial;
+  List<CaseMaterial>? get caseMaterial;
+  @override
+  @JsonKey(name: 'CaseNotesWitness')
+  List<CaseNotesWitness>? get caseNotesWitness;
   @override
   @JsonKey(name: 'CaseNotesSuspect')
   List<CaseNotesSuspect>? get caseNotesSuspect;
+  @override
+  @JsonKey(name: 'CaseNotes')
+  List<CaseNote>? get caseNotes;
+  @override
+  @JsonKey(name: 'CaseNotesOffences')
+  List<CaseNotesOffence>? get caseNotesOffences;
   @override
   @JsonKey(ignore: true)
   _$$DataImplCopyWith<_$DataImpl> get copyWith =>

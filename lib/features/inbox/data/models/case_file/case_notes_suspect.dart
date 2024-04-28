@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'iprs.dart';
+
 part 'case_notes_suspect.freezed.dart';
 part 'case_notes_suspect.g.dart';
 
@@ -13,6 +15,7 @@ class CaseNotesSuspect with _$CaseNotesSuspect {
     @JsonKey(name: 'iPRS_PersonId') int? iPrsPersonId,
     dynamic caseNotesId,
     int? caseFileId,
+    Iprs? iprs,
   }) = _CaseNotesSuspect;
 
   factory CaseNotesSuspect.fromJson(Map<String, dynamic> json) =>

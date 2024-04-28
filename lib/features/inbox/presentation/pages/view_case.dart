@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iinvestigation/core/data/datasources/local_storage_data_source.dart';
 import 'package:iinvestigation/features/inbox/data/models/open_cases/open_cases.dart';
 import 'package:iinvestigation/features/inbox/presentation/pages/view_case_form.dart';
+import 'package:iinvestigation/features/inbox/presentation/state/inbox_cubit.dart';
 
 class ViewCase extends StatefulWidget {
   final OpenCases caseFile;
@@ -16,6 +18,7 @@ class _ViewCaseState extends State<ViewCase> {
   void initState() {
     super.initState();
     getServiceNumber();
+    context.read<InboxCubit>().getCaseFile(fd: widget.caseFile.id!);
   }
 
   dynamic _profile = '22';

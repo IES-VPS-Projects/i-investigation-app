@@ -1,7 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'case_file_officer.dart';
+import 'case_material.dart';
+import 'case_note.dart';
+import 'case_notes_offence.dart';
 import 'case_notes_suspect.dart';
+import 'case_notes_witness.dart';
 
 part 'data.freezed.dart';
 part 'data.g.dart';
@@ -17,8 +21,12 @@ class Data with _$Data {
     int? occurenceId,
     @JsonKey(name: 'CaseFileOfficers') List<CaseFileOfficer>? caseFileOfficers,
     @JsonKey(name: 'CaseSummary') List<dynamic>? caseSummary,
-    @JsonKey(name: 'CaseMaterial') List<dynamic>? caseMaterial,
+    @JsonKey(name: 'CaseMaterial') List<CaseMaterial>? caseMaterial,
+    @JsonKey(name: 'CaseNotesWitness') List<CaseNotesWitness>? caseNotesWitness,
     @JsonKey(name: 'CaseNotesSuspect') List<CaseNotesSuspect>? caseNotesSuspect,
+    @JsonKey(name: 'CaseNotes') List<CaseNote>? caseNotes,
+    @JsonKey(name: 'CaseNotesOffences')
+    List<CaseNotesOffence>? caseNotesOffences,
   }) = _Data;
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
