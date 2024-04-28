@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iinvestigation/core/data/network_datasource/config.dart';
+import 'package:iinvestigation/core/utilities/utilities.dart';
+import 'package:iinvestigation/features/dashboard/presentation/pages/dashboard.dart';
 import 'package:iinvestigation/features/inbox/data/models/case_file/case_note.dart';
 import 'package:iinvestigation/features/inbox/data/models/case_file/case_notes_suspect.dart';
 import 'package:iinvestigation/features/inbox/presentation/state/inbox_cubit.dart';
@@ -31,7 +33,10 @@ class _SummaryState extends State<SummaryPage> {
       appBar: AppBar(
         title: Text("Investigation Summary"),
       ),
-      body: Stepper(
+      body:
+       context.watch<InboxCubit>().state.maybeWhen(
+        loading:(_)=> Center(child: CircularProgressIndicator(),),
+        orElse: ()=>    Stepper(
           currentStep: currentStep,
           onStepTapped: (steps) {
             setState(() {
@@ -46,18 +51,28 @@ class _SummaryState extends State<SummaryPage> {
                 print(notesData);
 
                 FormData payload = FormData.fromMap({
-                  'summary':summary.text,
-                  'caseFile':context.read<InboxCubit>().state.payload.caseFile!.data!.id!,
-                  "witness":whereToAppendData.map((e) => e.id).toList(),
-                  'suspects':whereSuspectToAppendData.map((e) => e.id).toList(),
-                  'caseNotes':notesData.map((e) => e.id).toList(),
-                  'materials':materials.map((e) => e.id).toList()
-
-
+                  'summary': summary.text,
+                  'caseFile': context
+                      .read<InboxCubit>()
+                      .state
+                      .payload
+                      .caseFile!
+                      .data!
+                      .id!,
+                  "witness": whereToAppendData.map((e) => e.id).toList(),
+                  'suspects':
+                      whereSuspectToAppendData.map((e) => e.id).toList(),
+                  'caseNotes': notesData.map((e) => e.id).toList(),
+                  'materials': materials.map((e) => e.id).toList()
                 });
-                context.read<InboxCubit>().createSummary(payload: payload);
-                print(payload);
-                print("Finished....");
+                context
+                    .read<InboxCubit>()
+                    .createSummary(payload: payload)
+                    .then((value) {
+                  context.read<InboxCubit>().getAllCases();
+                  context.appNavigatorReplacement(const Dashboard());
+                  context.showCustomSnackBar("Case Closed");
+                });
               }
             });
           },
@@ -67,6 +82,7 @@ class _SummaryState extends State<SummaryPage> {
             });
           },
           steps: _steps()),
+   )
     );
   }
 

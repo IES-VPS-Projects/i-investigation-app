@@ -172,8 +172,15 @@ class InboxCubit extends Cubit<InboxState> {
     });
   }
   Future<void> createSummary({required FormData payload}) async {
-    
+     emit(InboxState.loading(payload: state.payload.copyWith()));
+
     var results = await _createSummary(payload);
-    
+     results.fold((l) {
+      print(l);
+      emit(InboxState.caseFile(payload: state.payload.copyWith()));
+    }, (r) {
+      emit(InboxState.errorIPRS(
+          payload: state.payload.copyWith(error: r.message)));
+    });
   }
 }
