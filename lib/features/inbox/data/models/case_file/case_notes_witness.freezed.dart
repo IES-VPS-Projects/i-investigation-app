@@ -29,6 +29,7 @@ mixin _$CaseNotesWitness {
   int? get userId => throw _privateConstructorUsedError;
   int? get caseFileId => throw _privateConstructorUsedError;
   dynamic get caseNotesId => throw _privateConstructorUsedError;
+  dynamic get caseSummaryId => throw _privateConstructorUsedError;
   Iprs? get iprs => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,6 +52,7 @@ abstract class $CaseNotesWitnessCopyWith<$Res> {
       int? userId,
       int? caseFileId,
       dynamic caseNotesId,
+      dynamic caseSummaryId,
       Iprs? iprs});
 
   $IprsCopyWith<$Res>? get iprs;
@@ -76,6 +78,7 @@ class _$CaseNotesWitnessCopyWithImpl<$Res, $Val extends CaseNotesWitness>
     Object? userId = freezed,
     Object? caseFileId = freezed,
     Object? caseNotesId = freezed,
+    Object? caseSummaryId = freezed,
     Object? iprs = freezed,
   }) {
     return _then(_value.copyWith(
@@ -106,6 +109,10 @@ class _$CaseNotesWitnessCopyWithImpl<$Res, $Val extends CaseNotesWitness>
       caseNotesId: freezed == caseNotesId
           ? _value.caseNotesId
           : caseNotesId // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      caseSummaryId: freezed == caseSummaryId
+          ? _value.caseSummaryId
+          : caseSummaryId // ignore: cast_nullable_to_non_nullable
               as dynamic,
       iprs: freezed == iprs
           ? _value.iprs
@@ -143,6 +150,7 @@ abstract class _$$CaseNotesWitnessImplCopyWith<$Res>
       int? userId,
       int? caseFileId,
       dynamic caseNotesId,
+      dynamic caseSummaryId,
       Iprs? iprs});
 
   @override
@@ -167,6 +175,7 @@ class __$$CaseNotesWitnessImplCopyWithImpl<$Res>
     Object? userId = freezed,
     Object? caseFileId = freezed,
     Object? caseNotesId = freezed,
+    Object? caseSummaryId = freezed,
     Object? iprs = freezed,
   }) {
     return _then(_$CaseNotesWitnessImpl(
@@ -198,6 +207,10 @@ class __$$CaseNotesWitnessImplCopyWithImpl<$Res>
           ? _value.caseNotesId
           : caseNotesId // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      caseSummaryId: freezed == caseSummaryId
+          ? _value.caseSummaryId
+          : caseSummaryId // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       iprs: freezed == iprs
           ? _value.iprs
           : iprs // ignore: cast_nullable_to_non_nullable
@@ -217,6 +230,7 @@ class _$CaseNotesWitnessImpl implements _CaseNotesWitness {
       this.userId,
       this.caseFileId,
       this.caseNotesId,
+      this.caseSummaryId,
       this.iprs});
 
   factory _$CaseNotesWitnessImpl.fromJson(Map<String, dynamic> json) =>
@@ -239,11 +253,13 @@ class _$CaseNotesWitnessImpl implements _CaseNotesWitness {
   @override
   final dynamic caseNotesId;
   @override
+  final dynamic caseSummaryId;
+  @override
   final Iprs? iprs;
 
   @override
   String toString() {
-    return 'CaseNotesWitness(id: $id, picture: $picture, createdAt: $createdAt, iPrsPersonId: $iPrsPersonId, userId: $userId, caseFileId: $caseFileId, caseNotesId: $caseNotesId, iprs: $iprs)';
+    return 'CaseNotesWitness(id: $id, picture: $picture, createdAt: $createdAt, iPrsPersonId: $iPrsPersonId, userId: $userId, caseFileId: $caseFileId, caseNotesId: $caseNotesId, caseSummaryId: $caseSummaryId, iprs: $iprs)';
   }
 
   @override
@@ -262,6 +278,8 @@ class _$CaseNotesWitnessImpl implements _CaseNotesWitness {
                 other.caseFileId == caseFileId) &&
             const DeepCollectionEquality()
                 .equals(other.caseNotesId, caseNotesId) &&
+            const DeepCollectionEquality()
+                .equals(other.caseSummaryId, caseSummaryId) &&
             (identical(other.iprs, iprs) || other.iprs == iprs));
   }
 
@@ -276,6 +294,7 @@ class _$CaseNotesWitnessImpl implements _CaseNotesWitness {
       userId,
       caseFileId,
       const DeepCollectionEquality().hash(caseNotesId),
+      const DeepCollectionEquality().hash(caseSummaryId),
       iprs);
 
   @JsonKey(ignore: true)
@@ -302,6 +321,7 @@ abstract class _CaseNotesWitness implements CaseNotesWitness {
       final int? userId,
       final int? caseFileId,
       final dynamic caseNotesId,
+      final dynamic caseSummaryId,
       final Iprs? iprs}) = _$CaseNotesWitnessImpl;
 
   factory _CaseNotesWitness.fromJson(Map<String, dynamic> json) =
@@ -323,6 +343,8 @@ abstract class _CaseNotesWitness implements CaseNotesWitness {
   int? get caseFileId;
   @override
   dynamic get caseNotesId;
+  @override
+  dynamic get caseSummaryId;
   @override
   Iprs? get iprs;
   @override

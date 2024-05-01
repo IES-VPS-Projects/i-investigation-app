@@ -17,6 +17,7 @@ class CaseMaterial with _$CaseMaterial {
     dynamic location,
     dynamic locationName,
     @JsonKey(name: 'created_at') DateTime? createdAt,
+    int? caseSummaryId,
   }) = _CaseMaterial;
 
   factory CaseMaterial.fromJson(Map<String, dynamic> json) =>

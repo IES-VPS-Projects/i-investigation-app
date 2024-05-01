@@ -29,6 +29,7 @@ mixin _$CaseNotesSuspect {
   int? get iPrsPersonId => throw _privateConstructorUsedError;
   dynamic get caseNotesId => throw _privateConstructorUsedError;
   int? get caseFileId => throw _privateConstructorUsedError;
+  dynamic get caseSummaryId => throw _privateConstructorUsedError;
   Iprs? get iprs => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,6 +52,7 @@ abstract class $CaseNotesSuspectCopyWith<$Res> {
       @JsonKey(name: 'iPRS_PersonId') int? iPrsPersonId,
       dynamic caseNotesId,
       int? caseFileId,
+      dynamic caseSummaryId,
       Iprs? iprs});
 
   $IprsCopyWith<$Res>? get iprs;
@@ -76,6 +78,7 @@ class _$CaseNotesSuspectCopyWithImpl<$Res, $Val extends CaseNotesSuspect>
     Object? iPrsPersonId = freezed,
     Object? caseNotesId = freezed,
     Object? caseFileId = freezed,
+    Object? caseSummaryId = freezed,
     Object? iprs = freezed,
   }) {
     return _then(_value.copyWith(
@@ -107,6 +110,10 @@ class _$CaseNotesSuspectCopyWithImpl<$Res, $Val extends CaseNotesSuspect>
           ? _value.caseFileId
           : caseFileId // ignore: cast_nullable_to_non_nullable
               as int?,
+      caseSummaryId: freezed == caseSummaryId
+          ? _value.caseSummaryId
+          : caseSummaryId // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       iprs: freezed == iprs
           ? _value.iprs
           : iprs // ignore: cast_nullable_to_non_nullable
@@ -143,6 +150,7 @@ abstract class _$$CaseNotesSuspectImplCopyWith<$Res>
       @JsonKey(name: 'iPRS_PersonId') int? iPrsPersonId,
       dynamic caseNotesId,
       int? caseFileId,
+      dynamic caseSummaryId,
       Iprs? iprs});
 
   @override
@@ -167,6 +175,7 @@ class __$$CaseNotesSuspectImplCopyWithImpl<$Res>
     Object? iPrsPersonId = freezed,
     Object? caseNotesId = freezed,
     Object? caseFileId = freezed,
+    Object? caseSummaryId = freezed,
     Object? iprs = freezed,
   }) {
     return _then(_$CaseNotesSuspectImpl(
@@ -198,6 +207,10 @@ class __$$CaseNotesSuspectImplCopyWithImpl<$Res>
           ? _value.caseFileId
           : caseFileId // ignore: cast_nullable_to_non_nullable
               as int?,
+      caseSummaryId: freezed == caseSummaryId
+          ? _value.caseSummaryId
+          : caseSummaryId // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       iprs: freezed == iprs
           ? _value.iprs
           : iprs // ignore: cast_nullable_to_non_nullable
@@ -217,6 +230,7 @@ class _$CaseNotesSuspectImpl implements _CaseNotesSuspect {
       @JsonKey(name: 'iPRS_PersonId') this.iPrsPersonId,
       this.caseNotesId,
       this.caseFileId,
+      this.caseSummaryId,
       this.iprs});
 
   factory _$CaseNotesSuspectImpl.fromJson(Map<String, dynamic> json) =>
@@ -239,11 +253,13 @@ class _$CaseNotesSuspectImpl implements _CaseNotesSuspect {
   @override
   final int? caseFileId;
   @override
+  final dynamic caseSummaryId;
+  @override
   final Iprs? iprs;
 
   @override
   String toString() {
-    return 'CaseNotesSuspect(id: $id, picture: $picture, userId: $userId, createdAt: $createdAt, iPrsPersonId: $iPrsPersonId, caseNotesId: $caseNotesId, caseFileId: $caseFileId, iprs: $iprs)';
+    return 'CaseNotesSuspect(id: $id, picture: $picture, userId: $userId, createdAt: $createdAt, iPrsPersonId: $iPrsPersonId, caseNotesId: $caseNotesId, caseFileId: $caseFileId, caseSummaryId: $caseSummaryId, iprs: $iprs)';
   }
 
   @override
@@ -262,6 +278,8 @@ class _$CaseNotesSuspectImpl implements _CaseNotesSuspect {
                 .equals(other.caseNotesId, caseNotesId) &&
             (identical(other.caseFileId, caseFileId) ||
                 other.caseFileId == caseFileId) &&
+            const DeepCollectionEquality()
+                .equals(other.caseSummaryId, caseSummaryId) &&
             (identical(other.iprs, iprs) || other.iprs == iprs));
   }
 
@@ -276,6 +294,7 @@ class _$CaseNotesSuspectImpl implements _CaseNotesSuspect {
       iPrsPersonId,
       const DeepCollectionEquality().hash(caseNotesId),
       caseFileId,
+      const DeepCollectionEquality().hash(caseSummaryId),
       iprs);
 
   @JsonKey(ignore: true)
@@ -302,6 +321,7 @@ abstract class _CaseNotesSuspect implements CaseNotesSuspect {
       @JsonKey(name: 'iPRS_PersonId') final int? iPrsPersonId,
       final dynamic caseNotesId,
       final int? caseFileId,
+      final dynamic caseSummaryId,
       final Iprs? iprs}) = _$CaseNotesSuspectImpl;
 
   factory _CaseNotesSuspect.fromJson(Map<String, dynamic> json) =
@@ -323,6 +343,8 @@ abstract class _CaseNotesSuspect implements CaseNotesSuspect {
   dynamic get caseNotesId;
   @override
   int? get caseFileId;
+  @override
+  dynamic get caseSummaryId;
   @override
   Iprs? get iprs;
   @override

@@ -30,60 +30,62 @@ class _SummaryState extends State<SummaryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Investigation Summary"),
-      ),
-      body:
-       context.watch<InboxCubit>().state.maybeWhen(
-        loading:(_)=> Center(child: CircularProgressIndicator(),),
-        orElse: ()=>    Stepper(
-          currentStep: currentStep,
-          onStepTapped: (steps) {
-            setState(() {
-              currentStep = steps;
-            });
-          },
-          onStepContinue: () {
-            setState(() {
-              if (currentStep < _steps().length - 1) {
-                currentStep++;
-              } else {
-                print(notesData);
+        appBar: AppBar(
+          title: Text("Investigation Summary"),
+        ),
+        body: context.watch<InboxCubit>().state.maybeWhen(
+              loading: (_) => Center(
+                child: CircularProgressIndicator(),
+              ),
+              orElse: () => Stepper(
+                  currentStep: currentStep,
+                  onStepTapped: (steps) {
+                    setState(() {
+                      currentStep = steps;
+                    });
+                  },
+                  onStepContinue: () {
+                    setState(() {
+                      if (currentStep < _steps().length - 1) {
+                        currentStep++;
+                      } else {
+                        print(notesData);
 
-                FormData payload = FormData.fromMap({
-                  'summary': summary.text,
-                  'caseFile': context
-                      .read<InboxCubit>()
-                      .state
-                      .payload
-                      .caseFile!
-                      .data!
-                      .id!,
-                  "witness": whereToAppendData.map((e) => e.id).toList(),
-                  'suspects':
-                      whereSuspectToAppendData.map((e) => e.id).toList(),
-                  'caseNotes': notesData.map((e) => e.id).toList(),
-                  'materials': materials.map((e) => e.id).toList()
-                });
-                context
-                    .read<InboxCubit>()
-                    .createSummary(payload: payload)
-                    .then((value) {
-                  context.read<InboxCubit>().getAllCases();
-                  context.appNavigatorReplacement(const Dashboard());
-                  context.showCustomSnackBar("Case Closed");
-                });
-              }
-            });
-          },
-          onStepCancel: () {
-            setState(() {
-              if (currentStep > 0) currentStep--;
-            });
-          },
-          steps: _steps()),
-   )
-    );
+                        FormData payload = FormData.fromMap({
+                          'summary': summary.text,
+                          'caseFile': context
+                              .read<InboxCubit>()
+                              .state
+                              .payload
+                              .caseFile!
+                              .data!
+                              .id!,
+                          "witness":
+                              whereToAppendData.map((e) => e.id).toList(),
+                          'suspects': whereSuspectToAppendData
+                              .map((e) => e.id)
+                              .toList(),
+                          'caseNotes': notesData.map((e) => e.id).toList(),
+                          'materials': materials.map((e) => e.id).toList()
+                        });
+                        context
+                            .read<InboxCubit>()
+                            .createSummary(payload: payload)
+                            .then((value) {
+                          context.read<InboxCubit>().getAllCases();
+                          context.appNavigatorReplacement(const Dashboard());
+                          context.showCustomSnackBar("Case Closed");
+                        });
+                      }
+                    });
+                  },
+                  onStepCancel: () {
+                    setState(() {
+                      if (currentStep > 0) currentStep--;
+                    });
+                  },
+                  steps: _steps()),
+            ));
   }
 
   List<Step> _steps() {

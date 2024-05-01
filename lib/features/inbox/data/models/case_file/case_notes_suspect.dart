@@ -15,6 +15,7 @@ class CaseNotesSuspect with _$CaseNotesSuspect {
     @JsonKey(name: 'iPRS_PersonId') int? iPrsPersonId,
     dynamic caseNotesId,
     int? caseFileId,
+    dynamic caseSummaryId,
     Iprs? iprs,
   }) = _CaseNotesSuspect;
 

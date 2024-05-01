@@ -14,7 +14,7 @@ class PenalCode extends StatelessWidget {
   final int id;
   const PenalCode({required this.id});
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,

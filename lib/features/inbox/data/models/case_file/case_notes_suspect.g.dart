@@ -18,6 +18,7 @@ _$CaseNotesSuspectImpl _$$CaseNotesSuspectImplFromJson(
       iPrsPersonId: json['iPRS_PersonId'] as int?,
       caseNotesId: json['caseNotesId'],
       caseFileId: json['caseFileId'] as int?,
+      caseSummaryId: json['caseSummaryId'],
       iprs: json['iprs'] == null
           ? null
           : Iprs.fromJson(json['iprs'] as Map<String, dynamic>),
@@ -33,5 +34,6 @@ Map<String, dynamic> _$$CaseNotesSuspectImplToJson(
       'iPRS_PersonId': instance.iPrsPersonId,
       'caseNotesId': instance.caseNotesId,
       'caseFileId': instance.caseFileId,
+      'caseSummaryId': instance.caseSummaryId,
       'iprs': instance.iprs,
     };

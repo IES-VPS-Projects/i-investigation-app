@@ -27,6 +27,7 @@ mixin _$CaseNotesOffence {
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
   int? get caseFileId => throw _privateConstructorUsedError;
+  dynamic get caseSummaryId => throw _privateConstructorUsedError;
   Penalcode? get penalcode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -48,6 +49,7 @@ abstract class $CaseNotesOffenceCopyWith<$Res> {
       dynamic userId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       int? caseFileId,
+      dynamic caseSummaryId,
       Penalcode? penalcode});
 
   $PenalcodeCopyWith<$Res>? get penalcode;
@@ -72,6 +74,7 @@ class _$CaseNotesOffenceCopyWithImpl<$Res, $Val extends CaseNotesOffence>
     Object? userId = freezed,
     Object? createdAt = freezed,
     Object? caseFileId = freezed,
+    Object? caseSummaryId = freezed,
     Object? penalcode = freezed,
   }) {
     return _then(_value.copyWith(
@@ -99,6 +102,10 @@ class _$CaseNotesOffenceCopyWithImpl<$Res, $Val extends CaseNotesOffence>
           ? _value.caseFileId
           : caseFileId // ignore: cast_nullable_to_non_nullable
               as int?,
+      caseSummaryId: freezed == caseSummaryId
+          ? _value.caseSummaryId
+          : caseSummaryId // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       penalcode: freezed == penalcode
           ? _value.penalcode
           : penalcode // ignore: cast_nullable_to_non_nullable
@@ -134,6 +141,7 @@ abstract class _$$CaseNotesOffenceImplCopyWith<$Res>
       dynamic userId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       int? caseFileId,
+      dynamic caseSummaryId,
       Penalcode? penalcode});
 
   @override
@@ -157,6 +165,7 @@ class __$$CaseNotesOffenceImplCopyWithImpl<$Res>
     Object? userId = freezed,
     Object? createdAt = freezed,
     Object? caseFileId = freezed,
+    Object? caseSummaryId = freezed,
     Object? penalcode = freezed,
   }) {
     return _then(_$CaseNotesOffenceImpl(
@@ -184,6 +193,10 @@ class __$$CaseNotesOffenceImplCopyWithImpl<$Res>
           ? _value.caseFileId
           : caseFileId // ignore: cast_nullable_to_non_nullable
               as int?,
+      caseSummaryId: freezed == caseSummaryId
+          ? _value.caseSummaryId
+          : caseSummaryId // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       penalcode: freezed == penalcode
           ? _value.penalcode
           : penalcode // ignore: cast_nullable_to_non_nullable
@@ -202,6 +215,7 @@ class _$CaseNotesOffenceImpl implements _CaseNotesOffence {
       this.userId,
       @JsonKey(name: 'created_at') this.createdAt,
       this.caseFileId,
+      this.caseSummaryId,
       this.penalcode});
 
   factory _$CaseNotesOffenceImpl.fromJson(Map<String, dynamic> json) =>
@@ -221,11 +235,13 @@ class _$CaseNotesOffenceImpl implements _CaseNotesOffence {
   @override
   final int? caseFileId;
   @override
+  final dynamic caseSummaryId;
+  @override
   final Penalcode? penalcode;
 
   @override
   String toString() {
-    return 'CaseNotesOffence(id: $id, iprs: $iprs, penalCodeId: $penalCodeId, userId: $userId, createdAt: $createdAt, caseFileId: $caseFileId, penalcode: $penalcode)';
+    return 'CaseNotesOffence(id: $id, iprs: $iprs, penalCodeId: $penalCodeId, userId: $userId, createdAt: $createdAt, caseFileId: $caseFileId, caseSummaryId: $caseSummaryId, penalcode: $penalcode)';
   }
 
   @override
@@ -242,6 +258,8 @@ class _$CaseNotesOffenceImpl implements _CaseNotesOffence {
                 other.createdAt == createdAt) &&
             (identical(other.caseFileId, caseFileId) ||
                 other.caseFileId == caseFileId) &&
+            const DeepCollectionEquality()
+                .equals(other.caseSummaryId, caseSummaryId) &&
             (identical(other.penalcode, penalcode) ||
                 other.penalcode == penalcode));
   }
@@ -256,6 +274,7 @@ class _$CaseNotesOffenceImpl implements _CaseNotesOffence {
       const DeepCollectionEquality().hash(userId),
       createdAt,
       caseFileId,
+      const DeepCollectionEquality().hash(caseSummaryId),
       penalcode);
 
   @JsonKey(ignore: true)
@@ -281,6 +300,7 @@ abstract class _CaseNotesOffence implements CaseNotesOffence {
       final dynamic userId,
       @JsonKey(name: 'created_at') final DateTime? createdAt,
       final int? caseFileId,
+      final dynamic caseSummaryId,
       final Penalcode? penalcode}) = _$CaseNotesOffenceImpl;
 
   factory _CaseNotesOffence.fromJson(Map<String, dynamic> json) =
@@ -299,6 +319,8 @@ abstract class _CaseNotesOffence implements CaseNotesOffence {
   DateTime? get createdAt;
   @override
   int? get caseFileId;
+  @override
+  dynamic get caseSummaryId;
   @override
   Penalcode? get penalcode;
   @override

@@ -18,6 +18,7 @@ _$CaseNotesWitnessImpl _$$CaseNotesWitnessImplFromJson(
       userId: json['userId'] as int?,
       caseFileId: json['caseFileId'] as int?,
       caseNotesId: json['caseNotesId'],
+      caseSummaryId: json['caseSummaryId'],
       iprs: json['iprs'] == null
           ? null
           : Iprs.fromJson(json['iprs'] as Map<String, dynamic>),
@@ -33,5 +34,6 @@ Map<String, dynamic> _$$CaseNotesWitnessImplToJson(
       'userId': instance.userId,
       'caseFileId': instance.caseFileId,
       'caseNotesId': instance.caseNotesId,
+      'caseSummaryId': instance.caseSummaryId,
       'iprs': instance.iprs,
     };

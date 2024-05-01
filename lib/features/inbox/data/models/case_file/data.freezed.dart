@@ -31,7 +31,7 @@ mixin _$Data {
   List<CaseFileOfficer>? get caseFileOfficers =>
       throw _privateConstructorUsedError;
   @JsonKey(name: 'CaseSummary')
-  List<dynamic>? get caseSummary => throw _privateConstructorUsedError;
+  List<CaseSummary>? get caseSummary => throw _privateConstructorUsedError;
   @JsonKey(name: 'CaseMaterial')
   List<CaseMaterial>? get caseMaterial => throw _privateConstructorUsedError;
   @JsonKey(name: 'CaseNotesWitness')
@@ -65,7 +65,7 @@ abstract class $DataCopyWith<$Res> {
       int? occurenceId,
       @JsonKey(name: 'CaseFileOfficers')
       List<CaseFileOfficer>? caseFileOfficers,
-      @JsonKey(name: 'CaseSummary') List<dynamic>? caseSummary,
+      @JsonKey(name: 'CaseSummary') List<CaseSummary>? caseSummary,
       @JsonKey(name: 'CaseMaterial') List<CaseMaterial>? caseMaterial,
       @JsonKey(name: 'CaseNotesWitness')
       List<CaseNotesWitness>? caseNotesWitness,
@@ -135,7 +135,7 @@ class _$DataCopyWithImpl<$Res, $Val extends Data>
       caseSummary: freezed == caseSummary
           ? _value.caseSummary
           : caseSummary // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<CaseSummary>?,
       caseMaterial: freezed == caseMaterial
           ? _value.caseMaterial
           : caseMaterial // ignore: cast_nullable_to_non_nullable
@@ -176,7 +176,7 @@ abstract class _$$DataImplCopyWith<$Res> implements $DataCopyWith<$Res> {
       int? occurenceId,
       @JsonKey(name: 'CaseFileOfficers')
       List<CaseFileOfficer>? caseFileOfficers,
-      @JsonKey(name: 'CaseSummary') List<dynamic>? caseSummary,
+      @JsonKey(name: 'CaseSummary') List<CaseSummary>? caseSummary,
       @JsonKey(name: 'CaseMaterial') List<CaseMaterial>? caseMaterial,
       @JsonKey(name: 'CaseNotesWitness')
       List<CaseNotesWitness>? caseNotesWitness,
@@ -243,7 +243,7 @@ class __$$DataImplCopyWithImpl<$Res>
       caseSummary: freezed == caseSummary
           ? _value._caseSummary
           : caseSummary // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<CaseSummary>?,
       caseMaterial: freezed == caseMaterial
           ? _value._caseMaterial
           : caseMaterial // ignore: cast_nullable_to_non_nullable
@@ -280,7 +280,7 @@ class _$DataImpl implements _Data {
       this.occurenceId,
       @JsonKey(name: 'CaseFileOfficers')
       final List<CaseFileOfficer>? caseFileOfficers,
-      @JsonKey(name: 'CaseSummary') final List<dynamic>? caseSummary,
+      @JsonKey(name: 'CaseSummary') final List<CaseSummary>? caseSummary,
       @JsonKey(name: 'CaseMaterial') final List<CaseMaterial>? caseMaterial,
       @JsonKey(name: 'CaseNotesWitness')
       final List<CaseNotesWitness>? caseNotesWitness,
@@ -325,10 +325,10 @@ class _$DataImpl implements _Data {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<dynamic>? _caseSummary;
+  final List<CaseSummary>? _caseSummary;
   @override
   @JsonKey(name: 'CaseSummary')
-  List<dynamic>? get caseSummary {
+  List<CaseSummary>? get caseSummary {
     final value = _caseSummary;
     if (value == null) return null;
     if (_caseSummary is EqualUnmodifiableListView) return _caseSummary;
@@ -471,7 +471,7 @@ abstract class _Data implements Data {
       final int? occurenceId,
       @JsonKey(name: 'CaseFileOfficers')
       final List<CaseFileOfficer>? caseFileOfficers,
-      @JsonKey(name: 'CaseSummary') final List<dynamic>? caseSummary,
+      @JsonKey(name: 'CaseSummary') final List<CaseSummary>? caseSummary,
       @JsonKey(name: 'CaseMaterial') final List<CaseMaterial>? caseMaterial,
       @JsonKey(name: 'CaseNotesWitness')
       final List<CaseNotesWitness>? caseNotesWitness,
@@ -501,7 +501,7 @@ abstract class _Data implements Data {
   List<CaseFileOfficer>? get caseFileOfficers;
   @override
   @JsonKey(name: 'CaseSummary')
-  List<dynamic>? get caseSummary;
+  List<CaseSummary>? get caseSummary;
   @override
   @JsonKey(name: 'CaseMaterial')
   List<CaseMaterial>? get caseMaterial;

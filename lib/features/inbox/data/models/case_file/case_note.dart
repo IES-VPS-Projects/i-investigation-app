@@ -10,13 +10,14 @@ class CaseNote with _$CaseNote {
     int? caseFileId,
     String? title,
     String? narrative,
-    String? picture,
-    String? video,
+    dynamic picture,
+    dynamic video,
     String? audio,
     dynamic userId,
     dynamic location,
     dynamic locationName,
     @JsonKey(name: 'created_at') DateTime? createdAt,
+    dynamic caseSummaryId,
   }) = _CaseNote;
 
   factory CaseNote.fromJson(Map<String, dynamic> json) =>

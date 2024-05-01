@@ -18,7 +18,9 @@ _$DataImpl _$$DataImplFromJson(Map<String, dynamic> json) => _$DataImpl(
       caseFileOfficers: (json['CaseFileOfficers'] as List<dynamic>?)
           ?.map((e) => CaseFileOfficer.fromJson(e as Map<String, dynamic>))
           .toList(),
-      caseSummary: json['CaseSummary'] as List<dynamic>?,
+      caseSummary: (json['CaseSummary'] as List<dynamic>?)
+          ?.map((e) => CaseSummary.fromJson(e as Map<String, dynamic>))
+          .toList(),
       caseMaterial: (json['CaseMaterial'] as List<dynamic>?)
           ?.map((e) => CaseMaterial.fromJson(e as Map<String, dynamic>))
           .toList(),

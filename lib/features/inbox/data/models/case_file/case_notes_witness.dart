@@ -15,6 +15,7 @@ class CaseNotesWitness with _$CaseNotesWitness {
     int? userId,
     int? caseFileId,
     dynamic caseNotesId,
+    dynamic caseSummaryId,
     Iprs? iprs,
   }) = _CaseNotesWitness;
 

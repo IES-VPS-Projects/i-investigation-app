@@ -25,7 +25,6 @@ abstract class InboxDataSource {
   Future<dynamic> createCaseMaterial({required FormData fd});
   Future<dynamic> createOffence({required FormData fd});
   Future<dynamic> createSummary({required FormData fd});
-  
 }
 
 class InboxDataSourceImpl implements InboxDataSource {
@@ -114,13 +113,11 @@ class InboxDataSourceImpl implements InboxDataSource {
         tokenRequired: false);
     return response;
   }
-  
+
   @override
-  Future createSummary({required FormData fd}) async{
-  var response = await _networkService.postHttp(
-        InboxEndpoints.caseSummary,
-        body: fd,
-        tokenRequired: false);
+  Future createSummary({required FormData fd}) async {
+    var response = await _networkService.postHttp(InboxEndpoints.caseSummary,
+        body: fd, tokenRequired: false);
     return response;
   }
 }

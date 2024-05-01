@@ -6,6 +6,7 @@ import 'case_note.dart';
 import 'case_notes_offence.dart';
 import 'case_notes_suspect.dart';
 import 'case_notes_witness.dart';
+import 'case_summary.dart';
 
 part 'data.freezed.dart';
 part 'data.g.dart';
@@ -20,7 +21,7 @@ class Data with _$Data {
     @JsonKey(name: 'created_at') DateTime? createdAt,
     int? occurenceId,
     @JsonKey(name: 'CaseFileOfficers') List<CaseFileOfficer>? caseFileOfficers,
-    @JsonKey(name: 'CaseSummary') List<dynamic>? caseSummary,
+    @JsonKey(name: 'CaseSummary') List<CaseSummary>? caseSummary,
     @JsonKey(name: 'CaseMaterial') List<CaseMaterial>? caseMaterial,
     @JsonKey(name: 'CaseNotesWitness') List<CaseNotesWitness>? caseNotesWitness,
     @JsonKey(name: 'CaseNotesSuspect') List<CaseNotesSuspect>? caseNotesSuspect,

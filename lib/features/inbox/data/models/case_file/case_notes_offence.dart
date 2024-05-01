@@ -14,6 +14,7 @@ class CaseNotesOffence with _$CaseNotesOffence {
     dynamic userId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     int? caseFileId,
+    dynamic caseSummaryId,
     Penalcode? penalcode,
   }) = _CaseNotesOffence;
 

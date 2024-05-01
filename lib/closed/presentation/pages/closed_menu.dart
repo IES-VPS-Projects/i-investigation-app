@@ -1,28 +1,26 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iinvestigation/core/utilities/utilities.dart';
-import 'package:iinvestigation/features/inbox/data/models/open_cases/open_cases.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:iinvestigation/features/inbox/presentation/pages/case_material.dart';
+import 'package:iinvestigation/core/utilities/utilities.dart';
+import 'package:iinvestigation/features/inbox/data/models/case_file/case_material.dart';
+import 'package:iinvestigation/features/inbox/data/models/open_cases/open_cases.dart';
 import 'package:iinvestigation/features/inbox/presentation/pages/case_notes.dart';
 import 'package:iinvestigation/features/inbox/presentation/pages/penal_code.dart';
+import 'package:iinvestigation/features/inbox/presentation/pages/summary.dart';
 import 'package:iinvestigation/features/inbox/presentation/pages/suspects.dart';
+import 'package:iinvestigation/features/inbox/presentation/pages/widgets/case_summary.dart';
 import 'package:iinvestigation/features/inbox/presentation/pages/witnesses.dart';
 import 'package:iinvestigation/features/inbox/presentation/state/inbox_cubit.dart';
 
-import 'summary.dart';
-import 'widgets/case_summary.dart';
-
-class CaseMenu extends StatefulWidget {
+class ClosedCaseMenu extends StatefulWidget {
   final OpenCases caseObject;
 
-  CaseMenu({required this.caseObject});
+  ClosedCaseMenu({required this.caseObject});
   @override
   _CaseMenuState createState() => _CaseMenuState();
 }
 
-class _CaseMenuState extends State<CaseMenu> {
+class _CaseMenuState extends State<ClosedCaseMenu> {
   List<Widget> _tiles = [];
 
   @override
@@ -64,6 +62,7 @@ class _CaseMenuState extends State<CaseMenu> {
                         .caseFile!
                         .data!
                         .caseNotesSuspect!
+                        .where((element) => element.caseSummaryId != null)
                         .length)),
         StaggeredGridTile.count(
             crossAxisCellCount: 2,
@@ -92,6 +91,7 @@ class _CaseMenuState extends State<CaseMenu> {
                         .caseFile!
                         .data!
                         .caseNotesWitness!
+                        .where((element) => element.caseSummaryId != null)
                         .length)),
         StaggeredGridTile.count(
             crossAxisCellCount: 2,
@@ -123,6 +123,7 @@ class _CaseMenuState extends State<CaseMenu> {
                         .caseFile!
                         .data!
                         .caseNotes!
+                        .where((element) => element.caseSummaryId != null)
                         .length)),
         StaggeredGridTile.count(
             crossAxisCellCount: 2,
@@ -155,6 +156,7 @@ class _CaseMenuState extends State<CaseMenu> {
                         .caseFile!
                         .data!
                         .caseMaterial!
+                        .where((element) => element.caseSummaryId != null)
                         .length)),
         StaggeredGridTile.count(
             crossAxisCellCount: 2,
@@ -179,28 +181,9 @@ class _CaseMenuState extends State<CaseMenu> {
                         .caseFile!
                         .data!
                         .caseNotesOffences!
+                        .where((element) => element.caseSummaryId != null)
                         .length)),
-        StaggeredGridTile.count(
-            crossAxisCellCount: 2,
-            mainAxisCellCount: 1,
-            child: _MenuTile(
-                Colors.blue,
-                Image.asset(
-                  "assets/images/summary.png",
-                  height: 50.0,
-                  width: 37.5,
-                ),
-                "Summary",
-                "SubHeading", () {
-              context.appNavigatorPush(const SummaryPage());
-
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (context) => CaseSummaryDoc(
-              //               docId: caseObject.id,
-              //             )));
-            }, 1)),
+     
       ],
     );
   }

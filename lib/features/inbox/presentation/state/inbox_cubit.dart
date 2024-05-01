@@ -38,7 +38,7 @@ class InboxCubit extends Cubit<InboxState> {
   final CreateSummary _createSummary;
 
   InboxCubit(
-    this._createSummary,
+      this._createSummary,
       this._createOffence,
       this._getPenalCode,
       this._caseMaterial,
@@ -171,11 +171,12 @@ class InboxCubit extends Cubit<InboxState> {
           payload: state.payload.copyWith(error: r.message)));
     });
   }
+
   Future<void> createSummary({required FormData payload}) async {
-     emit(InboxState.loading(payload: state.payload.copyWith()));
+    emit(InboxState.loading(payload: state.payload.copyWith()));
 
     var results = await _createSummary(payload);
-     results.fold((l) {
+    results.fold((l) {
       print(l);
       emit(InboxState.caseFile(payload: state.payload.copyWith()));
     }, (r) {

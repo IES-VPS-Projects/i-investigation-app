@@ -32,6 +32,7 @@ mixin _$CaseMaterial {
   dynamic get locationName => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  int? get caseSummaryId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -56,7 +57,8 @@ abstract class $CaseMaterialCopyWith<$Res> {
       dynamic userId,
       dynamic location,
       dynamic locationName,
-      @JsonKey(name: 'created_at') DateTime? createdAt});
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      int? caseSummaryId});
 }
 
 /// @nodoc
@@ -83,6 +85,7 @@ class _$CaseMaterialCopyWithImpl<$Res, $Val extends CaseMaterial>
     Object? location = freezed,
     Object? locationName = freezed,
     Object? createdAt = freezed,
+    Object? caseSummaryId = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -129,6 +132,10 @@ class _$CaseMaterialCopyWithImpl<$Res, $Val extends CaseMaterial>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      caseSummaryId: freezed == caseSummaryId
+          ? _value.caseSummaryId
+          : caseSummaryId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -152,7 +159,8 @@ abstract class _$$CaseMaterialImplCopyWith<$Res>
       dynamic userId,
       dynamic location,
       dynamic locationName,
-      @JsonKey(name: 'created_at') DateTime? createdAt});
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      int? caseSummaryId});
 }
 
 /// @nodoc
@@ -177,6 +185,7 @@ class __$$CaseMaterialImplCopyWithImpl<$Res>
     Object? location = freezed,
     Object? locationName = freezed,
     Object? createdAt = freezed,
+    Object? caseSummaryId = freezed,
   }) {
     return _then(_$CaseMaterialImpl(
       id: freezed == id
@@ -223,6 +232,10 @@ class __$$CaseMaterialImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      caseSummaryId: freezed == caseSummaryId
+          ? _value.caseSummaryId
+          : caseSummaryId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -241,7 +254,8 @@ class _$CaseMaterialImpl implements _CaseMaterial {
       this.userId,
       this.location,
       this.locationName,
-      @JsonKey(name: 'created_at') this.createdAt});
+      @JsonKey(name: 'created_at') this.createdAt,
+      this.caseSummaryId});
 
   factory _$CaseMaterialImpl.fromJson(Map<String, dynamic> json) =>
       _$$CaseMaterialImplFromJson(json);
@@ -269,10 +283,12 @@ class _$CaseMaterialImpl implements _CaseMaterial {
   @override
   @JsonKey(name: 'created_at')
   final DateTime? createdAt;
+  @override
+  final int? caseSummaryId;
 
   @override
   String toString() {
-    return 'CaseMaterial(id: $id, caseFileId: $caseFileId, title: $title, narrative: $narrative, picture: $picture, video: $video, audio: $audio, userId: $userId, location: $location, locationName: $locationName, createdAt: $createdAt)';
+    return 'CaseMaterial(id: $id, caseFileId: $caseFileId, title: $title, narrative: $narrative, picture: $picture, video: $video, audio: $audio, userId: $userId, location: $location, locationName: $locationName, createdAt: $createdAt, caseSummaryId: $caseSummaryId)';
   }
 
   @override
@@ -294,7 +310,9 @@ class _$CaseMaterialImpl implements _CaseMaterial {
             const DeepCollectionEquality()
                 .equals(other.locationName, locationName) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.createdAt == createdAt) &&
+            (identical(other.caseSummaryId, caseSummaryId) ||
+                other.caseSummaryId == caseSummaryId));
   }
 
   @JsonKey(ignore: true)
@@ -311,7 +329,8 @@ class _$CaseMaterialImpl implements _CaseMaterial {
       const DeepCollectionEquality().hash(userId),
       const DeepCollectionEquality().hash(location),
       const DeepCollectionEquality().hash(locationName),
-      createdAt);
+      createdAt,
+      caseSummaryId);
 
   @JsonKey(ignore: true)
   @override
@@ -329,18 +348,18 @@ class _$CaseMaterialImpl implements _CaseMaterial {
 
 abstract class _CaseMaterial implements CaseMaterial {
   factory _CaseMaterial(
-          {final int? id,
-          final int? caseFileId,
-          final String? title,
-          final String? narrative,
-          final dynamic picture,
-          final dynamic video,
-          final String? audio,
-          final dynamic userId,
-          final dynamic location,
-          final dynamic locationName,
-          @JsonKey(name: 'created_at') final DateTime? createdAt}) =
-      _$CaseMaterialImpl;
+      {final int? id,
+      final int? caseFileId,
+      final String? title,
+      final String? narrative,
+      final dynamic picture,
+      final dynamic video,
+      final String? audio,
+      final dynamic userId,
+      final dynamic location,
+      final dynamic locationName,
+      @JsonKey(name: 'created_at') final DateTime? createdAt,
+      final int? caseSummaryId}) = _$CaseMaterialImpl;
 
   factory _CaseMaterial.fromJson(Map<String, dynamic> json) =
       _$CaseMaterialImpl.fromJson;
@@ -368,6 +387,8 @@ abstract class _CaseMaterial implements CaseMaterial {
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;
+  @override
+  int? get caseSummaryId;
   @override
   @JsonKey(ignore: true)
   _$$CaseMaterialImplCopyWith<_$CaseMaterialImpl> get copyWith =>

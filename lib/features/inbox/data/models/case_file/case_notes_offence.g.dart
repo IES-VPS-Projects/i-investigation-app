@@ -17,6 +17,7 @@ _$CaseNotesOffenceImpl _$$CaseNotesOffenceImplFromJson(
           ? null
           : DateTime.parse(json['created_at'] as String),
       caseFileId: json['caseFileId'] as int?,
+      caseSummaryId: json['caseSummaryId'],
       penalcode: json['penalcode'] == null
           ? null
           : Penalcode.fromJson(json['penalcode'] as Map<String, dynamic>),
@@ -31,5 +32,6 @@ Map<String, dynamic> _$$CaseNotesOffenceImplToJson(
       'userId': instance.userId,
       'created_at': instance.createdAt?.toIso8601String(),
       'caseFileId': instance.caseFileId,
+      'caseSummaryId': instance.caseSummaryId,
       'penalcode': instance.penalcode,
     };

@@ -1,19 +1,20 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iinvestigation/closed/presentation/pages/view_closed_cases.dart';
 import 'package:iinvestigation/core/utilities/app_navigation.dart';
-import 'package:iinvestigation/features/inbox/presentation/pages/view_case.dart';
 import 'package:iinvestigation/features/inbox/presentation/state/inbox_cubit.dart';
 
-class InboxPage extends StatefulWidget {
-  const InboxPage({super.key});
+class ClosedCases extends StatefulWidget {
+  const ClosedCases({super.key});
 
   @override
-  State<InboxPage> createState() => _InboxPageState();
+  State<ClosedCases> createState() => _ClosedCasesState();
 }
 
-class _InboxPageState extends State<InboxPage> {
+class _ClosedCasesState extends State<ClosedCases> {
   @override
   void initState() {
     // TODO: implement initState
@@ -42,7 +43,7 @@ class _InboxPageState extends State<InboxPage> {
                             .payload
                             .cases!
                             .map((document) {
-                          return document.status == "CLOSED"
+                          return document.status != "CLOSED"
                               ? const SizedBox()
                               : Card(
                                   child: ListTile(
@@ -88,8 +89,8 @@ class _InboxPageState extends State<InboxPage> {
                                             backgroundColor: Colors.red,
                                           ),
                                     onTap: () {
-                                      context
-                                          .appNavigatorPush(ViewCase(document));
+                                      context.appNavigatorPush(
+                                          ViewCaseClosed(document));
                                       // Navigator.push(
                                       //     context,
                                       //     MaterialPageRoute(
@@ -105,7 +106,7 @@ class _InboxPageState extends State<InboxPage> {
                   ? SizedBox()
                   : ListView(
                       children: value.payload.cases!.map((document) {
-                        return document.status == "CLOSED"
+                        return document.status != "CLOSED"
                             ? const SizedBox()
                             : Card(
                                 child: ListTile(
@@ -149,8 +150,8 @@ class _InboxPageState extends State<InboxPage> {
                                           backgroundColor: Colors.red,
                                         ),
                                   onTap: () {
-                                    context
-                                        .appNavigatorPush(ViewCase(document));
+                                    context.appNavigatorPush(
+                                        ViewCaseClosed(document));
                                     // Navigator.push(
                                     //     context,
                                     //     MaterialPageRoute(

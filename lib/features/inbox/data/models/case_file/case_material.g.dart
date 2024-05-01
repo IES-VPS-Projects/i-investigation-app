@@ -21,6 +21,7 @@ _$CaseMaterialImpl _$$CaseMaterialImplFromJson(Map<String, dynamic> json) =>
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
+      caseSummaryId: json['caseSummaryId'] as int?,
     );
 
 Map<String, dynamic> _$$CaseMaterialImplToJson(_$CaseMaterialImpl instance) =>
@@ -36,4 +37,5 @@ Map<String, dynamic> _$$CaseMaterialImplToJson(_$CaseMaterialImpl instance) =>
       'location': instance.location,
       'locationName': instance.locationName,
       'created_at': instance.createdAt?.toIso8601String(),
+      'caseSummaryId': instance.caseSummaryId,
     };

@@ -58,9 +58,9 @@ class InboxRepositoryImpl implements InboxRepository {
   Future createOffence({required FormData fd}) async {
     return await _inboxDataSource.createOffence(fd: fd);
   }
-  
+
   @override
-  Future createSummary({required FormData fd})  async {
+  Future createSummary({required FormData fd}) async {
     return await _inboxDataSource.createSummary(fd: fd);
   }
 }

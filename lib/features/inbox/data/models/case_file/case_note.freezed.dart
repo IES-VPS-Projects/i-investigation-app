@@ -24,14 +24,15 @@ mixin _$CaseNote {
   int? get caseFileId => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get narrative => throw _privateConstructorUsedError;
-  String? get picture => throw _privateConstructorUsedError;
-  String? get video => throw _privateConstructorUsedError;
+  dynamic get picture => throw _privateConstructorUsedError;
+  dynamic get video => throw _privateConstructorUsedError;
   String? get audio => throw _privateConstructorUsedError;
   dynamic get userId => throw _privateConstructorUsedError;
   dynamic get location => throw _privateConstructorUsedError;
   dynamic get locationName => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  dynamic get caseSummaryId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,13 +50,14 @@ abstract class $CaseNoteCopyWith<$Res> {
       int? caseFileId,
       String? title,
       String? narrative,
-      String? picture,
-      String? video,
+      dynamic picture,
+      dynamic video,
       String? audio,
       dynamic userId,
       dynamic location,
       dynamic locationName,
-      @JsonKey(name: 'created_at') DateTime? createdAt});
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      dynamic caseSummaryId});
 }
 
 /// @nodoc
@@ -82,6 +84,7 @@ class _$CaseNoteCopyWithImpl<$Res, $Val extends CaseNote>
     Object? location = freezed,
     Object? locationName = freezed,
     Object? createdAt = freezed,
+    Object? caseSummaryId = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -103,11 +106,11 @@ class _$CaseNoteCopyWithImpl<$Res, $Val extends CaseNote>
       picture: freezed == picture
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
       video: freezed == video
           ? _value.video
           : video // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
       audio: freezed == audio
           ? _value.audio
           : audio // ignore: cast_nullable_to_non_nullable
@@ -128,6 +131,10 @@ class _$CaseNoteCopyWithImpl<$Res, $Val extends CaseNote>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      caseSummaryId: freezed == caseSummaryId
+          ? _value.caseSummaryId
+          : caseSummaryId // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ) as $Val);
   }
 }
@@ -145,13 +152,14 @@ abstract class _$$CaseNoteImplCopyWith<$Res>
       int? caseFileId,
       String? title,
       String? narrative,
-      String? picture,
-      String? video,
+      dynamic picture,
+      dynamic video,
       String? audio,
       dynamic userId,
       dynamic location,
       dynamic locationName,
-      @JsonKey(name: 'created_at') DateTime? createdAt});
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      dynamic caseSummaryId});
 }
 
 /// @nodoc
@@ -176,6 +184,7 @@ class __$$CaseNoteImplCopyWithImpl<$Res>
     Object? location = freezed,
     Object? locationName = freezed,
     Object? createdAt = freezed,
+    Object? caseSummaryId = freezed,
   }) {
     return _then(_$CaseNoteImpl(
       id: freezed == id
@@ -197,11 +206,11 @@ class __$$CaseNoteImplCopyWithImpl<$Res>
       picture: freezed == picture
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
       video: freezed == video
           ? _value.video
           : video // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
       audio: freezed == audio
           ? _value.audio
           : audio // ignore: cast_nullable_to_non_nullable
@@ -222,6 +231,10 @@ class __$$CaseNoteImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      caseSummaryId: freezed == caseSummaryId
+          ? _value.caseSummaryId
+          : caseSummaryId // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ));
   }
 }
@@ -240,7 +253,8 @@ class _$CaseNoteImpl implements _CaseNote {
       this.userId,
       this.location,
       this.locationName,
-      @JsonKey(name: 'created_at') this.createdAt});
+      @JsonKey(name: 'created_at') this.createdAt,
+      this.caseSummaryId});
 
   factory _$CaseNoteImpl.fromJson(Map<String, dynamic> json) =>
       _$$CaseNoteImplFromJson(json);
@@ -254,9 +268,9 @@ class _$CaseNoteImpl implements _CaseNote {
   @override
   final String? narrative;
   @override
-  final String? picture;
+  final dynamic picture;
   @override
-  final String? video;
+  final dynamic video;
   @override
   final String? audio;
   @override
@@ -268,10 +282,12 @@ class _$CaseNoteImpl implements _CaseNote {
   @override
   @JsonKey(name: 'created_at')
   final DateTime? createdAt;
+  @override
+  final dynamic caseSummaryId;
 
   @override
   String toString() {
-    return 'CaseNote(id: $id, caseFileId: $caseFileId, title: $title, narrative: $narrative, picture: $picture, video: $video, audio: $audio, userId: $userId, location: $location, locationName: $locationName, createdAt: $createdAt)';
+    return 'CaseNote(id: $id, caseFileId: $caseFileId, title: $title, narrative: $narrative, picture: $picture, video: $video, audio: $audio, userId: $userId, location: $location, locationName: $locationName, createdAt: $createdAt, caseSummaryId: $caseSummaryId)';
   }
 
   @override
@@ -285,15 +301,17 @@ class _$CaseNoteImpl implements _CaseNote {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.narrative, narrative) ||
                 other.narrative == narrative) &&
-            (identical(other.picture, picture) || other.picture == picture) &&
-            (identical(other.video, video) || other.video == video) &&
+            const DeepCollectionEquality().equals(other.picture, picture) &&
+            const DeepCollectionEquality().equals(other.video, video) &&
             (identical(other.audio, audio) || other.audio == audio) &&
             const DeepCollectionEquality().equals(other.userId, userId) &&
             const DeepCollectionEquality().equals(other.location, location) &&
             const DeepCollectionEquality()
                 .equals(other.locationName, locationName) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.createdAt == createdAt) &&
+            const DeepCollectionEquality()
+                .equals(other.caseSummaryId, caseSummaryId));
   }
 
   @JsonKey(ignore: true)
@@ -304,13 +322,14 @@ class _$CaseNoteImpl implements _CaseNote {
       caseFileId,
       title,
       narrative,
-      picture,
-      video,
+      const DeepCollectionEquality().hash(picture),
+      const DeepCollectionEquality().hash(video),
       audio,
       const DeepCollectionEquality().hash(userId),
       const DeepCollectionEquality().hash(location),
       const DeepCollectionEquality().hash(locationName),
-      createdAt);
+      createdAt,
+      const DeepCollectionEquality().hash(caseSummaryId));
 
   @JsonKey(ignore: true)
   @override
@@ -332,13 +351,14 @@ abstract class _CaseNote implements CaseNote {
       final int? caseFileId,
       final String? title,
       final String? narrative,
-      final String? picture,
-      final String? video,
+      final dynamic picture,
+      final dynamic video,
       final String? audio,
       final dynamic userId,
       final dynamic location,
       final dynamic locationName,
-      @JsonKey(name: 'created_at') final DateTime? createdAt}) = _$CaseNoteImpl;
+      @JsonKey(name: 'created_at') final DateTime? createdAt,
+      final dynamic caseSummaryId}) = _$CaseNoteImpl;
 
   factory _CaseNote.fromJson(Map<String, dynamic> json) =
       _$CaseNoteImpl.fromJson;
@@ -352,9 +372,9 @@ abstract class _CaseNote implements CaseNote {
   @override
   String? get narrative;
   @override
-  String? get picture;
+  dynamic get picture;
   @override
-  String? get video;
+  dynamic get video;
   @override
   String? get audio;
   @override
@@ -366,6 +386,8 @@ abstract class _CaseNote implements CaseNote {
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;
+  @override
+  dynamic get caseSummaryId;
   @override
   @JsonKey(ignore: true)
   _$$CaseNoteImplCopyWith<_$CaseNoteImpl> get copyWith =>
