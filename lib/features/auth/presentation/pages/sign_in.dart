@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_progress_hud/flutter_progress_hud.dart';
@@ -141,7 +142,7 @@ class _SignInState extends State<SignIn> {
   void signIn() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      var payload = {"serice_number": email, "password": password};
+      FormData payload = FormData.fromMap({"serice_number": email, "password": password});
 
       context.read<AuthCubit>().login(payload).then((_) {
         context.appNavigatorPush(const Dashboard());

@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:iinvestigation/core/data/network_datasource/network_service.dart';
 import 'package:iinvestigation/core/data/network_datasource/network_service_impl.dart';
 import 'package:iinvestigation/core/platform/connection_status.dart';
@@ -7,7 +8,7 @@ import 'package:iinvestigation/features/auth/data/data_source/end_points.dart';
 import 'package:iinvestigation/features/auth/data/models/auth_response_model/auth_response_model.dart';
 
 abstract class AuthDataSource {
-  Future<AuthResponseModel> login(Map params);
+  Future<AuthResponseModel> login(FormData params);
 }
 
 class AuthDataSourceImpl implements AuthDataSource {
@@ -22,7 +23,7 @@ class AuthDataSourceImpl implements AuthDataSource {
   }
 
   @override
-  Future<AuthResponseModel> login(Map params) async {
+  Future<AuthResponseModel> login(FormData params) async {
     print(params);
     var response =
         await _networkService.postHttp(AuthEndPoints.login, body: params);

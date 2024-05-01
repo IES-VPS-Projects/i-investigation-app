@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iinvestigation/closed/presentation/pages/closed.dart';
+import 'package:iinvestigation/features/closed/presentation/pages/closed.dart';
 import 'package:iinvestigation/core/utilities/app_navigation.dart';
 import 'package:iinvestigation/features/dcio/presentations/pages/dashboard.dart';
 import 'package:iinvestigation/features/inbox/presentation/pages/inbox.dart';

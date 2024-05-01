@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iinvestigation/closed/presentation/pages/view_closed_cases.dart';
+import 'package:iinvestigation/features/closed/presentation/pages/view_closed_cases.dart';
 import 'package:iinvestigation/core/utilities/app_navigation.dart';
 import 'package:iinvestigation/features/inbox/presentation/state/inbox_cubit.dart';
 

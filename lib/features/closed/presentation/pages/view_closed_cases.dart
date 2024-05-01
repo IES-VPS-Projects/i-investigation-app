@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iinvestigation/closed/presentation/pages/closed_case_form.dart';
+import 'package:iinvestigation/features/closed/presentation/pages/closed_case_form.dart';
 import 'package:iinvestigation/core/data/datasources/local_storage_data_source.dart';
 import 'package:iinvestigation/features/inbox/data/models/open_cases/open_cases.dart';
 import 'package:iinvestigation/features/inbox/presentation/pages/view_case_form.dart';

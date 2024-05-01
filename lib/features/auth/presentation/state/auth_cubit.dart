@@ -1,4 +1,5 @@
 // ignore: depend_on_referenced_packages
+import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:bloc/bloc.dart';
 import 'package:iinvestigation/core/data/datasources/local_storage_data_source.dart';
@@ -17,7 +18,7 @@ class AuthCubit extends Cubit<AuthState> {
           payload: AuthStatePayload(error: null, page: null, user: null),
         ));
 
-  Future<void> login(Map payload) async {
+  Future<void> login(FormData payload) async {
     late LocalStorage localStorage = LocalStorage();
     localStorage.initialize();
     emit(AuthState.loading(payload: state.payload.copyWith()));
