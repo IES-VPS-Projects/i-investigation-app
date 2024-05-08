@@ -11,7 +11,8 @@ import 'widgets/video_player.dart';
 
 class CaseMaterial extends StatelessWidget {
   final int id;
-  const CaseMaterial({required this.id});
+  final bool isClosed;
+  const CaseMaterial({required this.id, this.isClosed = false});
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -21,16 +22,18 @@ class CaseMaterial extends StatelessWidget {
           title: const Text("Case Materials"),
           elevation: 0.0,
           actions: <Widget>[
-            TextButton(
-                onPressed: () {
-                  context.appNavigatorPush(CaseMaterialForm(id: id));
-                },
-                child: const Row(
-                  children: <Widget>[
-                    Icon(Icons.playlist_add),
-                    Text(" Add"),
-                  ],
-                ))
+            isClosed
+                ? SizedBox()
+                : TextButton(
+                    onPressed: () {
+                      context.appNavigatorPush(CaseMaterialForm(id: id));
+                    },
+                    child: const Row(
+                      children: <Widget>[
+                        Icon(Icons.playlist_add),
+                        Text(" Add"),
+                      ],
+                    ))
           ],
         ),
         body: ListView(
@@ -43,6 +46,8 @@ class CaseMaterial extends StatelessWidget {
                     .caseFile!
                     .data!
                     .caseMaterial!
+                    .where((element) =>
+                        isClosed == true ? element.caseSummaryId != null : true)
                     .map((e) => ListTile(
                           dense: true,
                           title: Text("${e.title}"),

@@ -3,6 +3,7 @@ import 'package:iinvestigation/features/closed/presentation/pages/closed.dart';
 import 'package:iinvestigation/core/utilities/app_navigation.dart';
 import 'package:iinvestigation/features/dcio/presentations/pages/dashboard.dart';
 import 'package:iinvestigation/features/inbox/presentation/pages/inbox.dart';
+import 'package:iinvestigation/features/new_case/presentation/pages/new_case.dart';
 
 class DashGridMenu extends StatefulWidget {
   @override
@@ -20,7 +21,7 @@ class _DashGridMenuState extends State<DashGridMenu> {
     {
       "name": "New Case",
       "icon": Icons.create_new_folder,
-      "route": const DcioDashboard(),
+      "route": const NewCase(),
       "iconColor": Colors.white
     },
     {

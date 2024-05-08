@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iinvestigation/core/utilities/utilities.dart';
 import 'package:iinvestigation/features/inbox/data/models/penal_code_response/penal_code_response.dart';
 import 'package:iinvestigation/features/inbox/presentation/pages/penal_code.dart';
 import 'package:iinvestigation/features/inbox/presentation/state/inbox_cubit.dart';
@@ -35,9 +36,14 @@ class _PenalCodeFormState extends State<PenalCodeForm> {
                 onPressed: () {
                   var _ii = _penalCodeList.map((e) => e.id).toList();
                   FormData payload =
-                      FormData.fromMap({'penal': _ii, 'caseFileId': widget.id});
-                  print(payload);
-                  context.read<InboxCubit>().createOffence(payload: payload);
+                      FormData.fromMap({'penal': [..._ii], 'caseFileId': widget.id});
+                  print(_ii);
+
+                  context.read<InboxCubit>().createOffence(payload: payload).then((value){
+                    context.back();
+                     context.read<InboxCubit>().getCaseFile(fd: widget.id);
+
+                  });
                 },
                 // color: Colors.green,
                 child: const Row(
@@ -107,8 +113,7 @@ class _PenalCodeFormState extends State<PenalCodeForm> {
                     selectedItem:
                         (context.watch<InboxCubit>().state.payload.penalCodes!)
                             .first,
-                  ),
-                  Text("${_penalCodeList}")
+                  ), 
                 ],
               );
             },

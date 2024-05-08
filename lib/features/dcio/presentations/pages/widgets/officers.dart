@@ -14,6 +14,12 @@ class OfficerPicker extends StatefulWidget {
 }
 
 class _OfficerPickerState extends State<OfficerPicker> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<DcioCubit>().getUsers();
+  }
+
   List<Users> pickedUsers = [];
   @override
   Widget build(BuildContext context) {

@@ -27,17 +27,20 @@ mixin _$OpenCases {
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
   int? get occurenceId => throw _privateConstructorUsedError;
+  dynamic get internalOccurenceId => throw _privateConstructorUsedError;
   @JsonKey(name: 'CaseFileOfficers')
   List<CaseFileOfficer>? get caseFileOfficers =>
       throw _privateConstructorUsedError;
   @JsonKey(name: 'CaseMaterial')
-  List<dynamic>? get caseMaterial => throw _privateConstructorUsedError;
+  List<CaseMaterial>? get caseMaterial => throw _privateConstructorUsedError;
   @JsonKey(name: 'CaseNotes')
-  List<dynamic>? get caseNotes => throw _privateConstructorUsedError;
+  List<CaseNote>? get caseNotes => throw _privateConstructorUsedError;
   @JsonKey(name: 'CaseSummary')
-  List<dynamic>? get caseSummary => throw _privateConstructorUsedError;
+  List<CaseSummary>? get caseSummary => throw _privateConstructorUsedError;
   LeadOfficer? get leadOfficer => throw _privateConstructorUsedError;
   Occurence? get occurence => throw _privateConstructorUsedError;
+  InternalOccurence? get internalOccurence =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -57,16 +60,19 @@ abstract class $OpenCasesCopyWith<$Res> {
       String? status,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       int? occurenceId,
+      dynamic internalOccurenceId,
       @JsonKey(name: 'CaseFileOfficers')
       List<CaseFileOfficer>? caseFileOfficers,
-      @JsonKey(name: 'CaseMaterial') List<dynamic>? caseMaterial,
-      @JsonKey(name: 'CaseNotes') List<dynamic>? caseNotes,
-      @JsonKey(name: 'CaseSummary') List<dynamic>? caseSummary,
+      @JsonKey(name: 'CaseMaterial') List<CaseMaterial>? caseMaterial,
+      @JsonKey(name: 'CaseNotes') List<CaseNote>? caseNotes,
+      @JsonKey(name: 'CaseSummary') List<CaseSummary>? caseSummary,
       LeadOfficer? leadOfficer,
-      Occurence? occurence});
+      Occurence? occurence,
+      InternalOccurence? internalOccurence});
 
   $LeadOfficerCopyWith<$Res>? get leadOfficer;
   $OccurenceCopyWith<$Res>? get occurence;
+  $InternalOccurenceCopyWith<$Res>? get internalOccurence;
 }
 
 /// @nodoc
@@ -88,12 +94,14 @@ class _$OpenCasesCopyWithImpl<$Res, $Val extends OpenCases>
     Object? status = freezed,
     Object? createdAt = freezed,
     Object? occurenceId = freezed,
+    Object? internalOccurenceId = freezed,
     Object? caseFileOfficers = freezed,
     Object? caseMaterial = freezed,
     Object? caseNotes = freezed,
     Object? caseSummary = freezed,
     Object? leadOfficer = freezed,
     Object? occurence = freezed,
+    Object? internalOccurence = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -120,6 +128,10 @@ class _$OpenCasesCopyWithImpl<$Res, $Val extends OpenCases>
           ? _value.occurenceId
           : occurenceId // ignore: cast_nullable_to_non_nullable
               as int?,
+      internalOccurenceId: freezed == internalOccurenceId
+          ? _value.internalOccurenceId
+          : internalOccurenceId // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       caseFileOfficers: freezed == caseFileOfficers
           ? _value.caseFileOfficers
           : caseFileOfficers // ignore: cast_nullable_to_non_nullable
@@ -127,15 +139,15 @@ class _$OpenCasesCopyWithImpl<$Res, $Val extends OpenCases>
       caseMaterial: freezed == caseMaterial
           ? _value.caseMaterial
           : caseMaterial // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<CaseMaterial>?,
       caseNotes: freezed == caseNotes
           ? _value.caseNotes
           : caseNotes // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<CaseNote>?,
       caseSummary: freezed == caseSummary
           ? _value.caseSummary
           : caseSummary // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<CaseSummary>?,
       leadOfficer: freezed == leadOfficer
           ? _value.leadOfficer
           : leadOfficer // ignore: cast_nullable_to_non_nullable
@@ -144,6 +156,10 @@ class _$OpenCasesCopyWithImpl<$Res, $Val extends OpenCases>
           ? _value.occurence
           : occurence // ignore: cast_nullable_to_non_nullable
               as Occurence?,
+      internalOccurence: freezed == internalOccurence
+          ? _value.internalOccurence
+          : internalOccurence // ignore: cast_nullable_to_non_nullable
+              as InternalOccurence?,
     ) as $Val);
   }
 
@@ -170,6 +186,18 @@ class _$OpenCasesCopyWithImpl<$Res, $Val extends OpenCases>
       return _then(_value.copyWith(occurence: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $InternalOccurenceCopyWith<$Res>? get internalOccurence {
+    if (_value.internalOccurence == null) {
+      return null;
+    }
+
+    return $InternalOccurenceCopyWith<$Res>(_value.internalOccurence!, (value) {
+      return _then(_value.copyWith(internalOccurence: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -187,18 +215,22 @@ abstract class _$$OpenCasesImplCopyWith<$Res>
       String? status,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       int? occurenceId,
+      dynamic internalOccurenceId,
       @JsonKey(name: 'CaseFileOfficers')
       List<CaseFileOfficer>? caseFileOfficers,
-      @JsonKey(name: 'CaseMaterial') List<dynamic>? caseMaterial,
-      @JsonKey(name: 'CaseNotes') List<dynamic>? caseNotes,
-      @JsonKey(name: 'CaseSummary') List<dynamic>? caseSummary,
+      @JsonKey(name: 'CaseMaterial') List<CaseMaterial>? caseMaterial,
+      @JsonKey(name: 'CaseNotes') List<CaseNote>? caseNotes,
+      @JsonKey(name: 'CaseSummary') List<CaseSummary>? caseSummary,
       LeadOfficer? leadOfficer,
-      Occurence? occurence});
+      Occurence? occurence,
+      InternalOccurence? internalOccurence});
 
   @override
   $LeadOfficerCopyWith<$Res>? get leadOfficer;
   @override
   $OccurenceCopyWith<$Res>? get occurence;
+  @override
+  $InternalOccurenceCopyWith<$Res>? get internalOccurence;
 }
 
 /// @nodoc
@@ -218,12 +250,14 @@ class __$$OpenCasesImplCopyWithImpl<$Res>
     Object? status = freezed,
     Object? createdAt = freezed,
     Object? occurenceId = freezed,
+    Object? internalOccurenceId = freezed,
     Object? caseFileOfficers = freezed,
     Object? caseMaterial = freezed,
     Object? caseNotes = freezed,
     Object? caseSummary = freezed,
     Object? leadOfficer = freezed,
     Object? occurence = freezed,
+    Object? internalOccurence = freezed,
   }) {
     return _then(_$OpenCasesImpl(
       id: freezed == id
@@ -250,6 +284,10 @@ class __$$OpenCasesImplCopyWithImpl<$Res>
           ? _value.occurenceId
           : occurenceId // ignore: cast_nullable_to_non_nullable
               as int?,
+      internalOccurenceId: freezed == internalOccurenceId
+          ? _value.internalOccurenceId
+          : internalOccurenceId // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       caseFileOfficers: freezed == caseFileOfficers
           ? _value._caseFileOfficers
           : caseFileOfficers // ignore: cast_nullable_to_non_nullable
@@ -257,15 +295,15 @@ class __$$OpenCasesImplCopyWithImpl<$Res>
       caseMaterial: freezed == caseMaterial
           ? _value._caseMaterial
           : caseMaterial // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<CaseMaterial>?,
       caseNotes: freezed == caseNotes
           ? _value._caseNotes
           : caseNotes // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<CaseNote>?,
       caseSummary: freezed == caseSummary
           ? _value._caseSummary
           : caseSummary // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<CaseSummary>?,
       leadOfficer: freezed == leadOfficer
           ? _value.leadOfficer
           : leadOfficer // ignore: cast_nullable_to_non_nullable
@@ -274,6 +312,10 @@ class __$$OpenCasesImplCopyWithImpl<$Res>
           ? _value.occurence
           : occurence // ignore: cast_nullable_to_non_nullable
               as Occurence?,
+      internalOccurence: freezed == internalOccurence
+          ? _value.internalOccurence
+          : internalOccurence // ignore: cast_nullable_to_non_nullable
+              as InternalOccurence?,
     ));
   }
 }
@@ -288,13 +330,15 @@ class _$OpenCasesImpl implements _OpenCases {
       this.status,
       @JsonKey(name: 'created_at') this.createdAt,
       this.occurenceId,
+      this.internalOccurenceId,
       @JsonKey(name: 'CaseFileOfficers')
       final List<CaseFileOfficer>? caseFileOfficers,
-      @JsonKey(name: 'CaseMaterial') final List<dynamic>? caseMaterial,
-      @JsonKey(name: 'CaseNotes') final List<dynamic>? caseNotes,
-      @JsonKey(name: 'CaseSummary') final List<dynamic>? caseSummary,
+      @JsonKey(name: 'CaseMaterial') final List<CaseMaterial>? caseMaterial,
+      @JsonKey(name: 'CaseNotes') final List<CaseNote>? caseNotes,
+      @JsonKey(name: 'CaseSummary') final List<CaseSummary>? caseSummary,
       this.leadOfficer,
-      this.occurence})
+      this.occurence,
+      this.internalOccurence})
       : _caseFileOfficers = caseFileOfficers,
         _caseMaterial = caseMaterial,
         _caseNotes = caseNotes,
@@ -316,6 +360,8 @@ class _$OpenCasesImpl implements _OpenCases {
   final DateTime? createdAt;
   @override
   final int? occurenceId;
+  @override
+  final dynamic internalOccurenceId;
   final List<CaseFileOfficer>? _caseFileOfficers;
   @override
   @JsonKey(name: 'CaseFileOfficers')
@@ -328,10 +374,10 @@ class _$OpenCasesImpl implements _OpenCases {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<dynamic>? _caseMaterial;
+  final List<CaseMaterial>? _caseMaterial;
   @override
   @JsonKey(name: 'CaseMaterial')
-  List<dynamic>? get caseMaterial {
+  List<CaseMaterial>? get caseMaterial {
     final value = _caseMaterial;
     if (value == null) return null;
     if (_caseMaterial is EqualUnmodifiableListView) return _caseMaterial;
@@ -339,10 +385,10 @@ class _$OpenCasesImpl implements _OpenCases {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<dynamic>? _caseNotes;
+  final List<CaseNote>? _caseNotes;
   @override
   @JsonKey(name: 'CaseNotes')
-  List<dynamic>? get caseNotes {
+  List<CaseNote>? get caseNotes {
     final value = _caseNotes;
     if (value == null) return null;
     if (_caseNotes is EqualUnmodifiableListView) return _caseNotes;
@@ -350,10 +396,10 @@ class _$OpenCasesImpl implements _OpenCases {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<dynamic>? _caseSummary;
+  final List<CaseSummary>? _caseSummary;
   @override
   @JsonKey(name: 'CaseSummary')
-  List<dynamic>? get caseSummary {
+  List<CaseSummary>? get caseSummary {
     final value = _caseSummary;
     if (value == null) return null;
     if (_caseSummary is EqualUnmodifiableListView) return _caseSummary;
@@ -365,10 +411,12 @@ class _$OpenCasesImpl implements _OpenCases {
   final LeadOfficer? leadOfficer;
   @override
   final Occurence? occurence;
+  @override
+  final InternalOccurence? internalOccurence;
 
   @override
   String toString() {
-    return 'OpenCases(id: $id, available: $available, userId: $userId, status: $status, createdAt: $createdAt, occurenceId: $occurenceId, caseFileOfficers: $caseFileOfficers, caseMaterial: $caseMaterial, caseNotes: $caseNotes, caseSummary: $caseSummary, leadOfficer: $leadOfficer, occurence: $occurence)';
+    return 'OpenCases(id: $id, available: $available, userId: $userId, status: $status, createdAt: $createdAt, occurenceId: $occurenceId, internalOccurenceId: $internalOccurenceId, caseFileOfficers: $caseFileOfficers, caseMaterial: $caseMaterial, caseNotes: $caseNotes, caseSummary: $caseSummary, leadOfficer: $leadOfficer, occurence: $occurence, internalOccurence: $internalOccurence)';
   }
 
   @override
@@ -386,6 +434,8 @@ class _$OpenCasesImpl implements _OpenCases {
             (identical(other.occurenceId, occurenceId) ||
                 other.occurenceId == occurenceId) &&
             const DeepCollectionEquality()
+                .equals(other.internalOccurenceId, internalOccurenceId) &&
+            const DeepCollectionEquality()
                 .equals(other._caseFileOfficers, _caseFileOfficers) &&
             const DeepCollectionEquality()
                 .equals(other._caseMaterial, _caseMaterial) &&
@@ -396,7 +446,9 @@ class _$OpenCasesImpl implements _OpenCases {
             (identical(other.leadOfficer, leadOfficer) ||
                 other.leadOfficer == leadOfficer) &&
             (identical(other.occurence, occurence) ||
-                other.occurence == occurence));
+                other.occurence == occurence) &&
+            (identical(other.internalOccurence, internalOccurence) ||
+                other.internalOccurence == internalOccurence));
   }
 
   @JsonKey(ignore: true)
@@ -409,12 +461,14 @@ class _$OpenCasesImpl implements _OpenCases {
       status,
       createdAt,
       occurenceId,
+      const DeepCollectionEquality().hash(internalOccurenceId),
       const DeepCollectionEquality().hash(_caseFileOfficers),
       const DeepCollectionEquality().hash(_caseMaterial),
       const DeepCollectionEquality().hash(_caseNotes),
       const DeepCollectionEquality().hash(_caseSummary),
       leadOfficer,
-      occurence);
+      occurence,
+      internalOccurence);
 
   @JsonKey(ignore: true)
   @override
@@ -438,13 +492,15 @@ abstract class _OpenCases implements OpenCases {
       final String? status,
       @JsonKey(name: 'created_at') final DateTime? createdAt,
       final int? occurenceId,
+      final dynamic internalOccurenceId,
       @JsonKey(name: 'CaseFileOfficers')
       final List<CaseFileOfficer>? caseFileOfficers,
-      @JsonKey(name: 'CaseMaterial') final List<dynamic>? caseMaterial,
-      @JsonKey(name: 'CaseNotes') final List<dynamic>? caseNotes,
-      @JsonKey(name: 'CaseSummary') final List<dynamic>? caseSummary,
+      @JsonKey(name: 'CaseMaterial') final List<CaseMaterial>? caseMaterial,
+      @JsonKey(name: 'CaseNotes') final List<CaseNote>? caseNotes,
+      @JsonKey(name: 'CaseSummary') final List<CaseSummary>? caseSummary,
       final LeadOfficer? leadOfficer,
-      final Occurence? occurence}) = _$OpenCasesImpl;
+      final Occurence? occurence,
+      final InternalOccurence? internalOccurence}) = _$OpenCasesImpl;
 
   factory _OpenCases.fromJson(Map<String, dynamic> json) =
       _$OpenCasesImpl.fromJson;
@@ -463,21 +519,25 @@ abstract class _OpenCases implements OpenCases {
   @override
   int? get occurenceId;
   @override
+  dynamic get internalOccurenceId;
+  @override
   @JsonKey(name: 'CaseFileOfficers')
   List<CaseFileOfficer>? get caseFileOfficers;
   @override
   @JsonKey(name: 'CaseMaterial')
-  List<dynamic>? get caseMaterial;
+  List<CaseMaterial>? get caseMaterial;
   @override
   @JsonKey(name: 'CaseNotes')
-  List<dynamic>? get caseNotes;
+  List<CaseNote>? get caseNotes;
   @override
   @JsonKey(name: 'CaseSummary')
-  List<dynamic>? get caseSummary;
+  List<CaseSummary>? get caseSummary;
   @override
   LeadOfficer? get leadOfficer;
   @override
   Occurence? get occurence;
+  @override
+  InternalOccurence? get internalOccurence;
   @override
   @JsonKey(ignore: true)
   _$$OpenCasesImplCopyWith<_$OpenCasesImpl> get copyWith =>

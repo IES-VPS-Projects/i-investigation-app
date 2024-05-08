@@ -8,7 +8,8 @@ import 'package:iinvestigation/features/inbox/presentation/state/inbox_cubit.dar
 
 class Suspects extends StatefulWidget {
   final OpenCases caseFile;
-  Suspects({super.key, required this.caseFile});
+  final bool isClosed;
+  const Suspects({super.key, required this.caseFile, this.isClosed = false});
 
   @override
   State<Suspects> createState() => _SuspectsState();
@@ -29,18 +30,20 @@ class _SuspectsState extends State<Suspects> {
           title: Text("Case Suspects"),
           elevation: 0.0,
           actions: <Widget>[
-            TextButton(
-                onPressed: () {
-                  context.appNavigatorPush(
-                      SuspectsForm(id: widget.caseFile.id!.toString()));
-                },
-                // color: Colors.green,
-                child: Row(
-                  children: <Widget>[
-                    Icon(Icons.group_add),
-                    Text(" Add"),
-                  ],
-                ))
+            widget.isClosed
+                ? SizedBox()
+                : TextButton(
+                    onPressed: () {
+                      context.appNavigatorPush(
+                          SuspectsForm(id: widget.caseFile.id!.toString()));
+                    },
+                    // color: Colors.green,
+                    child: Row(
+                      children: <Widget>[
+                        Icon(Icons.group_add),
+                        Text(" Add"),
+                      ],
+                    ))
           ],
         ),
         body: context.watch<InboxCubit>().state.maybeWhen(
@@ -52,13 +55,18 @@ class _SuspectsState extends State<Suspects> {
               ),
               caseFile: (payload) => ListView(
                 children: [
-                  ...payload.caseFile!.data!.caseNotesSuspect!.map((e) =>
-                      ListTile(
-                        visualDensity: VisualDensity.comfortable,
-                        leading: Image.network("$BASE_URLASSETS${e.picture}"),
-                        title: Text("${e.iprs?.firstName} ${e.iprs?.lastName}"),
-                        subtitle: Text("${e.iprs?.idNo}  "),
-                      ))
+                  ...payload.caseFile!.data!.caseNotesSuspect!
+                      .where((element) => widget.isClosed == true
+                          ? element.caseSummaryId != null
+                          : true)
+                      .map((e) => ListTile(
+                            visualDensity: VisualDensity.comfortable,
+                            leading:
+                                Image.network("$BASE_URLASSETS${e.picture}"),
+                            title: Text(
+                                "${e.iprs?.firstName} ${e.iprs?.lastName}"),
+                            subtitle: Text("${e.iprs?.idNo}  "),
+                          ))
                 ],
               ),
             )

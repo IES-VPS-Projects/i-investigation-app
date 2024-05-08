@@ -5,6 +5,8 @@ import 'package:iinvestigation/features/dcio/domain/dependency_injection/dcio_mo
 import 'package:iinvestigation/features/dcio/presentations/state/dcio_cubit.dart';
 import 'package:iinvestigation/features/inbox/domain/dependency_injector/inbox_module_di.dart';
 import 'package:iinvestigation/features/inbox/presentation/state/inbox_cubit.dart';
+import 'package:iinvestigation/features/new_case/domain/dependency_injector/new_case_module_di.dart';
+import 'package:iinvestigation/features/new_case/presentation/state/new_case_cubit.dart';
 import 'package:nested/nested.dart';
 
 // List<BlocProviderSingleChildWidget> providers = [
@@ -17,5 +19,8 @@ List<SingleChildWidget> providers = [
   ),
   BlocProvider(
     create: (context) => InboxModuleDI.resolve!<InboxCubit>(),
+  ),
+  BlocProvider(
+    create: (context) => NewCaseModuleDI.resolve!<NewCaseCubit>(),
   ),
 ];

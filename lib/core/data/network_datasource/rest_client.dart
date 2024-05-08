@@ -3,6 +3,7 @@ import 'package:dio_http_formatter/dio_http_formatter.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../utilities/logging_utils.dart';
+import '../datasources/local_storage_data_source.dart';
 import 'config.dart';
 
 class RestClient {
@@ -29,7 +30,7 @@ class RestClient {
     _dio.interceptors
       ..add(InterceptorsWrapper(onRequest: (options, handler) async {
         if (options.extra['token-required'] == true) {
-          var token = 'token';
+          var token =  await getData('token');
           options.headers.addAll({
             "Authorization": "Bearer ${token}",
           });

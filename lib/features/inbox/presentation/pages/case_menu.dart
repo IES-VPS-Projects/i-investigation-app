@@ -31,177 +31,179 @@ class _CaseMenuState extends State<CaseMenu> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return StaggeredGrid.count(
-      crossAxisCount: 4,
-      mainAxisSpacing: 4.0,
-      crossAxisSpacing: 4.0,
-      children: <Widget>[
-        StaggeredGridTile.count(
-            crossAxisCellCount: 4,
-            mainAxisCellCount: 3,
-            child: CaseSummary(widget.caseObject)),
-        StaggeredGridTile.count(
-            crossAxisCellCount: 2,
-            mainAxisCellCount: 1,
-            child: _MenuTile(
-                Colors.red,
-                Image.asset(
-                  "assets/images/suspect.png",
-                  height: 50.0,
-                  width: 37.5,
-                ),
-                "Suspects",
-                "SubHeading", () {
-              print(22);
-              context.appNavigatorPush(Suspects(caseFile: widget.caseObject));
-            },
-                context.watch<InboxCubit>().state.payload.caseFile == null
-                    ? 0
-                    : context
-                        .watch<InboxCubit>()
-                        .state
-                        .payload
-                        .caseFile!
-                        .data!
-                        .caseNotesSuspect!
-                        .length)),
-        StaggeredGridTile.count(
-            crossAxisCellCount: 2,
-            mainAxisCellCount: 1,
-            child: _MenuTile(
-                Colors.cyan,
-                Image.asset(
-                  "assets/images/witness.png",
-                  height: 50.0,
-                  width: 37.5,
-                ),
-                "Witnesses",
-                "SubHeading", () {
-              context.appNavigatorPush(Witnesses(caseFile: widget.caseObject));
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (context) => Witnesses(id: caseObject.id)));
-            },
-                context.watch<InboxCubit>().state.payload.caseFile == null
-                    ? 0
-                    : context
-                        .watch<InboxCubit>()
-                        .state
-                        .payload
-                        .caseFile!
-                        .data!
-                        .caseNotesWitness!
-                        .length)),
-        StaggeredGridTile.count(
-            crossAxisCellCount: 2,
-            mainAxisCellCount: 1,
-            child: _MenuTile(
-                Colors.blueGrey,
-                Image.asset(
-                  "assets/images/citation.png",
-                  height: 50.0,
-                  width: 37.5,
-                ),
-                "Case notes",
-                "SubHeading", () {
-              context.appNavigatorPush(CaseNotes(
-                id: widget.caseObject.id!,
-              ));
-
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (context) => CaseNotes(id: caseObject.id)));
-            },
-                context.watch<InboxCubit>().state.payload.caseFile == null
-                    ? 0
-                    : context
-                        .watch<InboxCubit>()
-                        .state
-                        .payload
-                        .caseFile!
-                        .data!
-                        .caseNotes!
-                        .length)),
-        StaggeredGridTile.count(
-            crossAxisCellCount: 2,
-            mainAxisCellCount: 1,
-            child: _MenuTile(
-                Colors.lightBlueAccent,
-                Image.asset(
-                  "assets/images/evidence.png",
-                  height: 50.0,
-                  width: 37.5,
-                ),
-                "Materials",
-                "SubHeading", () {
-              context.appNavigatorPush(CaseMaterial(
-                id: widget.caseObject.id!,
-              ));
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (context) => CaseMaterial(
-              //               id: caseObject.id,
-              //             )));
-            },
-                context.watch<InboxCubit>().state.payload.caseFile == null
-                    ? 0
-                    : context
-                        .watch<InboxCubit>()
-                        .state
-                        .payload
-                        .caseFile!
-                        .data!
-                        .caseMaterial!
-                        .length)),
-        StaggeredGridTile.count(
-            crossAxisCellCount: 2,
-            mainAxisCellCount: 1,
-            child: _MenuTile(
-                Colors.amber,
-                Image.asset(
-                  "assets/images/offences.png",
-                  height: 50.0,
-                  width: 37.5,
-                ),
-                "Offences",
-                "SubHeading", () {
-              context.appNavigatorPush(PenalCode(id: widget.caseObject.id!));
-            },
-                context.watch<InboxCubit>().state.payload.caseFile == null
-                    ? 0
-                    : context
-                        .watch<InboxCubit>()
-                        .state
-                        .payload
-                        .caseFile!
-                        .data!
-                        .caseNotesOffences!
-                        .length)),
-        StaggeredGridTile.count(
-            crossAxisCellCount: 2,
-            mainAxisCellCount: 1,
-            child: _MenuTile(
-                Colors.blue,
-                Image.asset(
-                  "assets/images/summary.png",
-                  height: 50.0,
-                  width: 37.5,
-                ),
-                "Summary",
-                "SubHeading", () {
-              context.appNavigatorPush(const SummaryPage());
-
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (context) => CaseSummaryDoc(
-              //               docId: caseObject.id,
-              //             )));
-            }, 1)),
-      ],
+    return SingleChildScrollView(
+      child: StaggeredGrid.count(
+        crossAxisCount: 4,
+        mainAxisSpacing: 4.0,
+        crossAxisSpacing: 4.0,
+        children: <Widget>[
+          StaggeredGridTile.count(
+              crossAxisCellCount: 4,
+              mainAxisCellCount: 2,
+              child: CaseSummary(widget.caseObject)),
+          StaggeredGridTile.count(
+              crossAxisCellCount: 2,
+              mainAxisCellCount: 1,
+              child: _MenuTile(
+                  Colors.red,
+                  Image.asset(
+                    "assets/images/suspect.png",
+                    height: 50.0,
+                    width: 37.5,
+                  ),
+                  "Suspects",
+                  "SubHeading", () {
+                print(22);
+                context.appNavigatorPush(Suspects(caseFile: widget.caseObject));
+              },
+                  context.watch<InboxCubit>().state.payload.caseFile == null
+                      ? 0
+                      : context
+                          .watch<InboxCubit>()
+                          .state
+                          .payload
+                          .caseFile!
+                          .data!
+                          .caseNotesSuspect!
+                          .length)),
+          StaggeredGridTile.count(
+              crossAxisCellCount: 2,
+              mainAxisCellCount: 1,
+              child: _MenuTile(
+                  Colors.cyan,
+                  Image.asset(
+                    "assets/images/witness.png",
+                    height: 50.0,
+                    width: 37.5,
+                  ),
+                  "Witnesses",
+                  "SubHeading", () {
+                context.appNavigatorPush(Witnesses(caseFile: widget.caseObject));
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => Witnesses(id: caseObject.id)));
+              },
+                  context.watch<InboxCubit>().state.payload.caseFile == null
+                      ? 0
+                      : context
+                          .watch<InboxCubit>()
+                          .state
+                          .payload
+                          .caseFile!
+                          .data!
+                          .caseNotesWitness!
+                          .length)),
+          StaggeredGridTile.count(
+              crossAxisCellCount: 2,
+              mainAxisCellCount: 1,
+              child: _MenuTile(
+                  Colors.blueGrey,
+                  Image.asset(
+                    "assets/images/citation.png",
+                    height: 50.0,
+                    width: 37.5,
+                  ),
+                  "Case notes",
+                  "SubHeading", () {
+                context.appNavigatorPush(CaseNotes(
+                  id: widget.caseObject.id!,
+                ));
+      
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => CaseNotes(id: caseObject.id)));
+              },
+                  context.watch<InboxCubit>().state.payload.caseFile == null
+                      ? 0
+                      : context
+                          .watch<InboxCubit>()
+                          .state
+                          .payload
+                          .caseFile!
+                          .data!
+                          .caseNotes!
+                          .length)),
+          StaggeredGridTile.count(
+              crossAxisCellCount: 2,
+              mainAxisCellCount: 1,
+              child: _MenuTile(
+                  Colors.lightBlueAccent,
+                  Image.asset(
+                    "assets/images/evidence.png",
+                    height: 50.0,
+                    width: 37.5,
+                  ),
+                  "Materials",
+                  "SubHeading", () {
+                context.appNavigatorPush(CaseMaterial(
+                  id: widget.caseObject.id!,
+                ));
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => CaseMaterial(
+                //               id: caseObject.id,
+                //             )));
+              },
+                  context.watch<InboxCubit>().state.payload.caseFile == null
+                      ? 0
+                      : context
+                          .watch<InboxCubit>()
+                          .state
+                          .payload
+                          .caseFile!
+                          .data!
+                          .caseMaterial!
+                          .length)),
+          StaggeredGridTile.count(
+              crossAxisCellCount: 2,
+              mainAxisCellCount: 1,
+              child: _MenuTile(
+                  Colors.amber,
+                  Image.asset(
+                    "assets/images/offences.png",
+                    height: 50.0,
+                    width: 37.5,
+                  ),
+                  "Offences",
+                  "SubHeading", () {
+                context.appNavigatorPush(PenalCode(id: widget.caseObject.id!));
+              },
+                  context.watch<InboxCubit>().state.payload.caseFile == null
+                      ? 0
+                      : context
+                          .watch<InboxCubit>()
+                          .state
+                          .payload
+                          .caseFile!
+                          .data!
+                          .caseNotesOffences!
+                          .length)),
+          StaggeredGridTile.count(
+              crossAxisCellCount: 2,
+              mainAxisCellCount: 1,
+              child: _MenuTile(
+                  Colors.blue,
+                  Image.asset(
+                    "assets/images/summary.png",
+                    height: 50.0,
+                    width: 37.5,
+                  ),
+                  "Summary",
+                  "SubHeading", () {
+                context.appNavigatorPush(const SummaryPage());
+      
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => CaseSummaryDoc(
+                //               docId: caseObject.id,
+                //             )));
+              }, 1)),
+        ],
+      ),
     );
   }
 }

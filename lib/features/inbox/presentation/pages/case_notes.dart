@@ -10,7 +10,8 @@ import 'widgets/video_player.dart';
 
 class CaseNotes extends StatelessWidget {
   final int id;
-  const CaseNotes({required this.id});
+  final bool isClosed;
+  const CaseNotes({required this.id, this.isClosed = false});
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -20,16 +21,18 @@ class CaseNotes extends StatelessWidget {
           title: const Text("Case Notes"),
           elevation: 0.0,
           actions: <Widget>[
-            TextButton(
-                onPressed: () {
-                  context.appNavigatorPush(CaseNoteForm(id: id));
-                },
-                child: const Row(
-                  children: <Widget>[
-                    Icon(Icons.playlist_add),
-                    Text(" Add"),
-                  ],
-                ))
+            isClosed == false
+                ? TextButton(
+                    onPressed: () {
+                      context.appNavigatorPush(CaseNoteForm(id: id));
+                    },
+                    child: const Row(
+                      children: <Widget>[
+                        Icon(Icons.playlist_add),
+                        Text(" Add"),
+                      ],
+                    ))
+                : SizedBox()
           ],
         ),
         body: ListView(
@@ -42,6 +45,8 @@ class CaseNotes extends StatelessWidget {
                     .caseFile!
                     .data!
                     .caseNotes!
+                    .where((element) =>
+                        isClosed == true ? element.caseSummaryId != null : true)
                     .map((e) => ListTile(
                           dense: true,
                           title: Text("${e.title}"),

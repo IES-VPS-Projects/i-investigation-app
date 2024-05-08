@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:iinvestigation/core/utilities/utilities.dart';
-import 'package:iinvestigation/features/inbox/data/models/case_file/case_material.dart';
 import 'package:iinvestigation/features/inbox/data/models/open_cases/open_cases.dart';
+import 'package:iinvestigation/features/inbox/presentation/pages/case_material.dart';
 import 'package:iinvestigation/features/inbox/presentation/pages/case_notes.dart';
 import 'package:iinvestigation/features/inbox/presentation/pages/penal_code.dart';
 import 'package:iinvestigation/features/inbox/presentation/pages/summary.dart';
@@ -50,8 +50,10 @@ class _CaseMenuState extends State<ClosedCaseMenu> {
                 ),
                 "Suspects",
                 "SubHeading", () {
-              print(22);
-              context.appNavigatorPush(Suspects(caseFile: widget.caseObject));
+              context.appNavigatorPush(Suspects(
+                caseFile: widget.caseObject,
+                isClosed: true,
+              ));
             },
                 context.watch<InboxCubit>().state.payload.caseFile == null
                     ? 0
@@ -76,7 +78,10 @@ class _CaseMenuState extends State<ClosedCaseMenu> {
                 ),
                 "Witnesses",
                 "SubHeading", () {
-              context.appNavigatorPush(Witnesses(caseFile: widget.caseObject));
+              context.appNavigatorPush(Witnesses(
+                caseFile: widget.caseObject,
+                isClosed: true,
+              ));
               // Navigator.push(
               //     context,
               //     MaterialPageRoute(
@@ -106,6 +111,7 @@ class _CaseMenuState extends State<ClosedCaseMenu> {
                 "Case notes",
                 "SubHeading", () {
               context.appNavigatorPush(CaseNotes(
+                isClosed: true,
                 id: widget.caseObject.id!,
               ));
 
@@ -170,7 +176,10 @@ class _CaseMenuState extends State<ClosedCaseMenu> {
                 ),
                 "Offences",
                 "SubHeading", () {
-              context.appNavigatorPush(PenalCode(id: widget.caseObject.id!));
+              context.appNavigatorPush(PenalCode(
+                id: widget.caseObject.id!,
+                isClosed: true,
+              ));
             },
                 context.watch<InboxCubit>().state.payload.caseFile == null
                     ? 0
@@ -183,7 +192,6 @@ class _CaseMenuState extends State<ClosedCaseMenu> {
                         .caseNotesOffences!
                         .where((element) => element.caseSummaryId != null)
                         .length)),
-     
       ],
     );
   }

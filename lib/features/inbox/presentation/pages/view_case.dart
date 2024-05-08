@@ -37,7 +37,7 @@ class _ViewCaseState extends State<ViewCase> {
           if (snapshot.hasData) {
             return Scaffold(
               appBar: AppBar(
-                title: Text("View Case File"),
+                title: const Text("View Case File"),
               ),
               body: ViewCaseForm(
                 caseObject: widget.caseFile,

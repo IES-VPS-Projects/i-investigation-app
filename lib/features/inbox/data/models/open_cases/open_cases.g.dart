@@ -16,18 +16,29 @@ _$OpenCasesImpl _$$OpenCasesImplFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['created_at'] as String),
       occurenceId: json['occurenceId'] as int?,
+      internalOccurenceId: json['internalOccurenceId'],
       caseFileOfficers: (json['CaseFileOfficers'] as List<dynamic>?)
           ?.map((e) => CaseFileOfficer.fromJson(e as Map<String, dynamic>))
           .toList(),
-      caseMaterial: json['CaseMaterial'] as List<dynamic>?,
-      caseNotes: json['CaseNotes'] as List<dynamic>?,
-      caseSummary: json['CaseSummary'] as List<dynamic>?,
+      caseMaterial: (json['CaseMaterial'] as List<dynamic>?)
+          ?.map((e) => CaseMaterial.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      caseNotes: (json['CaseNotes'] as List<dynamic>?)
+          ?.map((e) => CaseNote.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      caseSummary: (json['CaseSummary'] as List<dynamic>?)
+          ?.map((e) => CaseSummary.fromJson(e as Map<String, dynamic>))
+          .toList(),
       leadOfficer: json['leadOfficer'] == null
           ? null
           : LeadOfficer.fromJson(json['leadOfficer'] as Map<String, dynamic>),
       occurence: json['occurence'] == null
           ? null
           : Occurence.fromJson(json['occurence'] as Map<String, dynamic>),
+      internalOccurence: json['internalOccurence'] == null
+          ? null
+          : InternalOccurence.fromJson(
+              json['internalOccurence'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$OpenCasesImplToJson(_$OpenCasesImpl instance) =>
@@ -38,10 +49,12 @@ Map<String, dynamic> _$$OpenCasesImplToJson(_$OpenCasesImpl instance) =>
       'status': instance.status,
       'created_at': instance.createdAt?.toIso8601String(),
       'occurenceId': instance.occurenceId,
+      'internalOccurenceId': instance.internalOccurenceId,
       'CaseFileOfficers': instance.caseFileOfficers,
       'CaseMaterial': instance.caseMaterial,
       'CaseNotes': instance.caseNotes,
       'CaseSummary': instance.caseSummary,
       'leadOfficer': instance.leadOfficer,
       'occurence': instance.occurence,
+      'internalOccurence': instance.internalOccurence,
     };

@@ -10,7 +10,9 @@ import 'widgets/witness_form.dart';
 
 class Witnesses extends StatefulWidget {
   final OpenCases caseFile;
-  Witnesses({super.key, required this.caseFile});
+
+  final bool isClosed;
+  Witnesses({super.key, required this.caseFile, this.isClosed = false});
 
   @override
   State<Witnesses> createState() => _WitnessesState();
@@ -28,21 +30,23 @@ class _WitnessesState extends State<Witnesses> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: const Text("Case Witnesses"),
+          title: const Text("Case  Witnesses"),
           elevation: 0.0,
           actions: <Widget>[
-            TextButton(
-                onPressed: () {
-                  context.appNavigatorPush(
-                      WitnessForm(id: widget.caseFile.id!.toString()));
-                },
-                // color: Colors.green,
-                child: Row(
-                  children: <Widget>[
-                    Icon(Icons.group_add),
-                    Text(" Add"),
-                  ],
-                ))
+            widget.isClosed
+                ? SizedBox()
+                : TextButton(
+                    onPressed: () {
+                      context.appNavigatorPush(
+                          WitnessForm(id: widget.caseFile.id!.toString()));
+                    },
+                    // color: Colors.green,
+                    child: Row(
+                      children: <Widget>[
+                        Icon(Icons.group_add),
+                        Text(" Add"),
+                      ],
+                    ))
           ],
         ),
         body: context.watch<InboxCubit>().state.maybeWhen(
@@ -54,13 +58,18 @@ class _WitnessesState extends State<Witnesses> {
               ),
               caseFile: (payload) => ListView(
                 children: [
-                  ...payload.caseFile!.data!.caseNotesWitness!.map((e) =>
-                      ListTile(
-                        visualDensity: VisualDensity.comfortable,
-                        leading: Image.network("$BASE_URLASSETS${e.picture}"),
-                        title: Text("${e.iprs?.firstName} ${e.iprs?.lastName}"),
-                        subtitle: Text("${e.iprs?.idNo}  "),
-                      ))
+                  ...payload.caseFile!.data!.caseNotesWitness!
+                      .where((element) => widget.isClosed == true
+                          ? element.caseSummaryId != null
+                          : true)
+                      .map((e) => ListTile(
+                            visualDensity: VisualDensity.comfortable,
+                            leading:
+                                Image.network("$BASE_URLASSETS${e.picture}"),
+                            title: Text(
+                                "${e.iprs?.firstName} ${e.iprs?.lastName}"),
+                            subtitle: Text("${e.iprs?.idNo}  "),
+                          ))
                 ],
               ),
             )

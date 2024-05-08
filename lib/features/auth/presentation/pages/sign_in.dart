@@ -142,7 +142,8 @@ class _SignInState extends State<SignIn> {
   void signIn() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      FormData payload = FormData.fromMap({"serice_number": email, "password": password});
+      FormData payload =
+          FormData.fromMap({"serice_number": email, "password": password});
 
       context.read<AuthCubit>().login(payload).then((_) {
         context.appNavigatorPush(const Dashboard());

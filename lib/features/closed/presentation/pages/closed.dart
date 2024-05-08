@@ -27,13 +27,13 @@ class _ClosedCasesState extends State<ClosedCases> {
     return Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
-          title: Text("Ongoing Cases"),
+          title: const Text("Closed Cases"),
           centerTitle: true,
         ),
         body: context.watch<InboxCubit>().state.maybeMap(
               orElse: () {
                 return context.watch<InboxCubit>().state.payload.cases == null
-                    ? Center(
+                    ? const Center(
                         child: CircularProgressIndicator(),
                       )
                     : ListView(
