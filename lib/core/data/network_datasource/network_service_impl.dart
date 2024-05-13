@@ -7,7 +7,6 @@ import 'network_service.dart';
 import 'rest_client.dart';
 
 class NetworkServiceImpl implements NetworkService {
-  final Dio _dio = Dio();
   RestClient _restClient;
   NetworkServiceImpl(this._restClient);
 

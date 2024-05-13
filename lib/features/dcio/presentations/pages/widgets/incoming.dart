@@ -36,6 +36,7 @@ class _IncomingState extends State<Incoming> {
                         .state
                         .payload
                         .occurences!
+                        .where((element) => element.caseFile!.length == 0)
                         .map((e) => Card(
                               child: ListTile(
                                 title: Text("${e.obNo}"),
@@ -57,11 +58,12 @@ class _IncomingState extends State<Incoming> {
           return SingleChildScrollView(
             child: Column(
               children: [
-                ...payload.occurences!.map((e) => Card(
+                ...payload.occurences!  .where((element) => element.caseFile!.length == 0)
+                     .map((e) => Card(
                       child: ListTile(
                         title: Text("${e.obNo}"),
                         subtitle: e.occurenceDetails!.isEmpty
-                            ? Text('')
+                            ? const Text('')
                             : Text(
                                 "${(jsonDecode(e.occurenceDetails!.first.details!)[0]['category']['name'])}"),
                         trailing: IconButton(

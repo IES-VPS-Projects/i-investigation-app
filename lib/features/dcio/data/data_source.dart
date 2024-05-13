@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:iinvestigation/core/data/network_datasource/network_service.dart';
 import 'package:iinvestigation/core/platform/connection_status.dart';
 import 'package:iinvestigation/core/utilities/logging_utils.dart';
@@ -42,8 +43,9 @@ class DcioDataSourceImpl implements DcioDataSource {
 
   @override
   Future<NewCaseFile> createCaseFile({required Map payload}) async {
+    var fd = FormData.fromMap(payload as Map<String, dynamic>);
     var response =
-        await _networkService.postHttp(DcioEndpoints.casefiles, body: payload);
+        await _networkService.postHttp(DcioEndpoints.casefiles, body: fd);
     // logger.wtf();
     logger.wtf(response);
 

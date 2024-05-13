@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iinvestigation/core/data/datasources/local_storage_data_source.dart';
-import 'package:iinvestigation/features/auth/data/models/auth_response_model/auth_response_model.dart';
-import 'package:iinvestigation/features/auth/presentation/state/auth_cubit.dart';
-
+import 'package:iinvestigation/service/sockets/socket_cubit.dart';
+ 
 class DashboardHeader extends StatefulWidget {
+  const DashboardHeader({super.key});
+
   @override
   _DashboardHeaderState createState() => _DashboardHeaderState();
 }
@@ -17,6 +18,7 @@ class _DashboardHeaderState extends State<DashboardHeader> {
 
   @override
   void initState() {
+    super.initState();
     List<String> keys = [
       'name',
       'service_Number',
@@ -33,7 +35,8 @@ class _DashboardHeaderState extends State<DashboardHeader> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+
+    
     return FutureBuilder<Map<String, String>>(
         future: _profile,
         builder: (BuildContext context,
@@ -62,14 +65,15 @@ class _DashboardHeaderState extends State<DashboardHeader> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
+                 
+                const  Text(
                     "Welcome,",
                     style: TextStyle(
                         fontWeight: FontWeight.w100, color: Colors.green),
                   ),
                   Text(
                     "${user['name']}",
-                    style: TextStyle(fontSize: 24.0, color: Colors.white),
+                    style: const TextStyle(fontSize: 24.0, color: Colors.white),
                   ),
                   Container(
                       color: const Color(0xFF00C6FF),

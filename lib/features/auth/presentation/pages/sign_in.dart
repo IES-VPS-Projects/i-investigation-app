@@ -146,7 +146,7 @@ class _SignInState extends State<SignIn> {
           FormData.fromMap({"serice_number": email, "password": password});
 
       context.read<AuthCubit>().login(payload).then((_) {
-        context.appNavigatorPush(const Dashboard());
+        context.appNavigatorReplacement(const Dashboard());
       });
       // .then(;
       // dismissProgressHUD(context);

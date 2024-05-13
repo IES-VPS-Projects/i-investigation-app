@@ -39,9 +39,7 @@ class _CaseFormState extends State<CaseForm> {
         // ignore: prefer_interpolation_to_compose_strings
         _heading = "$_heading " + e['category']['name'];
       });
-    });
-    // Create an empty document or load existing if you have one.
-    // Here we create an empty document:
+    }); 
   }
 
   String? leadInvestigator;
