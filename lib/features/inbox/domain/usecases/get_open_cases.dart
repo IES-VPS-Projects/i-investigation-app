@@ -18,3 +18,5 @@ class GetOpenCases extends Usecase<List<OpenCases>, int?> {
     }
   }
 }
+
+

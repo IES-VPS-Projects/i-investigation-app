@@ -8,7 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 import 'package:iinvestigation/core/data/models/entities/iprs_result_object.dart';
 import 'package:iinvestigation/core/utilities/app_common_extentions.dart';
-import 'package:iinvestigation/core/utilities/app_navigation.dart';
 import 'package:iinvestigation/core/utilities/logging_utils.dart';
 import 'package:iinvestigation/features/inbox/presentation/state/inbox_cubit.dart';
 import 'package:image_picker/image_picker.dart';
@@ -279,7 +278,7 @@ class _SuspectsFormState extends State<WitnessForm> {
       context.read<InboxCubit>().createWitness(fd: fd).then((value) {
         context.read<InboxCubit>().getCaseFile(fd: int.parse(widget.id));
         context.showCustomSnackBar("Created Witness");
-        context.back();
+        // context.back();
       });
     }
     dismissProgressHUD();

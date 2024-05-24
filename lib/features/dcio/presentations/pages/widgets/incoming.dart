@@ -41,7 +41,7 @@ class _IncomingState extends State<Incoming> {
                               child: ListTile(
                                 title: Text("${e.obNo}"),
                                 subtitle: e.occurenceDetails!.isEmpty
-                                    ? Text('')
+                                    ?const Text('')
                                     : Text(
                                         "${(jsonDecode(e.occurenceDetails!.first.details!)[0]['category']['name'])}"),
                                 trailing: IconButton(
@@ -64,7 +64,7 @@ class _IncomingState extends State<Incoming> {
                         title: Text("${e.obNo}"),
                         subtitle: e.occurenceDetails!.isEmpty
                             ? const Text('')
-                            : Text(
+                            :(jsonDecode(e.occurenceDetails!.first.details!) as List).isEmpty?Text(''):  Text(
                                 "${(jsonDecode(e.occurenceDetails!.first.details!)[0]['category']['name'])}"),
                         trailing: IconButton(
                             icon: const Icon(Icons.open_in_browser),

@@ -55,6 +55,9 @@ dependencies:
   video_player:
   dropdown_search:
   socket_io_client: ^2.0.3+1
+  flutter_local_notifications:
+  timezone:
+  flutter_timezone: ^1.0.8
 
 
   # The following adds the Cupertino Icons font to your application.

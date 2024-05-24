@@ -17,15 +17,15 @@ class SocketCubit extends Cubit<SocketState> {
   Future init() async {
     print('socket');
 
-  String?  name = await getData('service_Number');
-  String?  token = await getData('token');
-  logger.f(name);
+    String? name = await getData('service_Number');
+    String? token = await getData('token');
+    logger.f(name);
     try {
       IO.Socket socket = IO.io(BASE_URLSOCKET, <String, dynamic>{
         'autoConnect': false,
         'transports': ['websocket'],
-      }).connect(); 
-      socket.onConnectError((err)=>print(err));
+      }).connect();
+      socket.onConnectError((err) => print(err));
       socket.onConnect((_) {
         logger.i('connect $_');
         socket.emit('message', 'mobile');
@@ -34,6 +34,10 @@ class SocketCubit extends Cubit<SocketState> {
 
       socket.on('event', (data) => logger.i(data));
       socket.on('message', (data) => logger.i(data));
+      socket.on('newCases', (data) {
+        logger.i(data);
+        logger.i('new message');
+      });
       socket.onDisconnect((_) => logger.i('disconnect'));
       socket.on('fromServer', (_) => logger.i(_));
     } catch (e) {

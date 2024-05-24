@@ -35,14 +35,18 @@ class _PenalCodeFormState extends State<PenalCodeForm> {
             TextButton(
                 onPressed: () {
                   var _ii = _penalCodeList.map((e) => e.id).toList();
-                  FormData payload =
-                      FormData.fromMap({'penal': [..._ii], 'caseFileId': widget.id});
+                  FormData payload = FormData.fromMap({
+                    'penal': [..._ii],
+                    'caseFileId': widget.id
+                  });
                   print(_ii);
 
-                  context.read<InboxCubit>().createOffence(payload: payload).then((value){
+                  context
+                      .read<InboxCubit>()
+                      .createOffence(payload: payload)
+                      .then((value) {
                     context.back();
-                     context.read<InboxCubit>().getCaseFile(fd: widget.id);
-
+                    context.read<InboxCubit>().getCaseFile(fd: widget.id);
                   });
                 },
                 // color: Colors.green,
@@ -113,7 +117,7 @@ class _PenalCodeFormState extends State<PenalCodeForm> {
                     selectedItem:
                         (context.watch<InboxCubit>().state.payload.penalCodes!)
                             .first,
-                  ), 
+                  ),
                 ],
               );
             },
