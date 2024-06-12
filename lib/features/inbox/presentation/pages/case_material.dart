@@ -23,7 +23,7 @@ class CaseMaterial extends StatelessWidget {
           elevation: 0.0,
           actions: <Widget>[
             isClosed
-                ? SizedBox()
+                ? const  SizedBox()
                 : TextButton(
                     onPressed: () {
                       context.appNavigatorPush(CaseMaterialForm(id: id));
