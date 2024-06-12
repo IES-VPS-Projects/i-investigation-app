@@ -1,8 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iinvestigation/core/data/datasources/local_storage_data_source.dart';
 import 'package:iinvestigation/features/inbox/data/models/open_cases/open_cases.dart';
+import 'package:iinvestigation/features/inbox/presentation/state/inbox_cubit.dart';
 
 import 'case_menu.dart';
 
@@ -30,51 +32,61 @@ class _ViewCaseFormState extends State<ViewCaseForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.only(top: 12.0),
-        child: Stack(
-          children: <Widget>[
-            widget.hasAccepted == "PENDING"
-                ? Stack(
-                    children: <Widget>[
-                      CaseMenu(
-                        caseObject: widget.caseObject,
-                      ),
-                      // Positioned.fill(
-                      //   child: BackdropFilter(
-                      //     filter: ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),
-                      //     child: Column(
-                      //       mainAxisSize: MainAxisSize.max,
-                      //       mainAxisAlignment: MainAxisAlignment.end,
-                      //       children: <Widget>[
-                      //         ButtonBar(
-                      //           children: <Widget>[
+    return RefreshIndicator(
+      onRefresh: () async {
+        context.read<InboxCubit>().getCaseFile(fd: widget.caseObject.id!);
+      },
+      child: Padding(
+          padding: const EdgeInsets.only(top: 2.0),
+          child:  widget.hasAccepted == "PENDING"
+                  ? CaseMenu(
+                          caseObject: widget.caseObject,
+                        )
+                  
+                  // Stack(
+                  //     children: <Widget>[
+                  //      CaseMenu(
+                  //         caseObject: widget.caseObject,
+                  //       ) ,
+                  //       // Positioned.fill(
+                  //       //   child: BackdropFilter(
+                  //       //     filter: ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),
+                  //       //     child: Column(
+                  //       //       mainAxisSize: MainAxisSize.max,
+                  //       //       mainAxisAlignment: MainAxisAlignment.end,
+                  //       //       children: <Widget>[
+                  //       //         ButtonBar(
+                  //       //           children: <Widget>[
 
-                      //              TextButton(
-                      //                 onPressed: () {
-                      //                   Navigator.pop(context);
-                      //                 },
-                      //                 style: ButtonStyle(backgroundColor: MaterialStatePropertyAll<Color>(Colors.red)),
-                      //                 child:const Text("Decline Case")),
-                      //                 // ElevatedButton(onPressed: onPressed, child: child)
-                      //             ElevatedButton(
-                      //                 onPressed: (){},
-                      //                 style: const ButtonStyle(
-                      //                   backgroundColor: MaterialStatePropertyAll<Color>(Colors.green),
-                      //                   foregroundColor: MaterialStatePropertyAll<Color>(Colors.white)
-                      //                   ),
-                      //                 child: Text("Accept Case"))
-                      //           ],
-                      //         )
-                      //       ],
-                      //     ),
-                      //   ),
-                      // )
-                    ],
-                  )
-                : Text("caseObject"),
-          ],
-        ));
+                  //       //              TextButton(
+                  //       //                 onPressed: () {
+                  //       //                   Navigator.pop(context);
+                  //       //                 },
+                  //       //                 style: ButtonStyle(backgroundColor: MaterialStatePropertyAll<Color>(Colors.red)),
+                  //       //                 child:const Text("Decline Case")),
+                  //       //                 // ElevatedButton(onPressed: onPressed, child: child)
+                  //       //             ElevatedButton(
+                  //       //                 onPressed: (){},
+                  //       //                 style: const ButtonStyle(
+                  //       //                   backgroundColor: MaterialStatePropertyAll<Color>(Colors.green),
+                  //       //                   foregroundColor: MaterialStatePropertyAll<Color>(Colors.white)
+                  //       //                   ),
+                  //       //                 child: Text("Accept Case"))
+                  //       //           ],
+                  //       //         )
+                  //       //       ],
+                  //       //     ),
+                  //       //   ),
+                  //       // )
+                  //     ],
+                  //   )
+
+
+
+
+                  : Text("caseObject"),
+            ),
+    );
   }
 
   // void dismissProgressHUD() {

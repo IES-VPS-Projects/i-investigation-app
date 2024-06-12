@@ -30,7 +30,7 @@ class RestClient {
     _dio.interceptors
       ..add(InterceptorsWrapper(onRequest: (options, handler) async {
         if (options.extra['token-required'] == true) {
-          var token =  await getData('token');
+          var token = await getData('token');
           options.headers.addAll({
             "Authorization": "Bearer ${token}",
           });

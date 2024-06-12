@@ -9,6 +9,7 @@ import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 import 'package:iinvestigation/core/data/models/entities/iprs_result_object.dart';
 import 'package:iinvestigation/core/utilities/app_common_extentions.dart';
 import 'package:iinvestigation/core/utilities/logging_utils.dart';
+import 'package:iinvestigation/core/utilities/utilities.dart';
 import 'package:iinvestigation/features/inbox/presentation/state/inbox_cubit.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -170,6 +171,7 @@ class _SuspectsFormState extends State<WitnessForm> {
                                             if (value == null) {
                                               return 'Phone Number is required';
                                             }
+                                            return null;
                                           },
                                           onSaved: (str) =>
                                               formData["phone"] = str),
@@ -224,7 +226,7 @@ class _SuspectsFormState extends State<WitnessForm> {
 
   Future getImage() async {
     var image = await ImagePicker.platform
-        .getImageFromSource(source: ImageSource.camera);
+        .getImageFromSource(source: ImageSource.gallery);
     if (file.isEmpty) {
       setState(() {
         file.add(File(image!.path));
@@ -278,23 +280,9 @@ class _SuspectsFormState extends State<WitnessForm> {
       context.read<InboxCubit>().createWitness(fd: fd).then((value) {
         context.read<InboxCubit>().getCaseFile(fd: int.parse(widget.id));
         context.showCustomSnackBar("Created Witness");
-        // context.back();
+        context.back();
       });
     }
     dismissProgressHUD();
-
-    //upload all images..
-    // uploadFiles().then((d) {
-    //   Firestore.instance
-    //       .collection("cases")
-    //       .document(widget.id)
-    //       .collection("suspects")
-    //       .add(formData)
-    //       .then((value) {
-    //     dismissProgressHUD();
-    //     Navigator.pop(context);
-    //   });
-    // });
-    // }
   }
 }

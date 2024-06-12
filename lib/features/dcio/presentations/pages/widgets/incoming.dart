@@ -41,7 +41,7 @@ class _IncomingState extends State<Incoming> {
                               child: ListTile(
                                 title: Text("${e.obNo}"),
                                 subtitle: e.occurenceDetails!.isEmpty
-                                    ?const Text('')
+                                    ? const Text('')
                                     : Text(
                                         "${(jsonDecode(e.occurenceDetails!.first.details!)[0]['category']['name'])}"),
                                 trailing: IconButton(
@@ -58,24 +58,29 @@ class _IncomingState extends State<Incoming> {
           return SingleChildScrollView(
             child: Column(
               children: [
-                ...payload.occurences!  .where((element) => element.caseFile!.length == 0)
-                     .map((e) => Card(
-                      child: ListTile(
-                        title: Text("${e.obNo}"),
-                        subtitle: e.occurenceDetails!.isEmpty
-                            ? const Text('')
-                            :(jsonDecode(e.occurenceDetails!.first.details!) as List).isEmpty?Text(''):  Text(
-                                "${(jsonDecode(e.occurenceDetails!.first.details!)[0]['category']['name'])}"),
-                        trailing: IconButton(
-                            icon: const Icon(Icons.open_in_browser),
-                            onPressed: () {
-                              context.appNavigatorPush(NewCase(e: e));
-                              // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>NewCase(
-                              //   caseObj: caseObject,
-                              // )));
-                            }),
-                      ),
-                    ))
+                ...payload.occurences!
+                    .where((element) => element.caseFile!.length == 0)
+                    .map((e) => Card(
+                          child: ListTile(
+                            title: Text("${e.obNo}"),
+                            subtitle: e.occurenceDetails!.isEmpty
+                                ? const Text('')
+                                : (jsonDecode(e.occurenceDetails!.first
+                                            .details!) as List)
+                                        .isEmpty
+                                    ? Text('')
+                                    : Text(
+                                        "${(jsonDecode(e.occurenceDetails!.first.details!)[0]['category']['name'])}"),
+                            trailing: IconButton(
+                                icon: const Icon(Icons.open_in_browser),
+                                onPressed: () {
+                                  context.appNavigatorPush(NewCase(e: e));
+                                  // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>NewCase(
+                                  //   caseObj: caseObject,
+                                  // )));
+                                }),
+                          ),
+                        ))
               ],
             ),
           );

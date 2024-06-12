@@ -49,6 +49,7 @@ class _NewCaseState extends State<NewCase> {
                               if (value == null) {
                                 return 'Heading is required';
                               }
+                              return null;
                             },
                             controller: title,
                             // onSaved: (str) => caseObject.heading = str,
@@ -60,14 +61,14 @@ class _NewCaseState extends State<NewCase> {
                             controller: obNumber,
 
                             decoration: InputDecoration(
-                                labelText: "OB Number",
+                                labelText: "Case Number",
                                 border: const OutlineInputBorder(),
                                 suffixIcon: IconButton(
                                     icon: const Icon(Icons.search),
                                     onPressed: () {})),
                             validator: (value) {
                               if (value == null) {
-                                return 'OB Number is required';
+                                return 'Case Number is required';
                               }
                               return null;
                             },

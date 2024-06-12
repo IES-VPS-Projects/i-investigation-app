@@ -1,4 +1,3 @@
- 
 import 'dart:async';
 import 'dart:io';
 
@@ -16,11 +15,9 @@ import 'package:iinvestigation/service/sockets/socket_cubit.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'core/data/datasources/local_storage_data_source.dart';
 
-
-// import 'package:image/image.dart' as image; 
+// import 'package:image/image.dart' as image;
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
-
 
 int id = 0;
 
@@ -88,11 +85,11 @@ void notificationTapBackground(NotificationResponse notificationResponse) {
         'notification action tapped with input: ${notificationResponse.input}');
   }
 }
-Future<void> main()  async {
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // HttpOverrides.global = MyHttpOverrides();
-
 
   await _configureLocalTimeZone();
 
@@ -100,11 +97,10 @@ Future<void> main()  async {
           Platform.isLinux
       ? null
       : await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
-  
+
   if (notificationAppLaunchDetails?.didNotificationLaunchApp ?? false) {
     selectedNotificationPayload =
         notificationAppLaunchDetails!.notificationResponse?.payload;
-    
   }
 
   const AndroidInitializationSettings initializationSettingsAndroid =
@@ -216,8 +212,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
- 
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -225,15 +219,15 @@ class _MyAppState extends State<MyApp> {
       providers: providers,
       child: MaterialApp(
         title: 'I Investigation',
-         
-
         theme: ThemeData(
           brightness: Brightness.dark,
           fontFamily: 'GoogleSans',
           primarySwatch: Colors.blueGrey,
           useMaterial3: true,
         ),
-        home:const  MyHomePage(title: "I-Investigaiton",),
+        home: const MyHomePage(
+          title: "I-Investigaiton",
+        ),
       ),
     );
   }
@@ -241,7 +235,6 @@ class _MyAppState extends State<MyApp> {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
- 
 
   final String title;
 
@@ -253,32 +246,29 @@ class _MyHomePageState extends State<MyHomePage> {
   late Future<String?> futureToken;
 
   @override
-  void initState() { 
+  void initState() {
     super.initState();
 
     futureToken = getData('name');
     context.read<SocketCubit>().init();
   }
-  
 
   @override
   Widget build(BuildContext context) {
-   
-    return  ProgressHUD(
-          child: FutureBuilder(
-              future: futureToken,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return snapshot.data!.isEmpty
-                      ? const SignIn()
-                      : const Dashboard();
-                } else if (snapshot.hasError) {
-                  return Text("${snapshot.error}");
-                }
-                return const CircularProgressIndicator();
-              }),
-        );
-    
-    
-    }
+    return ProgressHUD(
+      child: FutureBuilder(
+          future: futureToken,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return snapshot.data!.isEmpty
+                  ? const SignIn()
+                  : const Dashboard();
+            } else if (snapshot.hasError) {
+              return Text("${snapshot.error}");
+            }
+            return const CircularProgressIndicator();
+          }
+          ),
+    );
+  }
 }

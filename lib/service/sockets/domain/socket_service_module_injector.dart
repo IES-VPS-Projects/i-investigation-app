@@ -1,6 +1,4 @@
-
 import 'package:kiwi/kiwi.dart';
-
 
 import '../socket_cubit.dart';
 part 'socket_service_module_injector.g.dart';
@@ -15,8 +13,9 @@ abstract class SocketModuleDI {
     _$SocketModuleDI()._configure();
   }
 
-  @Register.singleton(SocketCubit) 
+  @Register.singleton(SocketCubit)
   // ignore: unused_element
   void _configure();
 }
+
 SocketModuleDI socketModuleDI() => _$SocketModuleDI();

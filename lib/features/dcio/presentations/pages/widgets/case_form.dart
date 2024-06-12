@@ -3,13 +3,18 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_progress_hud/flutter_progress_hud.dart';
+import 'package:iinvestigation/core/platform/app_cards.dart';
+import 'package:iinvestigation/core/platform/common_text.dart';
 import 'package:iinvestigation/core/utilities/app_common_extentions.dart';
 import 'package:iinvestigation/core/utilities/app_navigation.dart';
+import 'package:iinvestigation/core/utilities/line.dart';
 import 'package:iinvestigation/core/utilities/logging_utils.dart';
 import 'package:iinvestigation/features/dashboard/presentation/pages/dashboard.dart';
 import 'package:iinvestigation/features/dcio/data/models/occurence/occurence.dart';
+import 'package:iinvestigation/features/dcio/presentations/pages/view_case.dart';
 import 'package:iinvestigation/features/dcio/presentations/pages/widgets/officers.dart';
 import 'package:iinvestigation/features/dcio/presentations/state/dcio_cubit.dart';
+import 'package:intl/intl.dart';
 
 class CaseForm extends StatefulWidget {
   final Occurence caseObject;
@@ -39,7 +44,7 @@ class _CaseFormState extends State<CaseForm> {
         // ignore: prefer_interpolation_to_compose_strings
         _heading = "$_heading " + e['category']['name'];
       });
-    }); 
+    });
   }
 
   String? leadInvestigator;
@@ -225,7 +230,155 @@ class _CaseFormState extends State<CaseForm> {
                           ],
                         ),
                       ),
+                   
+                   
+                       if (widget.caseObject.occurenceDetails == null) const Text("No Details"),
+            if (widget.caseObject.occurenceDetails != null)
+              for (var i in widget.caseObject.occurenceDetails!)
+                for (var j in jsonDecode(i.details!) as List)
+                  Column(
+                    children: [
+                      AppCards(
+                        bordered: true,
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Column(
+                            children: [
+                              HorizontalOrLine(
+                                  indentMultiply: 20,
+                                  child: CommonText(
+                                    title:
+                                        'Occurence  Category ${j['category']['name']}',
+                                    color: Colors.black,
+                                  )),
+                              ...(j['occurrence'] as Map).keys.map((key) => Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: key == 'ocs_action' ||
+                                            key == 'is_closed' ||
+                                            key == 'posted_date' ||
+                                            key == 'module' ||
+                                            key == 'id' ||
+                                            key == 'is_complete' ||
+                                            key == 'report_timestamp' || key == 'narrative'
+                                        ? []
+                                        : [
+                                            if (j['occurrence'][key] != null)
+                                              Text(
+                                               ' ${"${key}".toUpperCase()}: \t\t',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleSmall
+                                                    ?.copyWith(
+                                                        color: Colors.black),
+                                              ),
+                                            if (j['occurrence'][key] != null)
+                                              if (!(j['occurrence'][key]
+                                                  is Map))
+                                                Text(' ${j['occurrence'][key]}',
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .titleSmall
+                                                        ?.copyWith(
+                                                            color:
+                                                                Colors.black)),
+                                            if (j['occurrence'][key] is Map)
+                                              key == 'police_station'
+                                                  ? Text(
+                                                      ' ${j['occurrence'][key]['name']}',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .titleSmall
+                                                          ?.copyWith(
+                                                              color:
+                                                                  Colors.black))
+                                                  : Text(
+                                                      ' ${j['occurrence'][key]['service_number']}',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .titleSmall
+                                                          ?.copyWith(
+                                                              color: Colors
+                                                                  .black)),
+                                          ],
+                                  )),
+                            ],
+                          ),
+                        ),
+                      ),
+                      AppCards(
+                          bordered: true,
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Column(
+                              children: [
+                                const HorizontalOrLine(
+                                    indentMultiply: 20,
+                                    child: CommonText(
+                                      title: 'Details',
+                                      color: Colors.black,
+                                    )),
+                                ...(j['details'] as Map).keys.map((key) => Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: key
+                                                .toString()
+                                                .toLowerCase()
+                                                .contains('date and time')
+                                            ?
+                                             [
+                                                if (j['details'][key] != null)
+                                                  Text(' ${"${key}".toUpperCase()}: \t\t'  ,
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .titleSmall
+                                                          ?.copyWith(
+                                                              color:
+                                                                  Colors.black)),
+                                                if (j['details'][key] != null)
+                                                  Text(
+                                                    ' ${  ((j['details'][key].toString().length > 10) ? DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.parse(j['details'][key])) : j['details'][key])}',
+                                                       style: Theme.of(context)
+                                                          .textTheme
+                                                          .titleSmall
+                                                          ?.copyWith(
+                                                              color:
+                                                                  Colors.black)),
+                                              ]
+                                            : [
+                                                if (j['details'][key] != null)
+                                                  Text(' ${"${key}".toUpperCase()}: \t\t',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .titleSmall
+                                                          ?.copyWith(
+                                                              color:
+                                                                  Colors.black)),
+                                                if (j['details'][key] != null)
+                                                  Flexible(
+                                                    child: Text(' ${j['details'][key]}',
+                                                    overflow: TextOverflow.clip  ,
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .titleSmall
+                                                            ?.copyWith(
+                                                              
+                                                                color:
+                                                                    Colors.black)),
+                                                  ),
+                                              ],
+                                      ),
+                                )),
+                              ],
+                            ),
+                          ))
                     ],
+                  )
+        
+                   
+                   ],
                   )),
             ],
           ),

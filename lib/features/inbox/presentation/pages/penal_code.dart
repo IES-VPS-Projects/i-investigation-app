@@ -45,7 +45,7 @@ class PenalCode extends StatelessWidget {
                         isClosed == true ? element.caseSummaryId != null : true)
                     .map((e) => ListTile(
                           dense: true,
-                          title: Text("${e.penalcode?.penal}"),
+                          title: Text("${e.penalcode?.penal} ${e.penalcode?.description}"),
                         ))
                     .toList()));
   }

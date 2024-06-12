@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:iinvestigation/core/platform/app_cards.dart';
-import 'package:iinvestigation/core/platform/common_text.dart';
+import 'package:iinvestigation/core/platform/common_text.dart'; 
 import 'package:iinvestigation/core/utilities/line.dart';
 import 'package:iinvestigation/features/dcio/data/models/occurence/occurence.dart';
 
@@ -42,18 +42,24 @@ class _ViewCaseDetailsState extends State<ViewCaseDetails> {
                                   indentMultiply: 20,
                                   child: CommonText(
                                     title:
-                                        'occurence  category ${j['category']['name']}',
+                                        'Occurence  Category ${j['category']['name']}',
                                     color: Colors.black,
                                   )),
                               ...(j['occurrence'] as Map).keys.map((key) => Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
-                                    children: key == 'ocs_action'
+                                    children: key == 'ocs_action' ||
+                                            key == 'is_closed' ||
+                                            key == 'posted_date' ||
+                                            key == 'module' ||
+                                            key == 'id' ||
+                                            key == 'is_complete' ||
+                                            key == 'report_timestamp'
                                         ? []
                                         : [
                                             if (j['occurrence'][key] != null)
                                               Text(
-                                                ' ${key} \t\t',
+                                                ' $key \t\t',
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .titleSmall
@@ -100,7 +106,7 @@ class _ViewCaseDetailsState extends State<ViewCaseDetails> {
                             padding: const EdgeInsets.all(15.0),
                             child: Column(
                               children: [
-                              const  HorizontalOrLine(
+                                const HorizontalOrLine(
                                     indentMultiply: 20,
                                     child: CommonText(
                                       title: 'Details',
@@ -109,22 +115,48 @@ class _ViewCaseDetailsState extends State<ViewCaseDetails> {
                                 ...(j['details'] as Map).keys.map((key) => Row(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
-                                      children: [
-                                        if (j['details'][key] != null)
-                                          Text(' ${key} \t\t',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .titleSmall
-                                                  ?.copyWith(
-                                                      color: Colors.black)),
-                                        if (j['details'][key] != null)
-                                          Text(' ${j['details'][key]}',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .titleSmall
-                                                  ?.copyWith(
-                                                      color: Colors.black)),
-                                      ],
+                                      children: key
+                                              .toString()
+                                              .toLowerCase()
+                                              .contains('date and time')
+                                          ?
+                                           [
+                                              if (j['details'][key] != null)
+                                                Text(' ${key} \t\t'  ,
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .titleSmall
+                                                        ?.copyWith(
+                                                            color:
+                                                                Colors.black)),
+                                              if (j['details'][key] != null)
+                                                Text(
+                                                    ' ${(j['details'][key])}',
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .titleSmall
+                                                        ?.copyWith(
+                                                            color:
+                                                                Colors.black)),
+                                            ]
+                                          : [
+                                              if (j['details'][key] != null)
+                                                Text(' ${key} \t\t',
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .titleSmall
+                                                        ?.copyWith(
+                                                            color:
+                                                                Colors.black)),
+                                              if (j['details'][key] != null)
+                                                Text(' ${j['details'][key]}',
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .titleSmall
+                                                        ?.copyWith(
+                                                            color:
+                                                                Colors.black)),
+                                            ],
                                     )),
                               ],
                             ),

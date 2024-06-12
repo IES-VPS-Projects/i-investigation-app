@@ -113,6 +113,7 @@ class _CaseMenuState extends State<ClosedCaseMenu> {
               context.appNavigatorPush(CaseNotes(
                 isClosed: true,
                 id: widget.caseObject.id!,
+              
               ));
 
               // Navigator.push(
@@ -145,13 +146,8 @@ class _CaseMenuState extends State<ClosedCaseMenu> {
                 "SubHeading", () {
               context.appNavigatorPush(CaseMaterial(
                 id: widget.caseObject.id!,
-              ));
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (context) => CaseMaterial(
-              //               id: caseObject.id,
-              //             )));
+                isClosed: true,
+              )); 
             },
                 context.watch<InboxCubit>().state.payload.caseFile == null
                     ? 0

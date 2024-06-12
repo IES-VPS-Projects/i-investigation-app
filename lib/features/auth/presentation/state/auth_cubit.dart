@@ -24,7 +24,14 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthState.loading(payload: state.payload.copyWith()));
     var results = await _login(payload);
     results.fold((l) {
-      logger.t(l);
+      if (l.data!.userRoles!.isNotEmpty) {
+
+      logger.t(l.data?.userRoles!.first.role!.name!);
+        localStorage.storeData('role', l.data!.userRoles!.first.role!.name!);
+      }else{
+
+        localStorage.storeData('role', 'admin');
+      }
       logger.t('store');
       localStorage.storeData('name', l.data!.name!);
       localStorage.storeData('service_Number', l.data!.serviceNumber!);

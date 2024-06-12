@@ -85,7 +85,7 @@ class _ClosedCasesState extends State<ClosedCases> {
                                           )
                                         : const Chip(
                                             labelPadding: EdgeInsets.all(0.1),
-                                            label: Icon(Icons.hourglass_full),
+                                            label: Icon(Icons.file_copy),
                                             backgroundColor: Colors.red,
                                           ),
                                     onTap: () {

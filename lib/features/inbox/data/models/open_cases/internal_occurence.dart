@@ -11,7 +11,6 @@ class InternalOccurence with _$InternalOccurence {
     String? title,
     String? created_at,
     dynamic narrative,
-
   }) = _InternalOccurence;
 
   factory InternalOccurence.fromJson(Map<String, dynamic> json) =>

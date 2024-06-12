@@ -32,18 +32,20 @@ class CaseSummary extends StatelessWidget {
                       TableRow(children: <Widget>[
                         const Text("Case Heading"),
                         Text(
-                            "${caseObject.occurence ==null? caseObject.internalOccurence?.title:(jsonDecode(caseObject.occurence!.occurenceDetails!.first.details!) as List).map((e) => e['category']['name'])}"),
+                            "${caseObject.occurence == null ? caseObject.internalOccurence?.title : (jsonDecode(caseObject.occurence!.occurenceDetails!.first.details!) as List).map((e) => e['category']['name'])}"),
                       ]),
                       TableRow(
                         children: <Widget>[
                           const Text("Linked OB number"),
-                          Text(" ${caseObject.occurence ==null? caseObject.internalOccurence?.obNo :caseObject.occurence?.obNo}"),
+                          Text(
+                              " ${caseObject.occurence == null ? caseObject.internalOccurence?.obNo : caseObject.occurence?.obNo}"),
                         ],
                       ),
                       TableRow(
                         children: <Widget>[
                           Text("Created: "),
-                          Text("${  caseObject.occurence ==null?caseObject.internalOccurence?.created_at :caseObject.occurence?.postedDate}")
+                          Text(
+                              "${caseObject.occurence == null ? caseObject.internalOccurence?.created_at : caseObject.occurence?.postedDate}")
                           // Text(timeago.format(DateTime.fromMillisecondsSinceEpoch(
                           //     caseObject.createTs.millisecondsSinceEpoch))),
                         ],

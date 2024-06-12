@@ -1,5 +1,5 @@
-
 part of 'socket_cubit.dart';
+
 @freezed
 abstract class SocketState with _$SocketState {
   const factory SocketState.initial({required SocketStatePayload payload}) =
@@ -16,9 +16,9 @@ abstract class SocketState with _$SocketState {
 
 @freezed
 abstract class SocketStatePayload with _$SocketStatePayload {
-  const factory SocketStatePayload(
-      {@required String? error,
-       }) = _SocketStatePayload;
+  const factory SocketStatePayload({
+    @required String? error,
+  }) = _SocketStatePayload;
 
   factory SocketStatePayload.fromJson(Map<String, dynamic> json) =>
       _$SocketStatePayloadFromJson(

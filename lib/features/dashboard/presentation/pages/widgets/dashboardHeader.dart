@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iinvestigation/core/data/datasources/local_storage_data_source.dart';
 import 'package:iinvestigation/service/sockets/socket_cubit.dart';
- 
+
 class DashboardHeader extends StatefulWidget {
   const DashboardHeader({super.key});
 
@@ -35,8 +35,6 @@ class _DashboardHeaderState extends State<DashboardHeader> {
 
   @override
   Widget build(BuildContext context) {
-
-    
     return FutureBuilder<Map<String, String>>(
         future: _profile,
         builder: (BuildContext context,
@@ -65,8 +63,7 @@ class _DashboardHeaderState extends State<DashboardHeader> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                 
-                const  Text(
+                  const Text(
                     "Welcome,",
                     style: TextStyle(
                         fontWeight: FontWeight.w100, color: Colors.green),

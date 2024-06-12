@@ -14,6 +14,15 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  late Future<String?> futureToken;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    futureToken = getData('role');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,17 +44,28 @@ class _DashboardState extends State<Dashboard> {
                 })
           ],
         ),
-        body: Column(
-          children: <Widget>[
-            Expanded(
-              flex: 2,
-              child: DashboardHeader(),
-            ),
-            Expanded(
-              flex: 6,
-              child: DashGridMenu(),
-            ),
-          ],
-        ));
+        body: FutureBuilder(
+            future: futureToken,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return snapshot.data!.isEmpty
+                    ? const CircularProgressIndicator()
+                    : Column(
+                        children: <Widget>[
+                          Expanded(
+                            flex: 2,
+                            child: DashboardHeader(),
+                          ),
+                          Expanded(
+                            flex: 6,
+                            child: DashGridMenu( role: snapshot.data!,),
+                          ),
+                        ],
+                      );
+              } else if (snapshot.hasError) {
+                return Text("${snapshot.error}");
+              }
+              return const CircularProgressIndicator();
+            }));
   }
 }

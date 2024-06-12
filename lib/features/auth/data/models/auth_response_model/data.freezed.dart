@@ -27,12 +27,16 @@ mixin _$Data {
   String? get password => throw _privateConstructorUsedError;
   @JsonKey(name: 'onetime_password')
   String? get onetimePassword => throw _privateConstructorUsedError;
+  String? get socketId => throw _privateConstructorUsedError;
   @JsonKey(name: 'profile_pic')
   dynamic get profilePic => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   DateTime? get updatedAt => throw _privateConstructorUsedError;
+  dynamic get caseFileOfficersId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'UserRoles')
+  List<UserRole>? get userRoles => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,9 +54,12 @@ abstract class $DataCopyWith<$Res> {
       @JsonKey(name: 'service_number') String? serviceNumber,
       String? password,
       @JsonKey(name: 'onetime_password') String? onetimePassword,
+      String? socketId,
       @JsonKey(name: 'profile_pic') dynamic profilePic,
       @JsonKey(name: 'created_at') DateTime? createdAt,
-      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      dynamic caseFileOfficersId,
+      @JsonKey(name: 'UserRoles') List<UserRole>? userRoles});
 }
 
 /// @nodoc
@@ -73,9 +80,12 @@ class _$DataCopyWithImpl<$Res, $Val extends Data>
     Object? serviceNumber = freezed,
     Object? password = freezed,
     Object? onetimePassword = freezed,
+    Object? socketId = freezed,
     Object? profilePic = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? caseFileOfficersId = freezed,
+    Object? userRoles = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -98,6 +108,10 @@ class _$DataCopyWithImpl<$Res, $Val extends Data>
           ? _value.onetimePassword
           : onetimePassword // ignore: cast_nullable_to_non_nullable
               as String?,
+      socketId: freezed == socketId
+          ? _value.socketId
+          : socketId // ignore: cast_nullable_to_non_nullable
+              as String?,
       profilePic: freezed == profilePic
           ? _value.profilePic
           : profilePic // ignore: cast_nullable_to_non_nullable
@@ -110,6 +124,14 @@ class _$DataCopyWithImpl<$Res, $Val extends Data>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      caseFileOfficersId: freezed == caseFileOfficersId
+          ? _value.caseFileOfficersId
+          : caseFileOfficersId // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      userRoles: freezed == userRoles
+          ? _value.userRoles
+          : userRoles // ignore: cast_nullable_to_non_nullable
+              as List<UserRole>?,
     ) as $Val);
   }
 }
@@ -127,9 +149,12 @@ abstract class _$$DataImplCopyWith<$Res> implements $DataCopyWith<$Res> {
       @JsonKey(name: 'service_number') String? serviceNumber,
       String? password,
       @JsonKey(name: 'onetime_password') String? onetimePassword,
+      String? socketId,
       @JsonKey(name: 'profile_pic') dynamic profilePic,
       @JsonKey(name: 'created_at') DateTime? createdAt,
-      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      dynamic caseFileOfficersId,
+      @JsonKey(name: 'UserRoles') List<UserRole>? userRoles});
 }
 
 /// @nodoc
@@ -147,9 +172,12 @@ class __$$DataImplCopyWithImpl<$Res>
     Object? serviceNumber = freezed,
     Object? password = freezed,
     Object? onetimePassword = freezed,
+    Object? socketId = freezed,
     Object? profilePic = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? caseFileOfficersId = freezed,
+    Object? userRoles = freezed,
   }) {
     return _then(_$DataImpl(
       id: freezed == id
@@ -172,6 +200,10 @@ class __$$DataImplCopyWithImpl<$Res>
           ? _value.onetimePassword
           : onetimePassword // ignore: cast_nullable_to_non_nullable
               as String?,
+      socketId: freezed == socketId
+          ? _value.socketId
+          : socketId // ignore: cast_nullable_to_non_nullable
+              as String?,
       profilePic: freezed == profilePic
           ? _value.profilePic
           : profilePic // ignore: cast_nullable_to_non_nullable
@@ -184,6 +216,14 @@ class __$$DataImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      caseFileOfficersId: freezed == caseFileOfficersId
+          ? _value.caseFileOfficersId
+          : caseFileOfficersId // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      userRoles: freezed == userRoles
+          ? _value._userRoles
+          : userRoles // ignore: cast_nullable_to_non_nullable
+              as List<UserRole>?,
     ));
   }
 }
@@ -197,9 +237,13 @@ class _$DataImpl implements _Data {
       @JsonKey(name: 'service_number') this.serviceNumber,
       this.password,
       @JsonKey(name: 'onetime_password') this.onetimePassword,
+      this.socketId,
       @JsonKey(name: 'profile_pic') this.profilePic,
       @JsonKey(name: 'created_at') this.createdAt,
-      @JsonKey(name: 'updated_at') this.updatedAt});
+      @JsonKey(name: 'updated_at') this.updatedAt,
+      this.caseFileOfficersId,
+      @JsonKey(name: 'UserRoles') final List<UserRole>? userRoles})
+      : _userRoles = userRoles;
 
   factory _$DataImpl.fromJson(Map<String, dynamic> json) =>
       _$$DataImplFromJson(json);
@@ -217,6 +261,8 @@ class _$DataImpl implements _Data {
   @JsonKey(name: 'onetime_password')
   final String? onetimePassword;
   @override
+  final String? socketId;
+  @override
   @JsonKey(name: 'profile_pic')
   final dynamic profilePic;
   @override
@@ -225,10 +271,22 @@ class _$DataImpl implements _Data {
   @override
   @JsonKey(name: 'updated_at')
   final DateTime? updatedAt;
+  @override
+  final dynamic caseFileOfficersId;
+  final List<UserRole>? _userRoles;
+  @override
+  @JsonKey(name: 'UserRoles')
+  List<UserRole>? get userRoles {
+    final value = _userRoles;
+    if (value == null) return null;
+    if (_userRoles is EqualUnmodifiableListView) return _userRoles;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'Data(id: $id, name: $name, serviceNumber: $serviceNumber, password: $password, onetimePassword: $onetimePassword, profilePic: $profilePic, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Data(id: $id, name: $name, serviceNumber: $serviceNumber, password: $password, onetimePassword: $onetimePassword, socketId: $socketId, profilePic: $profilePic, createdAt: $createdAt, updatedAt: $updatedAt, caseFileOfficersId: $caseFileOfficersId, userRoles: $userRoles)';
   }
 
   @override
@@ -244,12 +302,18 @@ class _$DataImpl implements _Data {
                 other.password == password) &&
             (identical(other.onetimePassword, onetimePassword) ||
                 other.onetimePassword == onetimePassword) &&
+            (identical(other.socketId, socketId) ||
+                other.socketId == socketId) &&
             const DeepCollectionEquality()
                 .equals(other.profilePic, profilePic) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            const DeepCollectionEquality()
+                .equals(other.caseFileOfficersId, caseFileOfficersId) &&
+            const DeepCollectionEquality()
+                .equals(other._userRoles, _userRoles));
   }
 
   @JsonKey(ignore: true)
@@ -261,9 +325,12 @@ class _$DataImpl implements _Data {
       serviceNumber,
       password,
       onetimePassword,
+      socketId,
       const DeepCollectionEquality().hash(profilePic),
       createdAt,
-      updatedAt);
+      updatedAt,
+      const DeepCollectionEquality().hash(caseFileOfficersId),
+      const DeepCollectionEquality().hash(_userRoles));
 
   @JsonKey(ignore: true)
   @override
@@ -281,14 +348,18 @@ class _$DataImpl implements _Data {
 
 abstract class _Data implements Data {
   factory _Data(
-      {final int? id,
-      final String? name,
-      @JsonKey(name: 'service_number') final String? serviceNumber,
-      final String? password,
-      @JsonKey(name: 'onetime_password') final String? onetimePassword,
-      @JsonKey(name: 'profile_pic') final dynamic profilePic,
-      @JsonKey(name: 'created_at') final DateTime? createdAt,
-      @JsonKey(name: 'updated_at') final DateTime? updatedAt}) = _$DataImpl;
+          {final int? id,
+          final String? name,
+          @JsonKey(name: 'service_number') final String? serviceNumber,
+          final String? password,
+          @JsonKey(name: 'onetime_password') final String? onetimePassword,
+          final String? socketId,
+          @JsonKey(name: 'profile_pic') final dynamic profilePic,
+          @JsonKey(name: 'created_at') final DateTime? createdAt,
+          @JsonKey(name: 'updated_at') final DateTime? updatedAt,
+          final dynamic caseFileOfficersId,
+          @JsonKey(name: 'UserRoles') final List<UserRole>? userRoles}) =
+      _$DataImpl;
 
   factory _Data.fromJson(Map<String, dynamic> json) = _$DataImpl.fromJson;
 
@@ -305,6 +376,8 @@ abstract class _Data implements Data {
   @JsonKey(name: 'onetime_password')
   String? get onetimePassword;
   @override
+  String? get socketId;
+  @override
   @JsonKey(name: 'profile_pic')
   dynamic get profilePic;
   @override
@@ -313,6 +386,11 @@ abstract class _Data implements Data {
   @override
   @JsonKey(name: 'updated_at')
   DateTime? get updatedAt;
+  @override
+  dynamic get caseFileOfficersId;
+  @override
+  @JsonKey(name: 'UserRoles')
+  List<UserRole>? get userRoles;
   @override
   @JsonKey(ignore: true)
   _$$DataImplCopyWith<_$DataImpl> get copyWith =>

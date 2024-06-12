@@ -64,8 +64,9 @@ class _WitnessesState extends State<Witnesses> {
                           : true)
                       .map((e) => ListTile(
                             visualDensity: VisualDensity.comfortable,
-                            leading:
-                                Image.network("$BASE_URLASSETS${e.picture}"),
+                            leading: e.picture == null
+                                ? SizedBox()
+                                : Image.network("$BASE_URLASSETS${e.picture}"),
                             title: Text(
                                 "${e.iprs?.firstName} ${e.iprs?.lastName}"),
                             subtitle: Text("${e.iprs?.idNo}  "),

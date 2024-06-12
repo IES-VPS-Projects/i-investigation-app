@@ -25,13 +25,15 @@ class CaseMenu extends StatefulWidget {
 class _CaseMenuState extends State<CaseMenu> {
   List<Widget> _tiles = [];
 
-  @override
-  void initState() {}
+  @override 
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return SingleChildScrollView(
+    return RefreshIndicator(
+      onRefresh: () async {
+        context.read<InboxCubit>().getCaseFile(fd: widget.caseObject.id!);
+      },
       child: StaggeredGrid.count(
         crossAxisCount: 4,
         mainAxisSpacing: 4.0,
@@ -39,7 +41,7 @@ class _CaseMenuState extends State<CaseMenu> {
         children: <Widget>[
           StaggeredGridTile.count(
               crossAxisCellCount: 4,
-              mainAxisCellCount: 2,
+              mainAxisCellCount: 3,
               child: CaseSummary(widget.caseObject)),
           StaggeredGridTile.count(
               crossAxisCellCount: 2,
@@ -78,7 +80,8 @@ class _CaseMenuState extends State<CaseMenu> {
                   ),
                   "Witnesses",
                   "SubHeading", () {
-                context.appNavigatorPush(Witnesses(caseFile: widget.caseObject));
+                context
+                    .appNavigatorPush(Witnesses(caseFile: widget.caseObject));
                 // Navigator.push(
                 //     context,
                 //     MaterialPageRoute(
@@ -109,7 +112,7 @@ class _CaseMenuState extends State<CaseMenu> {
                 context.appNavigatorPush(CaseNotes(
                   id: widget.caseObject.id!,
                 ));
-      
+
                 // Navigator.push(
                 //     context,
                 //     MaterialPageRoute(
@@ -194,14 +197,14 @@ class _CaseMenuState extends State<CaseMenu> {
                   "Summary",
                   "SubHeading", () {
                 context.appNavigatorPush(const SummaryPage());
-      
+
                 // Navigator.push(
                 //     context,
                 //     MaterialPageRoute(
                 //         builder: (context) => CaseSummaryDoc(
                 //               docId: caseObject.id,
                 //             )));
-              }, 1)),
+              }, null)),
         ],
       ),
     );
@@ -218,7 +221,7 @@ class _MenuTile extends StatelessWidget {
   final Widget image;
   final String heading;
   final String subHeading;
-  final int count;
+  final int? count;
 
   @override
   Widget build(BuildContext context) {
@@ -240,14 +243,16 @@ class _MenuTile extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    CircleAvatar(
-                      radius: 15.0,
-                      backgroundColor: Colors.blueGrey,
-                      child: Text(
-                        count.toString(),
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
+                    count == null
+                        ? SizedBox()
+                        : CircleAvatar(
+                            radius: 15.0,
+                            backgroundColor: Colors.blueGrey,
+                            child: Text(
+                              count == null ? '' : count.toString(),
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
                     Text(
                       heading,
                       style: TextStyle(
