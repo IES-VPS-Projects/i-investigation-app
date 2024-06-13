@@ -11,11 +11,12 @@ class _$DciohModuleDI extends DciohModuleDI {
   void _configure() {
     final KiwiContainer container = KiwiContainer();
     container
-      ..registerSingleton((c) =>
-          DcioCubit(c<GetOccurences>(), c<Getusers>(), c<CreateCaseFile>()))
+      ..registerSingleton((c) => DcioCubit(c<GetOccurences>(), c<Getusers>(),
+          c<CreateCaseFile>(), c<UpdateOfficers>()))
       ..registerSingleton((c) => GetOccurences(c<DcioRepository>()))
       ..registerSingleton((c) => Getusers(c<DcioRepository>()))
       ..registerSingleton((c) => CreateCaseFile(c<DcioRepository>()))
+      ..registerSingleton((c) => UpdateOfficers(c<DcioRepository>()))
       ..registerFactory<DcioDataSource>(
           (c) => DcioDataSourceImpl(c<NetworkService>()))
       ..registerFactory<DcioRepository>(

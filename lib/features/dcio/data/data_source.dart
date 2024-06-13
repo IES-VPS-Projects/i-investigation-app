@@ -12,7 +12,7 @@ abstract class DcioDataSource {
   Future<List<Occurence>> getOccurences();
   Future<List<Users>> getUsers();
   Future<NewCaseFile> createCaseFile({required Map payload});
-  Future<dynamic> updateCaseOfficers({required int id, required Map payload});
+  Future<dynamic> updateCaseOfficers({  required Map payload});
 }
 
 class DcioDataSourceImpl implements DcioDataSource {
@@ -54,11 +54,12 @@ class DcioDataSourceImpl implements DcioDataSource {
   }
 
   @override
-  Future updateCaseOfficers({required int id, required Map payload}) async {
+  Future updateCaseOfficers({  required Map payload}) async {
+     var fd = FormData.fromMap(payload as Map<String, dynamic>);
+   
     var response = await _networkService
-        .postHttp(DcioEndpoints.casefilesOfficers + '$id', body: payload);
-    // logger.wtf();
-    logger.wtf(response);
+        .postHttp(DcioEndpoints.casefilesOfficers , body: fd);
+   
 
     return NewCaseFile.fromJson(response);
   }

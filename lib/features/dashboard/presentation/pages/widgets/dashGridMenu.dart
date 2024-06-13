@@ -3,6 +3,7 @@ import 'package:iinvestigation/features/closed/presentation/pages/closed.dart';
 import 'package:iinvestigation/core/utilities/app_navigation.dart';
 import 'package:iinvestigation/features/dcio/presentations/pages/dashboard.dart';
 import 'package:iinvestigation/features/dcio/unassigned/precentation/pages/unnassigned.dart';
+import 'package:iinvestigation/features/inactive/presentation/pages/closed.dart';
 import 'package:iinvestigation/features/inbox/presentation/pages/inbox.dart';
 import 'package:iinvestigation/features/new_case/presentation/pages/new_case.dart';
 
@@ -16,7 +17,7 @@ class DashGridMenu extends StatefulWidget {
 class _DashGridMenuState extends State<DashGridMenu> {
    var menusInvestigatingOfficer = [
     {
-      "name": "DCIO Dashboard",
+      "name": "Dashboard",
       "icon": Icons.dashboard,
       "route": const DcioDashboard(),
       "iconColor": Colors.white
@@ -38,13 +39,13 @@ class _DashGridMenuState extends State<DashGridMenu> {
     {
       "name": "Inactive",
       "icon": Icons.stop_screen_share,
-      "route": const DcioDashboard(),
+      "route": const Inactive(),
       "iconColor": Colors.white
     }
   ];
   var menus = [
     {
-      "name": "DCIO Dashboard",
+      "name": "Dashboard",
       "icon": Icons.dashboard,
       "route": const DcioDashboard(),
       "iconColor": Colors.white
@@ -76,7 +77,7 @@ class _DashGridMenuState extends State<DashGridMenu> {
     {
       "name": "Inactive",
       "icon": Icons.stop_screen_share,
-      "route": const DcioDashboard(),
+      "route": const Inactive(),
       "iconColor": Colors.white
     }
   ];

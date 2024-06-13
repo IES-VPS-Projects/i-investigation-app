@@ -68,4 +68,9 @@ class InboxRepositoryImpl implements InboxRepository {
   Future suspendCaseFile({required int id}) async {
     return await _inboxDataSource.suspendCaseFile(id: id);
   }
+  
+  @override
+  Future closeCaseFile({required int id}) async {
+    return await _inboxDataSource.closeCaseFile(id: id);
+  }
 }

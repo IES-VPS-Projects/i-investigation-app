@@ -22,7 +22,8 @@ class _$InboxModuleDI extends InboxModuleDI {
           c<GetOpenCases>(),
           c<SearchIPRS>(),
           c<CreateSuspect>(),
-          c<SuspendCase>()))
+          c<SuspendCase>(),
+          c<CloseCase>()))
       ..registerSingleton((c) => GetOpenCases(c<InboxRepository>()))
       ..registerSingleton((c) => SearchIPRS(c<InboxRepository>()))
       ..registerSingleton((c) => CaseFileUseCase(c<InboxRepository>()))
@@ -34,6 +35,7 @@ class _$InboxModuleDI extends InboxModuleDI {
       ..registerSingleton((c) => CreateCaseNote(c<InboxRepository>()))
       ..registerSingleton((c) => CreateSuspect(c<InboxRepository>()))
       ..registerSingleton((c) => SuspendCase(c<InboxRepository>()))
+      ..registerSingleton((c) => CloseCase(c<InboxRepository>()))
       ..registerFactory<InboxRepository>(
           (c) => InboxRepositoryImpl(c<InboxDataSource>()))
       ..registerFactory<InboxDataSource>(

@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:bloc/bloc.dart';
 import 'package:iinvestigation/features/inbox/data/models/case_file/case_file.dart';
 import 'package:iinvestigation/features/inbox/data/models/open_cases/open_cases.dart';
+import 'package:iinvestigation/features/inbox/domain/usecases/close_case.dart';
 import 'package:iinvestigation/features/inbox/domain/usecases/create_case_materials.dart';
 import 'package:iinvestigation/features/inbox/domain/usecases/create_case_notes.dart';
 import 'package:iinvestigation/features/inbox/domain/usecases/create_summary.dart';
@@ -38,6 +39,7 @@ class InboxCubit extends Cubit<InboxState> {
   final CreateSuspect _createSuspect;
   final CreateSummary _createSummary;
   final SuspendCase _suspendCase;
+  final CloseCase _closeCase;
 
   InboxCubit(
       this._createSummary,
@@ -49,7 +51,7 @@ class InboxCubit extends Cubit<InboxState> {
       this._caseFileUseCase,
       this._getOpenCases,
       this._searchIPRS,
-      this._createSuspect, this._suspendCase)
+      this._createSuspect, this._suspendCase, this._closeCase)
       : super(const InboxState.initial(
           payload: InboxStatePayload(error: null, page: null),
         ));
@@ -190,6 +192,17 @@ class InboxCubit extends Cubit<InboxState> {
     emit(InboxState.loading(payload: state.payload.copyWith()));
 
     var results = await _suspendCase(id);
+    results.fold((l) { 
+      emit(InboxState.caseFile(payload: state.payload.copyWith()));
+    }, (r) {
+      emit(InboxState.errorIPRS(
+          payload: state.payload.copyWith(error: r.message)));
+    });
+  }
+  Future<void> closeCase({required int id}) async {
+    emit(InboxState.loading(payload: state.payload.copyWith()));
+
+    var results = await _closeCase(id);
     results.fold((l) { 
       emit(InboxState.caseFile(payload: state.payload.copyWith()));
     }, (r) {

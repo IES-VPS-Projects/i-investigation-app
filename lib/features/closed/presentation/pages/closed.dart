@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iinvestigation/features/closed/presentation/pages/view_closed_cases.dart';
@@ -14,35 +15,121 @@ class ClosedCases extends StatefulWidget {
   State<ClosedCases> createState() => _ClosedCasesState();
 }
 
-class _ClosedCasesState extends State<ClosedCases> {
+class _ClosedCasesState extends State<ClosedCases> with SingleTickerProviderStateMixin {
+ late TabController _tabController;
+ 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+      _tabController = TabController(length: 2, vsync: this);
+  
     context.read<InboxCubit>().getAllCases();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar:  TabBar(
+          controller: _tabController,
+          tabs: [
+            Tab(icon: Icon(Icons.cases), text: "Closed With reports"),
+            Tab(icon: Icon(Icons.cases, color: Colors.amber,), text: "Closed Without reports"),
+          ],
+        ),
+      
         backgroundColor: Colors.black,
         appBar: AppBar(
           title: const Text("Closed Cases"),
           centerTitle: true,
         ),
-        body: context.watch<InboxCubit>().state.maybeMap(
-              orElse: () {
-                return context.watch<InboxCubit>().state.payload.cases == null
-                    ? const Center(
-                        child: CircularProgressIndicator(),
-                      )
+        body: TabBarView(
+          controller: _tabController,
+          children: [
+            closedReport(),
+            closedWithoutReport(),
+          ],
+         
+        ));
+  }
+
+    Widget closedReport () {
+    return  context.watch<InboxCubit>().state.maybeMap(
+                orElse: () {
+                  return context.watch<InboxCubit>().state.payload.cases == null
+                      ? const Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : ListView(
+                          children: context
+                              .watch<InboxCubit>()
+                              .state
+                              .payload
+                              .cases!
+                              .map((document) {
+                            return document.status != "CLOSED"
+                                ? const SizedBox()
+                                : Card(
+                                    child: ListTile(
+                                      leading: createAvatar(
+                                          "${document.occurence!.obNo}"),
+                                      title: Text("${document.occurence?.obNo}"),
+                                      subtitle: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Align(
+                                              alignment:
+                                                  FractionalOffset.centerLeft,
+                                              child: document.occurence!
+                                                          .occurenceDetails ==
+                                                      null
+                                                  ? Text('${document.occurence}')
+                                                  : document
+                                                          .occurence!
+                                                          .occurenceDetails!
+                                                          .isEmpty
+                                                      ? const Text('')
+                                                      : Text(
+                                                          "${(jsonDecode(document.occurence!.occurenceDetails!.first.details!) as List).map((e) => e['category']['name'])}")),
+                                          Align(
+                                              alignment:
+                                                  FractionalOffset.centerLeft,
+                                              child: Text(
+                                                  "${document.occurence?.obNo}")),
+                                        ],
+                                      ),
+                                      isThreeLine: true,
+                                      trailing: document.status == "OPEN"
+                                          ? const Chip(
+                                              labelPadding: EdgeInsets.all(0.1),
+                                              label: Icon(Icons.check_box),
+                                              backgroundColor: Colors.green,
+                                            )
+                                          : const Chip(
+                                              labelPadding: EdgeInsets.all(0.1),
+                                              label: Icon(Icons.file_copy),
+                                              backgroundColor: Colors.red,
+                                            ),
+                                      onTap: () {
+                                        context.appNavigatorPush(
+                                            ViewCaseClosed(document));
+                                        // Navigator.push(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //         builder: (context) => ViewCase(document)));
+                                      },
+                                      dense: true,
+                                    ),
+                                  );
+                          }).toList(),
+                        );
+                },
+                cases: (value) => value.payload.cases == null
+                    ? SizedBox()
                     : ListView(
-                        children: context
-                            .watch<InboxCubit>()
-                            .state
-                            .payload
-                            .cases!
-                            .map((document) {
+                        children: value.payload.cases!.map((document) {
                           return document.status != "CLOSED"
                               ? const SizedBox()
                               : Card(
@@ -62,10 +149,8 @@ class _ClosedCasesState extends State<ClosedCases> {
                                                         .occurenceDetails ==
                                                     null
                                                 ? Text('${document.occurence}')
-                                                : document
-                                                        .occurence!
-                                                        .occurenceDetails!
-                                                        .isEmpty
+                                                : document.occurence!
+                                                        .occurenceDetails!.isEmpty
                                                     ? const Text('')
                                                     : Text(
                                                         "${(jsonDecode(document.occurence!.occurenceDetails!.first.details!) as List).map((e) => e['category']['name'])}")),
@@ -85,7 +170,7 @@ class _ClosedCasesState extends State<ClosedCases> {
                                           )
                                         : const Chip(
                                             labelPadding: EdgeInsets.all(0.1),
-                                            label: Icon(Icons.file_copy),
+                                            label: Icon(Icons.hourglass_full),
                                             backgroundColor: Colors.red,
                                           ),
                                     onTap: () {
@@ -100,69 +185,151 @@ class _ClosedCasesState extends State<ClosedCases> {
                                   ),
                                 );
                         }).toList(),
-                      );
-              },
-              cases: (value) => value.payload.cases == null
-                  ? SizedBox()
-                  : ListView(
-                      children: value.payload.cases!.map((document) {
-                        return document.status != "CLOSED"
-                            ? const SizedBox()
-                            : Card(
-                                child: ListTile(
-                                  leading: createAvatar(
-                                      "${document.occurence!.obNo}"),
-                                  title: Text("${document.occurence?.obNo}"),
-                                  subtitle: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Align(
-                                          alignment:
-                                              FractionalOffset.centerLeft,
-                                          child: document.occurence!
-                                                      .occurenceDetails ==
-                                                  null
-                                              ? Text('${document.occurence}')
-                                              : document.occurence!
-                                                      .occurenceDetails!.isEmpty
-                                                  ? const Text('')
-                                                  : Text(
-                                                      "${(jsonDecode(document.occurence!.occurenceDetails!.first.details!) as List).map((e) => e['category']['name'])}")),
-                                      Align(
-                                          alignment:
-                                              FractionalOffset.centerLeft,
-                                          child: Text(
-                                              "${document.occurence?.obNo}")),
-                                    ],
+                      ),
+              );
+       
+       
+  }
+
+
+
+
+  Widget closedWithoutReport () {
+    return  context.watch<InboxCubit>().state.maybeMap(
+                orElse: () {
+                  return context.watch<InboxCubit>().state.payload.cases == null
+                      ? const Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : ListView(
+                          children: context
+                              .watch<InboxCubit>()
+                              .state
+                              .payload
+                              .cases!
+                              .map((document) {
+                            return document.status != "ONGOING"
+                                ? const SizedBox()
+                                : Card(
+                                    child: ListTile(
+                                      leading: createAvatar(
+                                          "${document.occurence!.obNo}"),
+                                      title: Text("${document.occurence?.obNo}"),
+                                      subtitle: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Align(
+                                              alignment:
+                                                  FractionalOffset.centerLeft,
+                                              child: document.occurence!
+                                                          .occurenceDetails ==
+                                                      null
+                                                  ? Text('${document.occurence}')
+                                                  : document
+                                                          .occurence!
+                                                          .occurenceDetails!
+                                                          .isEmpty
+                                                      ? const Text('')
+                                                      : Text(
+                                                          "${(jsonDecode(document.occurence!.occurenceDetails!.first.details!) as List).map((e) => e['category']['name'])}")),
+                                          Align(
+                                              alignment:
+                                                  FractionalOffset.centerLeft,
+                                              child: Text(
+                                                  "${document.occurence?.obNo}")),
+                                        ],
+                                      ),
+                                      isThreeLine: true,
+                                      trailing: document.status == "OPEN"
+                                          ? const Chip(
+                                              labelPadding: EdgeInsets.all(0.1),
+                                              label: Icon(Icons.check_box),
+                                              backgroundColor: Colors.green,
+                                            )
+                                          : const Chip(
+                                              labelPadding: EdgeInsets.all(0.1),
+                                              label: Icon(Icons.file_copy),
+                                              backgroundColor: Colors.red,
+                                            ),
+                                      onTap: () {
+                                        context.appNavigatorPush(
+                                            ViewCaseClosed(document));
+                                        // Navigator.push(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //         builder: (context) => ViewCase(document)));
+                                      },
+                                      dense: true,
+                                    ),
+                                  );
+                          }).toList(),
+                        );
+                },
+                cases: (value) => value.payload.cases == null
+                    ? SizedBox()
+                    : ListView(
+                        children: value.payload.cases!.map((document) {
+                          return document.status != "ONGOING"
+                              ? const SizedBox()
+                              : Card(
+                                  child: ListTile(
+                                    leading: createAvatar(
+                                        "${document.occurence!.obNo}"),
+                                    title: Text("${document.occurence?.obNo}"),
+                                    subtitle: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Align(
+                                            alignment:
+                                                FractionalOffset.centerLeft,
+                                            child: document.occurence!
+                                                        .occurenceDetails ==
+                                                    null
+                                                ? Text('${document.occurence}')
+                                                : document.occurence!
+                                                        .occurenceDetails!.isEmpty
+                                                    ? const Text('')
+                                                    : Text(
+                                                        "${(jsonDecode(document.occurence!.occurenceDetails!.first.details!) as List).map((e) => e['category']['name'])}")),
+                                        Align(
+                                            alignment:
+                                                FractionalOffset.centerLeft,
+                                            child: Text(
+                                                "${document.occurence?.obNo}")),
+                                      ],
+                                    ),
+                                    isThreeLine: true,
+                                    trailing: document.status == "OPEN"
+                                        ? const Chip(
+                                            labelPadding: EdgeInsets.all(0.1),
+                                            label: Icon(Icons.check_box),
+                                            backgroundColor: Colors.green,
+                                          )
+                                        : const Chip(
+                                            labelPadding: EdgeInsets.all(0.1),
+                                            label: Icon(Icons.hourglass_full),
+                                            backgroundColor: Colors.red,
+                                          ),
+                                    onTap: () {
+                                      context.appNavigatorPush(
+                                          ViewCaseClosed(document));
+                                      // Navigator.push(
+                                      //     context,
+                                      //     MaterialPageRoute(
+                                      //         builder: (context) => ViewCase(document)));
+                                    },
+                                    dense: true,
                                   ),
-                                  isThreeLine: true,
-                                  trailing: document.status == "OPEN"
-                                      ? const Chip(
-                                          labelPadding: EdgeInsets.all(0.1),
-                                          label: Icon(Icons.check_box),
-                                          backgroundColor: Colors.green,
-                                        )
-                                      : const Chip(
-                                          labelPadding: EdgeInsets.all(0.1),
-                                          label: Icon(Icons.hourglass_full),
-                                          backgroundColor: Colors.red,
-                                        ),
-                                  onTap: () {
-                                    context.appNavigatorPush(
-                                        ViewCaseClosed(document));
-                                    // Navigator.push(
-                                    //     context,
-                                    //     MaterialPageRoute(
-                                    //         builder: (context) => ViewCase(document)));
-                                  },
-                                  dense: true,
-                                ),
-                              );
-                      }).toList(),
-                    ),
-            ));
+                                );
+                        }).toList(),
+                      ),
+              );
+       
+       
   }
 
   Widget createAvatar(String name) {

@@ -23,4 +23,5 @@ abstract class InboxRepository {
   Future<NewWitnessResponse> createWitness({required FormData fd});
 
   Future<dynamic> suspendCaseFile({required int id});
+  Future<dynamic> closeCaseFile({required int id});
 }

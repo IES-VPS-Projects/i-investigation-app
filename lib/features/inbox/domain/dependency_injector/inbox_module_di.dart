@@ -2,6 +2,7 @@ import 'package:iinvestigation/core/data/network_datasource/network_service.dart
 import 'package:iinvestigation/features/inbox/data/data_source/inbox_data_source.dart';
 import 'package:iinvestigation/features/inbox/data/repository/inbox_repository_impl.dart';
 import 'package:iinvestigation/features/inbox/domain/repository/inbox_repository.dart';
+import 'package:iinvestigation/features/inbox/domain/usecases/close_case.dart';
 import 'package:iinvestigation/features/inbox/domain/usecases/create_case_materials.dart';
 import 'package:iinvestigation/features/inbox/domain/usecases/create_case_notes.dart';
 import 'package:iinvestigation/features/inbox/domain/usecases/get_open_cases.dart';
@@ -40,6 +41,7 @@ abstract class InboxModuleDI {
   @Register.singleton(CreateCaseNote)
   @Register.singleton(CreateSuspect)
   @Register.singleton(SuspendCase)
+  @Register.singleton(CloseCase)
   @Register.factory(InboxRepository, from: InboxRepositoryImpl)
   @Register.factory(InboxDataSource, from: InboxDataSourceImpl)
   void _configure();

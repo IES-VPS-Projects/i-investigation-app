@@ -41,48 +41,7 @@ class _SettingsState extends State<Settings> {
                     title: const Text("Manage Case OFFicers"),
                     trailing: const Icon(Icons.arrow_forward_ios),
                   ),
-                  ListTile(
-                    selected: true,
-                    selectedColor: Colors.amber,
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (_) {
-                          return AlertDialog(
-                            title: const Text("Confirmation"),
-                            content: const Text(
-                                "Are you sure you want to suspend the case?"),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  // Handle "Yes" button press
-                                  Navigator.of(context).pop();
-                                  context
-                                      .read<InboxCubit>()
-                                      .suspendCase(id: widget.caseFile.id!)
-                                      .then((value) {
-                                    context.appNavigatorReplacement(
-                                        const Dashboard());
-                                  });
-                                },
-                                child: Text("Yes"),
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  // Handle "No" button press
-                                  Navigator.of(context).pop();
-                                },
-                                child: Text("No"),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    },
-                    title: const Text(" Suspend Case"),
-                    trailing: const Icon(Icons.arrow_forward_ios),
-                  ),
-              
+                 
                ListTile(
                     selected: true,
                     selectedColor: Colors.redAccent,

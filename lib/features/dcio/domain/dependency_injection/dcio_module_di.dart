@@ -4,6 +4,7 @@ import 'package:iinvestigation/features/dcio/data/repository/dcio_repository_imp
 import 'package:iinvestigation/features/dcio/domain/repository/dcio_repository.dart';
 import 'package:iinvestigation/features/dcio/domain/usecases/get_cases.dart';
 import 'package:iinvestigation/features/dcio/domain/usecases/get_users.dart';
+import 'package:iinvestigation/features/dcio/domain/usecases/update_officers.dart';
 import 'package:iinvestigation/features/dcio/presentations/state/dcio_cubit.dart';
 import 'package:kiwi/kiwi.dart';
 
@@ -25,6 +26,7 @@ abstract class DciohModuleDI {
   @Register.singleton(GetOccurences)
   @Register.singleton(Getusers)
   @Register.singleton(CreateCaseFile)
+  @Register.singleton(UpdateOfficers)
   @Register.factory(DcioDataSource, from: DcioDataSourceImpl)
   @Register.factory(DcioRepository, from: DcioRepositoryImpl)
   // ignore: unused_element

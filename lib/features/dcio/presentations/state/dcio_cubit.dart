@@ -10,6 +10,7 @@ import 'package:iinvestigation/features/dcio/data/models/users/users.dart';
 import 'package:iinvestigation/features/dcio/domain/usecases/create_case_file.dart';
 import 'package:iinvestigation/features/dcio/domain/usecases/get_cases.dart';
 import 'package:iinvestigation/features/dcio/domain/usecases/get_users.dart';
+import 'package:iinvestigation/features/dcio/domain/usecases/update_officers.dart';
 import 'package:iinvestigation/features/inbox/data/models/open_cases/case_file_officer.dart';
 
 part 'dcio_state.dart';
@@ -19,8 +20,10 @@ part 'dcio_cubit.g.dart';
 class DcioCubit extends Cubit<DcioState> {
   final GetOccurences _getOccurences;
   final Getusers _getusers;
+  final UpdateOfficers _updateOfficers;
   final CreateCaseFile _createCaseFile;
-  DcioCubit(this._getOccurences, this._getusers, this._createCaseFile)
+  DcioCubit(this._getOccurences, this._getusers, this._createCaseFile,
+      this._updateOfficers)
       : super(const DcioState.initial(
             payload: DcioStatePayload(error: null, page: null, officers: [])));
 
@@ -82,5 +85,15 @@ class DcioCubit extends Cubit<DcioState> {
     List<Users> ii = [...?state.payload.officers];
     ii.remove(officer);
     emit(DcioState.occurences(payload: state.payload.copyWith(officers: ii)));
+  }
+
+  Future<void> updateOfficers(Map payload) async {
+    emit(DcioState.loading(payload: state.payload.copyWith()));
+    var results = await _updateOfficers(payload);
+    results.fold((l) {
+      emit(DcioState.occurences(payload: state.payload.copyWith()));
+    },
+        (r) => emit(DcioState.error(
+            payload: state.payload.copyWith(error: r.message))));
   }
 }
