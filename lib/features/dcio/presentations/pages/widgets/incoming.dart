@@ -27,7 +27,7 @@ class _IncomingState extends State<Incoming> {
   Widget build(BuildContext context) {
     return context.watch<DcioCubit>().state.maybeWhen(
         orElse: () => context.read<DcioCubit>().state.payload.occurences == null
-            ? Center(child: CircularProgressIndicator())
+            ? const  Center(child: CircularProgressIndicator())
             : SingleChildScrollView(
                 child: Column(
                   children: [

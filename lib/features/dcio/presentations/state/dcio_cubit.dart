@@ -10,6 +10,7 @@ import 'package:iinvestigation/features/dcio/data/models/users/users.dart';
 import 'package:iinvestigation/features/dcio/domain/usecases/create_case_file.dart';
 import 'package:iinvestigation/features/dcio/domain/usecases/get_cases.dart';
 import 'package:iinvestigation/features/dcio/domain/usecases/get_users.dart';
+import 'package:iinvestigation/features/inbox/data/models/open_cases/case_file_officer.dart';
 
 part 'dcio_state.dart';
 part 'dcio_cubit.freezed.dart';
@@ -60,6 +61,20 @@ class DcioCubit extends Cubit<DcioState> {
   Future<void> addOffiersToCase(Users officer) async {
     List<Users> ii = [...?state.payload.officers];
     ii.add(officer);
+    emit(DcioState.occurences(payload: state.payload.copyWith(officers: ii)));
+  }
+
+  Future<void> addOfficersListToCase(List<CaseFileOfficer>? officers) async {
+    List<Users> ii = [...?state.payload.officers];
+    if (officers!.isEmpty) {
+      emit(DcioState.occurences(payload: state.payload.copyWith(officers: [])));
+    } else {
+      for (var i = 0; i < officers.length; i++) {
+        var iii = Users.fromJson(officers[i].user!.toJson());
+        ii.add(iii);
+      }
+    }
+
     emit(DcioState.occurences(payload: state.payload.copyWith(officers: ii)));
   }
 

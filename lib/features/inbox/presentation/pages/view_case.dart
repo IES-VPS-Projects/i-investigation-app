@@ -5,6 +5,7 @@ import 'package:iinvestigation/core/utilities/utilities.dart';
 import 'package:iinvestigation/features/dcio/presentations/pages/view_case.dart';
 import 'package:iinvestigation/features/inbox/data/models/open_cases/open_cases.dart';
 import 'package:iinvestigation/features/inbox/presentation/pages/details.dart';
+import 'package:iinvestigation/features/inbox/presentation/pages/settings.dart';
 import 'package:iinvestigation/features/inbox/presentation/pages/view_case_form.dart';
 import 'package:iinvestigation/features/inbox/presentation/state/inbox_cubit.dart';
 
@@ -47,8 +48,13 @@ class _ViewCaseState extends State<ViewCase> {
       RefreshController(initialRefresh: false);
   @override
   Widget build(BuildContext context) {
+
     // TODO: implement build
     return Scaffold(
+
+      floatingActionButton: widget.caseFile.leadOfficer!.serviceNumber ==_profile? FloatingActionButton(onPressed: (){
+        context.appNavigatorPush(Settings(caseFile: widget.caseFile,));
+      }, child: Icon(Icons.settings),):SizedBox(),
       body: SmartRefresher(
         enablePullDown: true, 
 
@@ -67,6 +73,12 @@ class _ViewCaseState extends State<ViewCase> {
             });
           });
         },
+
+
+
+
+
+        
         child: FutureBuilder(
             future: getData('role'),
             builder: (context, snapshotRole) {

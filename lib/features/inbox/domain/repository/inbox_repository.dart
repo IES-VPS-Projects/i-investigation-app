@@ -21,4 +21,6 @@ abstract class InboxRepository {
   Future<dynamic> createSummary({required FormData fd});
   Future<List<PenalCodeResponse>> getPenalCodes();
   Future<NewWitnessResponse> createWitness({required FormData fd});
+
+  Future<dynamic> suspendCaseFile({required int id});
 }

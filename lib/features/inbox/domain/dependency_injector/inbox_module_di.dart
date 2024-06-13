@@ -15,6 +15,7 @@ import '../usecases/create_summary.dart';
 import '../usecases/create_suspect.dart';
 import '../usecases/create_witness.dart';
 import '../usecases/get_case_file.dart';
+import '../usecases/suspend_case.dart';
 
 part 'inbox_module_di.g.dart';
 
@@ -38,6 +39,7 @@ abstract class InboxModuleDI {
   @Register.singleton(CreateCaseMaterial)
   @Register.singleton(CreateCaseNote)
   @Register.singleton(CreateSuspect)
+  @Register.singleton(SuspendCase)
   @Register.factory(InboxRepository, from: InboxRepositoryImpl)
   @Register.factory(InboxDataSource, from: InboxDataSourceImpl)
   void _configure();

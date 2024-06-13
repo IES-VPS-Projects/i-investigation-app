@@ -3,17 +3,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iinvestigation/core/utilities/logging_utils.dart';
 import 'package:iinvestigation/features/dcio/data/models/users/users.dart';
 import 'package:iinvestigation/features/dcio/presentations/state/dcio_cubit.dart';
+import 'package:iinvestigation/features/inbox/data/models/open_cases/open_cases.dart';
 
-import 'officer_list.dart';
+import 'officer_listing.dart';
 
-class OfficerPicker extends StatefulWidget {
-  const OfficerPicker({super.key});
+class OfficerPickerSettings extends StatefulWidget {
+
+  final OpenCases caseFile;
+  const OfficerPickerSettings({super.key, required this.caseFile});
 
   @override
   _OfficerPickerState createState() => _OfficerPickerState();
 }
 
-class _OfficerPickerState extends State<OfficerPicker> {
+class _OfficerPickerState extends State<OfficerPickerSettings> {
   @override
   void initState() {
     super.initState();
@@ -28,7 +31,7 @@ class _OfficerPickerState extends State<OfficerPicker> {
       onRefresh: () => context.read<DcioCubit>().getUsers(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Pick officer"),
+          title:const  Text("Pick officer"),
         ),
         body: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -97,7 +100,15 @@ class _OfficerPickerState extends State<OfficerPicker> {
               .payload
               .officers!
               .map((Users officer) {
-              return Dismissible(
+              return  officer.serviceNumber == widget.caseFile.leadOfficer!.serviceNumber?Card(
+                  child: ListTile(
+                     
+                    onTap: () {},
+                    title: Text(officer.name!),
+                    subtitle: Text(officer.serviceNumber!),
+                  ),
+                ):
+                Dismissible(
                 background:
                     Container(color: const Color.fromARGB(111, 244, 67, 54)),
                 key: ObjectKey(officer),

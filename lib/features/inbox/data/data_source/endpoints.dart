@@ -1,5 +1,6 @@
 class InboxEndpoints {
   static String cases = "casefiles";
+  static String casesSuspend = "casefiles/suspend/";
   static String caseNoteSuspect = "caseNoteSuspect";
   static String caseNoteWitness = "caseNoteWitness";
   static String caseNote = "caseNotes";

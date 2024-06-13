@@ -63,4 +63,9 @@ class InboxRepositoryImpl implements InboxRepository {
   Future createSummary({required FormData fd}) async {
     return await _inboxDataSource.createSummary(fd: fd);
   }
+
+  @override
+  Future suspendCaseFile({required int id}) async {
+    return await _inboxDataSource.suspendCaseFile(id: id);
+  }
 }

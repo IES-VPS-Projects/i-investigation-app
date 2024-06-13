@@ -24,4 +24,10 @@ class DcioRepositoryImpl implements DcioRepository {
   Future<NewCaseFile> createCaseFile({required Map payload}) async {
     return await _dataSource.createCaseFile(payload: payload);
   }
+  
+  @override
+  Future updateCaseOfficers({required int id, required Map payload}) async {
+    return await _dataSource.updateCaseOfficers(id: id, payload: payload);
+  
+  }
 }

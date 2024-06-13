@@ -92,6 +92,7 @@ class _NewCaseState extends State<NewCase> {
                               if (str == null || str.isEmpty) {
                                 return "Case lead must be assigned";
                               }
+                              return null;
                             },
                             items: context
                                         .watch<DcioCubit>()

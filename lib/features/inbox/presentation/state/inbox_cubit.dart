@@ -20,6 +20,7 @@ import 'package:iinvestigation/features/inbox/data/models/case_file/case_file.da
 
 import '../../data/models/penal_code_response/penal_code_response.dart';
 import '../../domain/usecases/create_offence.dart';
+import '../../domain/usecases/suspend_case.dart';
 
 part 'inbox_state.dart';
 part 'inbox_cubit.freezed.dart';
@@ -36,6 +37,7 @@ class InboxCubit extends Cubit<InboxState> {
   final SearchIPRS _searchIPRS;
   final CreateSuspect _createSuspect;
   final CreateSummary _createSummary;
+  final SuspendCase _suspendCase;
 
   InboxCubit(
       this._createSummary,
@@ -47,7 +49,7 @@ class InboxCubit extends Cubit<InboxState> {
       this._caseFileUseCase,
       this._getOpenCases,
       this._searchIPRS,
-      this._createSuspect)
+      this._createSuspect, this._suspendCase)
       : super(const InboxState.initial(
           payload: InboxStatePayload(error: null, page: null),
         ));
@@ -178,6 +180,17 @@ class InboxCubit extends Cubit<InboxState> {
     var results = await _createSummary(payload);
     results.fold((l) {
       print(l);
+      emit(InboxState.caseFile(payload: state.payload.copyWith()));
+    }, (r) {
+      emit(InboxState.errorIPRS(
+          payload: state.payload.copyWith(error: r.message)));
+    });
+  }
+  Future<void> suspendCase({required int id}) async {
+    emit(InboxState.loading(payload: state.payload.copyWith()));
+
+    var results = await _suspendCase(id);
+    results.fold((l) { 
       emit(InboxState.caseFile(payload: state.payload.copyWith()));
     }, (r) {
       emit(InboxState.errorIPRS(

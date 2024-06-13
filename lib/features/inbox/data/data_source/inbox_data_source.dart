@@ -25,6 +25,7 @@ abstract class InboxDataSource {
   Future<dynamic> createCaseMaterial({required FormData fd});
   Future<dynamic> createOffence({required FormData fd});
   Future<dynamic> createSummary({required FormData fd});
+  Future<dynamic> suspendCaseFile({required int id});
 }
 
 class InboxDataSourceImpl implements InboxDataSource {
@@ -118,6 +119,13 @@ class InboxDataSourceImpl implements InboxDataSource {
   Future createSummary({required FormData fd}) async {
     var response = await _networkService.postHttp(InboxEndpoints.caseSummary,
         body: fd, tokenRequired: false);
+    return response;
+  }
+  
+  @override
+  Future suspendCaseFile({required int id}) async  {
+     var response = await _networkService.getHttp(InboxEndpoints.casesSuspend+id.toString());
+
     return response;
   }
 }

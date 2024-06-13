@@ -59,6 +59,7 @@ class CaseSummary extends StatelessWidget {
                 ),
                 Expanded(
                   child: _AssignedCard(
+                    caseObject: caseObject,
                     assigned: caseObject.caseFileOfficers == null
                         ? []
                         : caseObject.caseFileOfficers!,
@@ -76,7 +77,8 @@ class CaseSummary extends StatelessWidget {
 // ignore: must_be_immutable, unused_element
 class _AssignedCard extends StatelessWidget {
   List<CaseFileOfficer> assigned;
-  _AssignedCard({required this.assigned});
+  OpenCases? caseObject;
+  _AssignedCard({required this.assigned, this.caseObject});
 
   @override
   Widget build(BuildContext context) {
@@ -90,17 +92,36 @@ class _AssignedCard extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         // Generate 100 Widgets that display their index in the List
         itemBuilder: (context, index) => Card(
-              color: Colors.white,
+              color: caseObject?.leadOfficer?.id != assigned[index].user?.id
+                  ? Colors.white
+                  : Colors.green,
               child: InkWell(
                   onTap: () {},
                   child: Center(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "${assigned[index].user?.name} ",
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          caseObject?.leadOfficer?.id !=
+                                  assigned[index].user?.id
+                              ? SizedBox()
+                              : Text(
+                                  "LEAD",
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                          Text(
+                            "${assigned[index].user?.name} ",
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
                     ),
                   )),

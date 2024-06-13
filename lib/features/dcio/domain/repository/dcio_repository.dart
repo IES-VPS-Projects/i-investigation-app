@@ -8,4 +8,6 @@ abstract class DcioRepository {
   Future<List<Occurence>> getOccurences();
   Future<List<Users>> getUsers();
   Future<NewCaseFile> createCaseFile({required Map payload});
+  Future<dynamic> updateCaseOfficers({required int id, required Map payload});
+
 }
