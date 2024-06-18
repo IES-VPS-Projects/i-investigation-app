@@ -11,7 +11,7 @@ class DcioDashboard extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("DCIO Dashboard"),
+          title: Text("Dashboard"),
           centerTitle: true,
           bottom: const TabBar(tabs: <Tab>[
             Tab(

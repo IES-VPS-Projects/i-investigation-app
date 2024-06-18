@@ -24,6 +24,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthState.loading(payload: state.payload.copyWith()));
     var results = await _login(payload);
     results.fold((l) {
+      logger.i(l);
       if (l.data!.userRoles!.isNotEmpty) {
 
       logger.t(l.data?.userRoles!.first.role!.name!);
@@ -40,6 +41,7 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthState.login(payload: state.payload.copyWith(user: l)));
     }, (r) {
       emit(AuthState.error(payload: state.payload.copyWith(error: r.message)));
+      throw r.message;
     });
   }
 }

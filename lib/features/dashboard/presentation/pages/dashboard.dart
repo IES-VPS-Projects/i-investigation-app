@@ -40,7 +40,7 @@ class _DashboardState extends State<Dashboard> {
                 icon: Icon(Icons.exit_to_app),
                 onPressed: () {
                   clearAll();
-                  context.appNavigatorPush(const SignIn());
+                  context.appNavigatorReplacement(const SignIn());
                 })
           ],
         ),

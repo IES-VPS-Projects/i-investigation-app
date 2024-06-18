@@ -18,6 +18,7 @@ class Login extends Usecase<AuthResponseModel, FormData> {
       logger.t("trace $response");
       return Left(response);
     } on NetworkFailure catch (e, s) {
+      print('error right ${e.message}');
       return Right(getUIErrorFromUsecaseFailure(e.message, e, s));
     }
   }

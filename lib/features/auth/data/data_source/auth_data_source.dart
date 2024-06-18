@@ -28,14 +28,14 @@ class AuthDataSourceImpl implements AuthDataSource {
     var response =
         await _networkService.postHttp(AuthEndPoints.login, body: params);
 
-    // if (response['error'] != null) {
-    //   await handleApiFailure(
-    //     source: 'login',
-    //     errorMessage: (response['error'] as ApiErrors).name,
-    //     errorCode: response['error'] as ApiErrors,
-    //     isOnlineStatus: isOnline ?? false,
-    //   );
-    // }
+    if (response['error'] != null) {
+      await handleApiFailure(
+        source: 'login',
+        errorMessage: (response['error'] as ApiErrors).name,
+        errorCode: response['error'] as ApiErrors,
+        isOnlineStatus: isOnline ?? false,
+      );
+    }
     logger.t(response);
     return AuthResponseModel.fromJson(response);
   }

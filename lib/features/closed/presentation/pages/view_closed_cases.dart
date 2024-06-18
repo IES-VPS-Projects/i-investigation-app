@@ -8,7 +8,9 @@ import 'package:iinvestigation/features/inbox/presentation/state/inbox_cubit.dar
 
 class ViewCaseClosed extends StatefulWidget {
   final OpenCases caseFile;
-  const ViewCaseClosed(this.caseFile, {super.key});
+  final bool? isAdmin;
+
+  const ViewCaseClosed(this.caseFile, this.isAdmin, {super.key});
 
   @override
   _ViewCaseState createState() => _ViewCaseState();
@@ -41,13 +43,8 @@ class _ViewCaseState extends State<ViewCaseClosed> {
                 title: const Text("View Closed Case File"),
               ),
               body: ViewCaseFormClosed(
-                caseObject: widget.caseFile,
-                hasAccepted: widget.caseFile.caseFileOfficers
-                    ?.where((element) =>
-                        element.user!.serviceNumber == snapshot.data)
-                    .first
-                    .accepted,
-              ),
+                  caseObject: widget.caseFile,
+                  hasAccepted: widget.isAdmin == true ? 'PENDING' : false),
             );
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}");

@@ -104,8 +104,36 @@ class _SignInState extends State<SignIn> {
                                                 ],
                                               )),
                                         ),
-                                    error: (_payload) =>
-                                        Text("${_payload.error}"),
+                                    error: (_payload) => Column(
+                                          children: [
+                                           const  Padding(
+                                              padding:  EdgeInsets.all(8.0),
+                                              child: Text(
+                                                "invalid Credentials",
+                                              ),
+                                            ),
+                                            ElevatedButton(
+                                              onPressed: signIn,
+                                              style: const ButtonStyle(
+                                                  backgroundColor:
+                                                      MaterialStatePropertyAll<
+                                                          Color>(Colors.green)),
+                                              child: Container(
+                                                  width: double.infinity,
+                                                  height: 50,
+                                                  alignment:
+                                                      FractionalOffset.center,
+                                                  child: const Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: <Widget>[
+                                                      Icon(Icons.lock_open),
+                                                      Text("Login"),
+                                                    ],
+                                                  )),
+                                            )
+                                          ],
+                                        ),
                                     loading: (_) => CircularProgressIndicator(),
                                     login: (_) => ElevatedButton(
                                           onPressed: signIn,

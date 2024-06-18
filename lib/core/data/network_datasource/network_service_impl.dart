@@ -81,7 +81,10 @@ class NetworkServiceImpl implements NetworkService {
     } on DioError catch (e) {
       logger.e('\n\n ${e.response?.statusCode} -- msee2 \n\n');
       logger.e('\n\n ${e.response?.data} -- msee3 \n\n');
-      return _handleApiResponse(e.response!);
+
+      return e.response == null
+          ? <String, dynamic>{'data': null}
+          : _handleApiResponse(e.response!);
     } catch (e) {
       logger.e('\n\n ${e.toString()} -- msee4 \n\n');
       return <String, dynamic>{
